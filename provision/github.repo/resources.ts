@@ -8,6 +8,7 @@ import {
 } from 'declastruct-github';
 import { type DomainEntity, RefByUnique } from 'domain-objects';
 import { UnexpectedCodePathError } from 'helpful-errors';
+import { genLogMethods } from 'sdk-logs';
 
 import pkg from '../../package.json';
 
@@ -21,12 +22,7 @@ export const getProviders = async (): Promise<DeclastructProvider[]> => [
       },
     },
     {
-      log: {
-        info: () => {},
-        debug: () => {},
-        warn: console.warn,
-        error: console.error,
-      },
+      log: genLogMethods(),
     },
   ),
 ];
