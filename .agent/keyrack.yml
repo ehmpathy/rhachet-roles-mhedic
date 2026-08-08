@@ -1,0 +1,15 @@
+org: ehmpathy
+extends:
+  - .agent/repo=bhrain/role=reviewer/keyrack.yml
+  - .agent/repo=bhuild/role=dispatcher/keyrack.yml
+  - .agent/repo=ehmpathy/role=mechanic/keyrack.yml
+env.all: null
+env.prod: null
+env.prep:
+  - EHMPATHY_SEATURTLE_PROD_GITHUB_TOKEN
+env.test:
+  # declared directly rather than via extends of
+  # .agent/repo=rhight/role=transcriber/keyrack.yml — that manifest omits the
+  # required `org` field, so the extend fails schema validation (see upstream issue).
+  # the key name is theirs, since their transcriber skill reads this exact env var.
+  - GOOGLE_CLOUD_RHIGHT_SERVICE_ACCOUNT_CREDS

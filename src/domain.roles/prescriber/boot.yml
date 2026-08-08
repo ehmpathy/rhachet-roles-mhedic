@@ -1,0 +1,8 @@
+always:
+  briefs:
+    ref:
+      - briefs/define.prescriber-scope.[lesson].md
+
+  skills:
+    ref:
+      # - skills land here as they are built

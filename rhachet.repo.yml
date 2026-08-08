@@ -1,0 +1,53 @@
+slug: mhedic
+readme: dist/domain.roles/readme.md
+roles:
+  - slug: diagnostician
+    readme: dist/domain.roles/diagnostician/readme.md
+    briefs:
+      dirs: dist/domain.roles/diagnostician/briefs
+    skills:
+      dirs: dist/domain.roles/diagnostician/skills
+    inits:
+      dirs: dist/domain.roles/diagnostician/inits
+    boot: dist/domain.roles/diagnostician/boot.yml
+    keyrack: dist/domain.roles/diagnostician/keyrack.yml
+  - slug: physician
+    readme: dist/domain.roles/physician/readme.md
+    briefs:
+      dirs: dist/domain.roles/physician/briefs
+    skills:
+      dirs: dist/domain.roles/physician/skills
+    inits:
+      dirs: dist/domain.roles/physician/inits
+    boot: dist/domain.roles/physician/boot.yml
+    keyrack: dist/domain.roles/physician/keyrack.yml
+  - slug: prescriber
+    readme: dist/domain.roles/prescriber/readme.md
+    briefs:
+      dirs: dist/domain.roles/prescriber/briefs
+    skills:
+      dirs: dist/domain.roles/prescriber/skills
+    inits:
+      dirs: dist/domain.roles/prescriber/inits
+    boot: dist/domain.roles/prescriber/boot.yml
+    keyrack: dist/domain.roles/prescriber/keyrack.yml
+  - slug: preventer
+    readme: dist/domain.roles/preventer/readme.md
+    briefs:
+      dirs: dist/domain.roles/preventer/briefs
+    skills:
+      dirs: dist/domain.roles/preventer/skills
+    inits:
+      dirs: dist/domain.roles/preventer/inits
+    boot: dist/domain.roles/preventer/boot.yml
+    keyrack: dist/domain.roles/preventer/keyrack.yml
+  - slug: referrer
+    readme: dist/domain.roles/referrer/readme.md
+    briefs:
+      dirs: dist/domain.roles/referrer/briefs
+    skills:
+      dirs: dist/domain.roles/referrer/skills
+    inits:
+      dirs: dist/domain.roles/referrer/inits
+    boot: dist/domain.roles/referrer/boot.yml
+    keyrack: dist/domain.roles/referrer/keyrack.yml
