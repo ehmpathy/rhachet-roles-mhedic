@@ -1,0 +1,25 @@
+# 1.3.intake.gaps.stone
+
+## .what
+
+name the **knowledge gaps** — the facts not yet known that would change the read (an absent
+temperature, an unconfirmed dose, an unreported prior episode). these feed the assay phase, which
+orders tests to close them.
+
+## .inputs
+
+- `1.2.intake.structure.yield.md` — the structured timeline + entities
+
+## .do
+
+- list each unknown that would shift a scenario's plausibility or severity
+- mark which are cheap to close (ask the owner) vs need a test (feeds phase 4)
+- do NOT guess the absent value — a gap is a gap until closed (`absence-of-evidence`)
+
+## .emit
+
+into `1.3.intake.gaps.yield.md`.
+
+## .done when
+
+the knowledge gaps are listed, each tagged cheap-to-close vs test-needed, none filled by guess.

@@ -1,0 +1,32 @@
+# 3.3.scenario.disentangle.correlation.blend.stone
+
+## .what
+
+reconcile the two correlation halves into **coarse weights** — by **bracket, not pool**. the anecdote
+signal is the upper bound; the formal base rate is the base rate; they are never averaged into a
+false midpoint. emit the coarse rank + the (probability × severity) floor that decides which
+scenarios earn a full workup.
+
+## .inputs
+
+- `3.1.scenario.disentangle.correlation.literature.yield.md` — formal base rates
+- `3.2.scenario.disentangle.correlation.anecdotes.yield.md` — anecdote signals
+
+## .do
+
+- for each scenario, place its anecdote signal as an upper bound **bracketed by** its formal base
+  rate — state the range, not a pooled point
+- flag scenarios where the two streams **disagree** — that disagreement is signal, not noise
+- assign each scenario a **coarse weight** (ordinal, not a false-precision number) and a **severity**
+- cut the **(probability × severity) floor**: mark which scenarios earn a full workup (phase 6). the
+  low-probability / high-severity landmines clear the floor on severity — they pass too
+
+## .emit
+
+into `3.3.scenario.disentangle.correlation.blend.yield.md` — the coarse-ranked superposition + the
+floor cut (which scenarios pass to full workup).
+
+## .done when
+
+each scenario has a bracketed range (not a pooled point), a coarse weight + severity, and the
+(probability × severity) floor is cut with the survivors named.

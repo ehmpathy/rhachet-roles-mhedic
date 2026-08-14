@@ -1,0 +1,30 @@
+# 7.2.acuity.envelope.sameday.stone
+
+## .what
+
+set the **same-day / near-term tier** — which live scenarios do not force emergency care but should
+not wait, and the window in which they should be seen. this is the middle band of the acuity
+envelope, above watchful wait and below the emergency floor.
+
+## .inputs
+
+- `7.1.acuity.envelope.emergency.yield.md` — the emergency floor already set
+- `6.1.scenario.superposition.bounds.yield.md` — the worst-case bounds
+- `6.2.scenario.superposition.prevention.yield.md` — the recurrence likelihoods
+
+## .do
+
+- for the live scenarios below the emergency floor, identify those whose worst-case bound worsens
+  over **days** (not hours) — these set the same-day / near-term tier
+- state the **time window** (e.g. seen within 24–48h) and name the scenario that drives it
+- write the **escalate-sooner signs** — the observations that would lift a same-day case to emergency
+
+## .emit
+
+into `7.2.acuity.envelope.sameday.yield.md` — the same-day tier, its window, the scenario that drives
+it, and the escalate-sooner signs.
+
+## .done when
+
+the same-day tier is stated with its window, the scenario that drives it is named, and the
+escalate-sooner signs are listed.

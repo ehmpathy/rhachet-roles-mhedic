@@ -1,0 +1,16 @@
+artifacts:
+  - $route/7.3.acuity.envelope.watch.yield.md
+
+reviews:
+  self:
+    - slug: has-cadence-and-tripwires
+      say: |
+        is the watch tier stated with an observation cadence AND concrete
+        tripwires that escalate up the envelope? a watch plan with no tripwire is
+        an open door to a missed deterioration.
+    - slug: has-envelope-closed
+      say: |
+        is the envelope closed — does every live scenario sit in exactly one
+        acuity band (emergency / same-day / watch)? a live scenario in no band is
+        a gap; a licensed watch over an un-eliminated catastrophic branch with no
+        tripwire is a blocker (rule.require.superposition-until-elimination).

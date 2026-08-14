@@ -1,0 +1,26 @@
+artifacts:
+  - $route/6.1.scenario.superposition.bounds.yield.md
+
+reviews:
+  self:
+    - slug: has-both-bounds-per-survivor
+      say: |
+        does every survivor carry a best-case AND a worst-case bound, each with
+        a bhrowser citation? a survivor absent a bound has an incomplete
+        consequence package.
+    - slug: has-worst-case-for-veto
+      say: |
+        is the worst-case bound of each catastrophic branch stated plainly with
+        its citation? that bound powers the phase-9 veto — a vague or uncited
+        worst case cannot hold a veto.
+    - slug: has-accrued-facts
+      say: |
+        are the generic cited facts lifted into accrue/inventory.of=<topic>.md,
+        case-neutral, per rule.require.accrue-research? a research stone that
+        leaves its facts in the case yield is a blocker.
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.bhrowser-citations*.md' --rules '.agent/**/rule.require.accrue-research*.md' --paths '$route/6.1.scenario.superposition.bounds.yield.md' --output '$route/.reviews/$stone.peer-review.bounds.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

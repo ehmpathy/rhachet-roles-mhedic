@@ -1,0 +1,30 @@
+# 5.2.scenario.rerank.redteam.attack.stone
+
+## .what
+
+**attack** each survivor — build the strongest honest case *against* it. now that 5.1 stated each
+scenario's best defense, strike the real substance: where the mechanism strains, where the base rate
+is thin, where the case features cut against it, where the anecdote pattern fails to fit.
+
+## .inputs
+
+- `5.1.scenario.rerank.redteam.steelman.yield.md` — the best case for each survivor
+- `3.3.scenario.disentangle.correlation.blend.yield.md` — the coarse-ranked weights
+
+## .do
+
+- for each survivor, marshal the strongest honest counter-case: the mechanism mismatch, the thin or
+  absent base rate, the case-specific feature that argues against it
+- state what evidence *would* most lower its rank
+- attack the unattested branches fairly too — but never confuse "no case report" with "cannot
+  happen"; a severe branch survives a weak attack precisely because absence of evidence is not
+  evidence of absence
+
+## .emit
+
+into `5.2.scenario.rerank.redteam.attack.yield.md` — the strongest honest case against each survivor.
+
+## .done when
+
+every survivor has its strongest honest counter-case stated, and no severe branch is dropped on
+absence-of-evidence alone.

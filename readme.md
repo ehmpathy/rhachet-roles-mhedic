@@ -57,6 +57,14 @@ used to route a patient to the right place. the diagnostician decides *what* to 
 
 used to stay ahead of disease — what to screen for, when, and which risks to reduce.
 
+### 🧬 phylogeneticist
+
+- **scale**: tree-of-life, cross-species
+- **focus**: clades, ancestral-state reconstruction, homology vs analogy
+- **maximizes**: correct cross-species transfer of a mechanism
+
+used to reconstruct where a biological mechanism arose on the tree of life and who inherits it — the clade library that tells the other roles whether a mechanism transfers across species (conancestral) or diverged in one lineage. the prescriber references it when a drug's safety hinges on a divergence, like the feline UGT1A6 loss.
+
 ### ⚕️ physician
 
 - **scale**: whole-person, coordination

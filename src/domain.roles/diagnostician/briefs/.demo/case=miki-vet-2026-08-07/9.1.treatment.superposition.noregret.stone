@@ -1,0 +1,39 @@
+# 9.1.treatment.superposition.noregret.stone
+
+> **prescriber stone.** the diagnostician hands off the envelope (phase 8); the prescriber builds the
+> plan. this stone is authored under the prescriber role.
+
+## .what
+
+build the **no-regret core** of the treatment plan — the care that helps across the whole envelope
+and harms at neither corner. this is the plan that is safe to start *now*, before the assay collapses
+the superposition, because it is correct under every live scenario.
+
+## .inputs
+
+- `8.3.diagnosis.superposition.envelope.yield.md` — the worst/best corners + no-regret core + acuity
+- `6.3.scenario.superposition.care.yield.md` — the supportive-care paths + no-regret flags
+
+## .do
+
+- prescribe the **no-regret core**: the care flagged (6.3) as helpful under the live scenarios and
+  harmless under the others — this starts immediately, keyed to the acuity floor (phase 7)
+- for each item, cite the source (`rule.require.bhrowser-citations`) and state the dose/route where
+  applicable, with the label-target caveat if the dose is inferred
+- state plainly what the no-regret core does **not** cover — the scenario-specific care that waits on
+  the assay (phase 9.2) or is vetoed (phase 9.3)
+
+## .emit
+
+into `9.1.treatment.superposition.noregret.yield.md` — the no-regret core plan, cited, keyed to
+acuity, with its coverage boundary stated.
+
+## .disclaimer
+
+carry the not-medical-advice disclaimer (`rule.require.recommendation-disclaimer`); if the acuity
+floor is emergency, carry the emergency-care escalation line.
+
+## .done when
+
+the no-regret core is prescribed with citations + keyed to acuity, its coverage boundary is stated,
+and the disclaimer is carried.

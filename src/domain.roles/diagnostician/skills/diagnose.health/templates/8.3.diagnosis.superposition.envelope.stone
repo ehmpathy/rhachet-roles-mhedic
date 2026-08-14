@@ -1,0 +1,34 @@
+# 8.3.diagnosis.superposition.envelope.stone
+
+## .what
+
+state the **envelope** — the outer bounds of the whole live superposition: the worst-case across all
+live scenarios (the floor the plan must be safe against) and the best-case across all (the cap the
+plan must not overtreat past). this is the hand-off artifact the prescriber's phase-9 plan is built
+to fit.
+
+## .inputs
+
+- `8.1.diagnosis.superposition.ranked.yield.md` — the ranked live scenarios + packages
+- `8.2.diagnosis.superposition.eliminated.yield.md` — what was ruled out
+- `7.3.acuity.envelope.watch.yield.md` — the closed acuity envelope
+
+## .do
+
+- state the **worst-case corner** — the most severe un-eliminated trajectory across all live
+  scenarios; this is what the plan must never contraindicate against (the veto source)
+- state the **best-case corner** — the most benign trajectory across all live scenarios; this is what
+  the plan must not overtreat past (the no-waste bound)
+- name the **no-regret core** — the care that helps across the whole envelope, harmless at both
+  corners (from 6.3)
+- carry the acuity floor (phase 7) so the prescriber inherits urgency + bounds together
+
+## .emit
+
+into `8.3.diagnosis.superposition.envelope.yield.md` — the worst/best corners, the no-regret core,
+and the acuity floor.
+
+## .done when
+
+both envelope corners are stated, the no-regret core is named, the acuity floor is carried, and the
+diagnostician's hand-off to the prescriber is complete.

@@ -1,0 +1,22 @@
+artifacts:
+  - $route/6.2.scenario.superposition.prevention.yield.md
+
+reviews:
+  self:
+    - slug: has-prevention-and-recurrence
+      say: |
+        does every survivor carry a cited prevention path AND a recurrence
+        likelihood? a survivor with one but not the other has an incomplete
+        consequence package.
+    - slug: has-accrued-facts
+      say: |
+        are the generic cited facts (prevention protocols, recurrence rates)
+        lifted into accrue/inventory.of=<topic>.md, case-neutral, per
+        rule.require.accrue-research? a research stone that leaves its facts in
+        the case yield is a blocker.
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/rule.require.bhrowser-citations*.md' --rules '.agent/**/rule.require.accrue-research*.md' --paths '$route/6.2.scenario.superposition.prevention.yield.md' --output '$route/.reviews/$stone.peer-review.prevention.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

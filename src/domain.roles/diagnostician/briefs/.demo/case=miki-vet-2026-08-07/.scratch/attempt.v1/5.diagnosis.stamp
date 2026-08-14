@@ -1,0 +1,80 @@
+🦉 the way speaks for itself
+
+🗿 route.stone.set
+   ├─ stone = 5.diagnosis
+   ├─ passage = blocked
+   ├─ reason = nitpicks exceed threshold (3 > 0); wait for human approval
+   └─ guard
+      ├─ artifacts
+      │   └─ $route/5.diagnosis.yield.md
+      ├─ reviews
+      │   ├─ r1: $rhachet.1 (l1, 7/∞)
+      │   │   ├─ approved 24.8s
+      │   │   ├─ 0 blockers ✓
+      │   │   ├─ 0 nitpicks ✓
+      │   │   ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/5.diagnosis._.review.i007.22e981d321f0452a4d.r001._.given.by_peer.$rhachet.1.md
+      │   │   └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/5.diagnosis._.review.i007.22e981d321f0452a4d.r001._.taken.by_self.$rhachet.1.md
+      │   └─ r2: $rhachet.2 (l1, 7/∞)
+      │       ├─ rejected 38.5s
+      │       ├─ 0 blockers ✓
+      │       ├─ 3 nitpicks 🟠
+      │       ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/5.diagnosis._.review.i007.22e981d321f0452a4d.r002._.given.by_peer.$rhachet.2.md
+      │       └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/5.diagnosis._.review.i007.22e981d321f0452a4d.r002._.taken.by_self.$rhachet.2.md
+      └─ judges
+          ├─ j1: rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 0
+          │   ├─ finished 0.4s ✗
+          │   └─ reason: nitpicks exceed threshold (3 > 0)
+          └─ j2: rhx route.stone.judge --mechanism approved? --stone $stone --route $route
+              ├─ finished 0.3s ✗
+              └─ reason: wait for human approval
+
+────────────────────────────────────────────────────────────────
+
+🪶 judge 1
+   ├─ stdout
+   │  ├─
+   │  │
+   │  │  🪨 run solid skill repo=bhrain/role=driver/skill=route.stone.judge
+   │  │  
+   │  │  passed: false
+   │  │  reason: nitpicks exceed threshold (3 > 0)
+   │  │
+   │  └─
+   ├─ stderr
+   │  ├─
+   │  │
+   │  │  🪨 run solid skill repo=bhrain/role=driver/skill=route.stone.judge
+   │  │     └─ ✋ blocked by constraints
+   │  │
+   │  └─
+   └─ passage blocked
+      ├─ blocked by constraints
+      └─ exit code: 2 ✋
+
+🪶 judge 2
+   ├─ stdout
+   │  ├─
+   │  │
+   │  │  🪨 run solid skill repo=bhrain/role=driver/skill=route.stone.judge
+   │  │  
+   │  │  passed: false
+   │  │  reason: wait for human approval
+   │  │  
+   │  │  ✋ halted, human approval required
+   │  │     ├─ please ask your human to
+   │  │     │  └─ rhx route.stone.set --stone 5.diagnosis --as approved
+   │  │     │
+   │  │     └─ after human approves, run
+   │  │        └─ rhx route.stone.set --stone 5.diagnosis --as passed
+   │  │
+   │  └─
+   ├─ stderr
+   │  ├─
+   │  │
+   │  │  🪨 run solid skill repo=bhrain/role=driver/skill=route.stone.judge
+   │  │     └─ ✋ blocked by constraints
+   │  │
+   │  └─
+   └─ passage blocked
+      ├─ blocked by constraints
+      └─ exit code: 2 ✋

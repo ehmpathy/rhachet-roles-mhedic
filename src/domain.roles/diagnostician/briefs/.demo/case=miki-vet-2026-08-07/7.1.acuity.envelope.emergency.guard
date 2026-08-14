@@ -1,0 +1,14 @@
+artifacts:
+  - $route/7.1.acuity.envelope.emergency.yield.md
+
+reviews:
+  self:
+    - slug: has-envelope-not-mode
+      say: |
+        is the emergency floor set by the most time-critical LIVE scenario (the
+        envelope), not by the most probable one? acuity set by the modal
+        scenario instead of the worst-case bound is a blocker.
+    - slug: has-redline-signs
+      say: |
+        are the red-line go-now signs concrete and drawn from the worst-case
+        bounds? a floor with no observable trigger cannot be acted on.

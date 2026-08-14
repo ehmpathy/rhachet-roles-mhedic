@@ -1,0 +1,26 @@
+# 5.1.scenario.rerank.redteam.steelman.stone
+
+## .what
+
+**steelman** each surviving scenario — build the strongest honest case *for* it. before you attack a
+scenario (5.2), state its best defense, so the attack lands on the real thing, not a strawman.
+
+## .inputs
+
+- `3.3.scenario.disentangle.correlation.blend.yield.md` — the coarse-ranked survivors
+- `4.3.scenario.elimination.assay.plan.yield.md` — what tests would (not yet) settle
+
+## .do
+
+- for each surviving scenario, marshal its strongest support: the mechanism fit, the cited base
+  rate, the anecdote pattern, the case-specific features that favor it
+- state what evidence *would* most raise its rank
+- be fair to the unattested (imagination-only) branches too — steelman their severity case
+
+## .emit
+
+into `5.1.scenario.rerank.redteam.steelman.yield.md` — the best case for each survivor.
+
+## .done when
+
+every surviving scenario has its strongest honest support stated, unattested branches included.

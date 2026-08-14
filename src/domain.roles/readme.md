@@ -20,6 +20,10 @@ route to the right care — which specialist to see, where to go, and where to g
 
 stay ahead of disease — screen tests, vaccines, risk factors, and lifestyle.
 
+## 🧬 phylogeneticist
+
+reconstruct where a biological mechanism arose on the tree of life and who inherits it — the clade library that tells other roles whether a mechanism transfers across species.
+
 ## ⚕️ physician
 
 compose diagnostician, prescriber, and referrer into one coherent whole-person view.

@@ -1,0 +1,25 @@
+# 1.2.intake.structure.stone
+
+## .what
+
+structure the captured history into a clean timeline + entity set: the exposures (what was done to
+the patient), the effects (what the patient shows), and the temporal order that links them.
+
+## .inputs
+
+- `1.1.intake.capture.yield.md` — the verbatim history
+
+## .do
+
+- lay out a timeline: each event with its timestamp (or relative time)
+- itemize the **exposures** (per `define.causal-chain-frame` — the cause:exposure nodes)
+- itemize the **effects** (the effect:symptom nodes)
+- note dose/quantity/route for each exposure where stated
+
+## .emit
+
+into `1.2.intake.structure.yield.md`.
+
+## .done when
+
+a timeline + an itemized exposure set + an itemized effect set are laid out, linked in temporal order.

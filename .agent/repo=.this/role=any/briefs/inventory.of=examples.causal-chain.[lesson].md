@@ -1,0 +1,1 @@
+../../../../src/domain.roles/diagnostician/briefs/inventory.of=examples.causal-chain.[lesson].md

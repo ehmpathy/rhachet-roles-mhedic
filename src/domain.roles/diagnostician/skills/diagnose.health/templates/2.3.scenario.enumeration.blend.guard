@@ -1,0 +1,14 @@
+artifacts:
+  - $route/2.3.scenario.enumeration.blend.yield.md
+
+reviews:
+  self:
+    - slug: has-complete-union
+      say: |
+        is every scenario from BOTH streams in the blend? a scenario dropped in
+        the merge is a scenario the whole route can never charge or eliminate.
+    - slug: has-provenance-tags
+      say: |
+        is each scenario tagged imagination-only / literature-only / both? the
+        imagination-only branches must be flagged as unattested (they survive on
+        severity and lean on the assay).

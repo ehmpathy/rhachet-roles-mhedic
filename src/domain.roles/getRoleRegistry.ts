@@ -1,6 +1,7 @@
 import { RoleRegistry } from 'rhachet';
 
 import { ROLE_DIAGNOSTICIAN } from './diagnostician/getDiagnosticianRole';
+import { ROLE_PHYLOGENETICIST } from './phylogeneticist/getPhylogeneticistRole';
 import { ROLE_PHYSICIAN } from './physician/getPhysicianRole';
 import { ROLE_PRESCRIBER } from './prescriber/getPrescriberRole';
 import { ROLE_PREVENTER } from './preventer/getPreventerRole';
@@ -18,6 +19,7 @@ export const getRoleRegistry = (): RoleRegistry =>
     readme: { uri: `${__dirname}/readme.md` },
     roles: [
       ROLE_DIAGNOSTICIAN,
+      ROLE_PHYLOGENETICIST,
       ROLE_PHYSICIAN,
       ROLE_PRESCRIBER,
       ROLE_PREVENTER,

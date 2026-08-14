@@ -1,0 +1,17 @@
+artifacts:
+  - $route/1.1.intake.capture.yield.md
+
+reviews:
+  self:
+    - slug: has-verbatim-fidelity
+      say: |
+        did you preserve the owner's own words, or paraphrase detail away?
+        re-read 0.seed and confirm no reported datum was dropped or softened.
+    - slug: has-pii-redacted
+      say: |
+        is every identity a persona handle, not a real identifier?
+        confirm rule.forbid.pii holds across the whole capture.
+    - slug: has-source-tags
+      say: |
+        is each datum tagged owner-reported vs observed vs record?
+        an untagged datum hides how much to trust it.

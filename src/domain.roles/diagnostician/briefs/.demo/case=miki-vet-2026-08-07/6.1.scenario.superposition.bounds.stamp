@@ -1,0 +1,22 @@
+🦉 the way speaks for itself
+
+🗿 route.stone.set
+   ├─ stone = 6.1.scenario.superposition.bounds
+   ├─ passage = allowed
+   ├─ guard
+   │  ├─ artifacts
+   │  │   └─ $route/6.1.scenario.superposition.bounds.yield.md
+   │  ├─ reviews
+   │  │   └─ r1: bash (l1, 1/∞)
+   │  │       ├─ approved, cached
+   │  │       ├─ 0 blockers ✓
+   │  │       ├─ 0 nitpicks ✓
+   │  │       ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/6.1.scenario.superposition.bounds._.review.i001.65ffd049c1f0a43c8a.r001._.given.by_peer.bash.md
+   │  │       └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/6.1.scenario.superposition.bounds._.review.i001.65ffd049c1f0a43c8a.r001._.taken.by_self.bash.md
+   │  └─ judges
+   │      └─ j1: rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3
+   │          └─ · cached
+   │             └─ on $route/6.1.scenario.superposition.bounds.yield.md
+   │
+   └─ the way continues, run
+      └─ rhx route.drive

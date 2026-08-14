@@ -1,0 +1,25 @@
+artifacts:
+  - $route/3.3.scenario.disentangle.correlation.blend.yield.md
+
+reviews:
+  self:
+    - slug: has-bracket-not-pool
+      say: |
+        did you bracket (anecdote upper bound around formal base rate) or pool
+        (average into a false midpoint)? a pooled point is a blocker — state the
+        range, not the average.
+    - slug: has-severity-floor
+      say: |
+        does the (probability × severity) floor keep the low-probability /
+        high-severity landmines in? a can't-miss branch cut by low probability
+        alone is a blocker (rule.require.superposition-until-elimination).
+    - slug: has-ordinal-not-magnitude
+      say: |
+        are the coarse weights ordinal (rank), not false-precision magnitudes?
+        the biased anecdote set licenses only an order, not a number.
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.superposition-until-elimination*.md' --rules '.agent/**/define.diagnosis-superposition*.md' --paths '$route/3.3.scenario.disentangle.correlation.blend.yield.md' --output '$route/.reviews/$stone.peer-review.disentangle.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

@@ -1,0 +1,33 @@
+# 8.1.diagnosis.superposition.ranked.stone
+
+## .what
+
+state the **diagnosis as a superposition** — the live scenarios, probability-ranked, each carried
+with its full consequence package. this is not a single verdict; it is the ranked set of states the
+patient could be in, each with its bounds, prevention, and care attached.
+
+## .inputs
+
+- `5.3.scenario.rerank.redteam.refine.yield.md` — the refined ranks + survivor set
+- `6.1.scenario.superposition.bounds.yield.md` — best/worst bounds per survivor
+- `6.2.scenario.superposition.prevention.yield.md` — prevention + recurrence
+- `6.3.scenario.superposition.care.yield.md` — supportive-care paths
+
+## .do
+
+- list the live scenarios in **rank order** (highest refined weight first), each with its ordinal
+  weight + severity
+- attach each scenario's **consequence package** (best/worst bound, prevention, care) inline — the
+  rank without the package is a bare guess
+- lead with the honest hedge: this is a ranked set of hypotheses, not a confirmed verdict; a hands-on
+  exam + the assay plan (phase 4) collapse it
+
+## .emit
+
+into `8.1.diagnosis.superposition.ranked.yield.md` — the probability-ranked live scenarios, each with
+its consequence package.
+
+## .done when
+
+every live scenario is ranked with its weight + severity and its full consequence package attached,
+and the hedge is stated.

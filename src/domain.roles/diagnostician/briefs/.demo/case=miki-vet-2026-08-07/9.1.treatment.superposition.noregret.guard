@@ -1,0 +1,26 @@
+artifacts:
+  - $route/9.1.treatment.superposition.noregret.yield.md
+
+reviews:
+  self:
+    - slug: has-noregret-safe-both-corners
+      say: |
+        is every item in the core genuinely no-regret — helpful under the live
+        scenarios and harmless at both envelope corners? an item that harms the
+        worst-case corner is not no-regret; it belongs in 9.2 or is vetoed.
+    - slug: has-citations-and-dose
+      say: |
+        is each item cited (bhrowser) with dose/route where applicable and the
+        label-target caveat where the dose is inferred? an uncited prescription
+        is a blocker (rule.require.bhrowser-citations).
+    - slug: has-disclaimer
+      say: |
+        is the not-medical-advice disclaimer carried, plus the emergency line if
+        the acuity floor is emergency? guidance without the disclaimer is a
+        blocker (rule.require.recommendation-disclaimer).
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.superposition-until-elimination*.md' --rules '.agent/**/rule.require.recommendation-disclaimer*.md' --rules '.agent/**/rule.require.bhrowser-citations*.md' --paths '$route/9.1.treatment.superposition.noregret.yield.md' --output '$route/.reviews/$stone.peer-review.noregret.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

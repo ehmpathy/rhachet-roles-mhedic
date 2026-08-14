@@ -1,0 +1,27 @@
+# 4.2.scenario.elimination.assay.rank.stone
+
+## .what
+
+rank the enumerated tests by **separation-power × (1/cost)** — with a **catastrophic-branch
+priority** override: a test that rules out a live can't-miss landmine jumps the queue regardless of
+its cost, because the veto it lifts is worth it.
+
+## .inputs
+
+- `4.1.scenario.elimination.assay.enumerate.yield.md` — the test-per-scenario map
+- `3.3.scenario.disentangle.correlation.blend.yield.md` — the scenario severities
+
+## .do
+
+- score each test by how many scenarios it separates (power) against its cost/invasiveness/time
+- apply the override: a test that rules out a **live catastrophic** scenario ranks first — it lifts a
+  treatment veto (per `rule.require.superposition-until-elimination`)
+- note tests that close a cheap knowledge gap (an owner question) — near-free, rank high
+
+## .emit
+
+into `4.2.scenario.elimination.assay.rank.yield.md` — the ranked test list.
+
+## .done when
+
+tests are ranked by power × cost, with catastrophic-branch tests prioritized, cheap gap-closers noted.

@@ -1,0 +1,17 @@
+artifacts:
+  - $route/3.2.scenario.disentangle.correlation.anecdotes.yield.md
+
+reviews:
+  self:
+    - slug: has-both-directions
+      say: |
+        did you compute BOTH forward P(effect|exposure) and backtrack
+        P(exposure|effect)? one direction alone misreads the signal.
+    - slug: has-upper-bound-flags
+      say: |
+        is every forward number flagged an upper bound (selection/problem-skew),
+        never sold as a rate? an unflagged anecdote number invites overread.
+    - slug: has-confounds-noted
+      say: |
+        are mixed-exposure cases flagged as confounds, not attributed to one
+        exposure? a mixed case counted as clean signal corrupts the rank.

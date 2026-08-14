@@ -11,6 +11,16 @@ roles:
       dirs: dist/domain.roles/diagnostician/inits
     boot: dist/domain.roles/diagnostician/boot.yml
     keyrack: dist/domain.roles/diagnostician/keyrack.yml
+  - slug: phylogeneticist
+    readme: dist/domain.roles/phylogeneticist/readme.md
+    briefs:
+      dirs: dist/domain.roles/phylogeneticist/briefs
+    skills:
+      dirs: dist/domain.roles/phylogeneticist/skills
+    inits:
+      dirs: dist/domain.roles/phylogeneticist/inits
+    boot: dist/domain.roles/phylogeneticist/boot.yml
+    keyrack: dist/domain.roles/phylogeneticist/keyrack.yml
   - slug: physician
     readme: dist/domain.roles/physician/readme.md
     briefs:

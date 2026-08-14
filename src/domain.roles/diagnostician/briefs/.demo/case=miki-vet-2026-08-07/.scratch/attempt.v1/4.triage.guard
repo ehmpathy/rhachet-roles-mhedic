@@ -1,0 +1,43 @@
+# guard for 4.triage
+#
+# the safety gate. triage decides whether this reads as an emergency. an under-call here
+# can cost a life, so the emergency carve-out is a blocker, not a nicety.
+
+artifacts:
+  - $route/4.triage.yield.md
+
+reviews:
+  self:
+    - slug: has-emergency-signs-assessed
+      say: |
+        go through the emergency signs one by one and mark each present / absent
+        against the seed + intake — never leave one unassessed:
+        - unable to bear any weight / drags the limb
+        - cold or blue paw, no pulse in the limb
+        - a swell that climbs the leg, or a fever
+        - collapse, laboured breath, or a hidden wound
+
+        an emergency sign left unmarked is a blocker.
+
+    - slug: has-escalation-carveout
+      say: |
+        if any emergency sign reads present, the disclaimer alone is not enough.
+
+        does the yield direct the human to emergency care
+        ("if this is a medical emergency, call your local emergency number now")?
+
+        an emergency-shaped case with no escalation carve-out is a blocker.
+        (motto.not-medical-advice — the escalation carve-out)
+
+    - slug: has-current-status-honest
+      say: |
+        do not overstate or understate the current state.
+
+        does the yield mark which signs are true NOW (per the seed: none of the
+        emergency signs present yet; the deficit is a new inability to hop > 5in)?
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/code/haiku --rules '.agent/repo=.this/role=any/briefs/{motto.not-medical-advice,rule.require.recommendation-disclaimer}.*.md' --paths '$route/4.triage.yield.md' --output '$route/.reviews/$stone.peer-review.triage.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 0

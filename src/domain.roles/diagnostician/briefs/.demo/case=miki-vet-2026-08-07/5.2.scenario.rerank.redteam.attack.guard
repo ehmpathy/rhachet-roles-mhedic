@@ -1,0 +1,15 @@
+artifacts:
+  - $route/5.2.scenario.rerank.redteam.attack.yield.md
+
+reviews:
+  self:
+    - slug: has-attack-per-survivor
+      say: |
+        does every survivor carry its strongest honest counter-case — the
+        mechanism mismatch, the thin base rate, the case feature against it? an
+        un-attacked survivor is a strawman left in place.
+    - slug: has-no-absence-drop
+      say: |
+        is any severe branch dropped on absence-of-evidence alone? a can't-miss
+        branch with no case report is not thereby eliminated
+        (rule.require.superposition-until-elimination) — that is a blocker.

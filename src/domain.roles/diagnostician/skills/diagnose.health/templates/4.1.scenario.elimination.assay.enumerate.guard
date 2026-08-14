@@ -1,0 +1,15 @@
+artifacts:
+  - $route/4.1.scenario.elimination.assay.enumerate.yield.md
+
+reviews:
+  self:
+    - slug: has-test-per-live-scenario
+      say: |
+        does every live scenario have a named test to rule it out — or an
+        explicit flag that none exists? a live scenario with no test and no flag
+        is an un-tracked landmine.
+    - slug: has-catastrophic-coverage
+      say: |
+        for each live CATASTROPHIC scenario, is the test that rules it out named?
+        this is the test that lifts a treatment veto — it cannot be absent
+        silently.

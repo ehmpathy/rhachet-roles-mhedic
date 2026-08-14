@@ -1,0 +1,15 @@
+artifacts:
+  - $route/5.1.scenario.rerank.redteam.steelman.yield.md
+
+reviews:
+  self:
+    - slug: has-steelman-per-survivor
+      say: |
+        does every survivor scenario carry its strongest honest support —
+        mechanism fit, base rate, anecdote pattern, case-specific features? a
+        survivor with no steelman cannot be fairly attacked in 5.2.
+    - slug: has-unattested-severity-case
+      say: |
+        are the unattested (imagination-only) branches steelmanned too — their
+        severity case stated, not dismissed for lack of a citation? absence of
+        evidence is not evidence of absence.

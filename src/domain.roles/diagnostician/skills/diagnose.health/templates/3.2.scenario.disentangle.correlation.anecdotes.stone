@@ -1,0 +1,29 @@
+# 3.2.scenario.disentangle.correlation.anecdotes.stone
+
+## .what
+
+weight each scenario against the case's exposures from the **anecdote corpus** — forward and
+backtrack correlations over the itemized owner-reports. biased and high-recall; kept apart from the
+formal base rate on purpose.
+
+## .inputs
+
+- `2.2.scenario.enumeration.from.literature.yield.md` — the social corpus gathered in phase 2
+- `2.3.scenario.enumeration.blend.yield.md` — the lineup
+
+## .do
+
+- itemize the corpus into one tagged row per case (exposure(s), effect, outcome)
+- compute **forward**: P(effect | exposure alone) over the corpus
+- compute **backtrack**: P(exposure | effect) over the corpus
+- treat every forward number as an **upper bound**, not a rate (selection/problem-skew)
+- flag co-occurrence confounds (mixed exposures) — do not attribute a mixed case to one exposure
+
+## .emit
+
+into `3.2.scenario.disentangle.correlation.anecdotes.yield.md` — forward + backtrack per scenario,
+each flagged upper-bound.
+
+## .done when
+
+each scenario carries a forward + backtrack anecdote signal, all upper-bound-flagged, confounds noted.

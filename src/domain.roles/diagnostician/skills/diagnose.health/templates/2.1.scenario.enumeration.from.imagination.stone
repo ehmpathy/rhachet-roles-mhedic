@@ -1,0 +1,29 @@
+# 2.1.scenario.enumeration.from.imagination.stone
+
+## .what
+
+enumerate the candidate scenarios from **first-principles clinical logic** — unanchored to any
+source. ask: given these exposures and this effect, what could mechanically cause it? this stream
+catches the rare branch that literature under-reports.
+
+## .inputs
+
+- `1.2.intake.structure.yield.md` — the exposures + effects
+- `1.3.intake.gaps.yield.md` — the open unknowns
+
+## .do
+
+- reason from mechanism: for each exposure, what pathways could produce the observed effect?
+- include the **can't-miss** branches — the low-probability / high-severity landmines — even if they
+  feel unlikely (`rule.require.superposition-until-elimination`)
+- name each scenario with its provisional causal chain (`define.causal-chain-frame`)
+- do NOT weight them yet — this is the lineup, not the rank
+
+## .emit
+
+into `2.1.scenario.enumeration.from.imagination.yield.md` — a flat list of named scenarios, each with
+a one-line mechanism sketch.
+
+## .done when
+
+the imagination-derived scenario list is complete, includes the can't-miss branches, no weights yet.

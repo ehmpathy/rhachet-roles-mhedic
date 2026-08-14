@@ -1,0 +1,32 @@
+# 5.3.scenario.rerank.redteam.refine.stone
+
+## .what
+
+**refine** the ranks. weigh each survivor's steelman (5.1) against its attack (5.2), and settle the
+red-teamed weight — the second, sharper probability pass over the coarse rank from phase 3. this is
+the pass that decides which survivors earn deep research in phase 6.
+
+## .inputs
+
+- `5.1.scenario.rerank.redteam.steelman.yield.md` — the best case for each survivor
+- `5.2.scenario.rerank.redteam.attack.yield.md` — the strongest case against each
+- `3.3.scenario.disentangle.correlation.blend.yield.md` — the coarse rank + severity
+
+## .do
+
+- for each survivor, reconcile steelman vs attack into a **refined weight** — still ordinal, still
+  bracketed (no false-precision midpoint)
+- keep severity separate from probability: a low-probability branch that stays severe does not fall
+  off — it stays live for the veto (`rule.require.superposition-until-elimination`)
+- name the **survivor set that passes to phase 6** — the scenarios that earn deep research (bounds,
+  prevention, care), plus every un-eliminated catastrophic branch regardless of rank
+
+## .emit
+
+into `5.3.scenario.rerank.redteam.refine.yield.md` — the refined-rank superposition + the phase-6
+survivor set.
+
+## .done when
+
+every survivor has a refined ordinal weight, severity is kept distinct from probability, and the
+phase-6 survivor set is named (all un-eliminated catastrophic branches included).

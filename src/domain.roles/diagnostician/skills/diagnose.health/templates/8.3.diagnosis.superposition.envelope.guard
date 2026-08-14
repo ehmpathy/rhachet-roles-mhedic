@@ -1,0 +1,25 @@
+artifacts:
+  - $route/8.3.diagnosis.superposition.envelope.yield.md
+
+reviews:
+  self:
+    - slug: has-both-corners
+      say: |
+        are both envelope corners stated — the worst-case floor (veto source) and
+        the best-case cap (no-waste bound)? a plan built to one corner alone is
+        either unsafe or wasteful.
+    - slug: has-noregret-core
+      say: |
+        is the no-regret core named — the care harmless at both corners? that core
+        is the seed of the phase-9 plan.
+    - slug: has-acuity-carried
+      say: |
+        is the acuity floor (phase 7) carried into the hand-off so the prescriber
+        inherits urgency and bounds together? an envelope with no acuity drops the
+        time dimension.
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/define.diagnosis-superposition*.md' --rules '.agent/**/rule.require.superposition-until-elimination*.md' --paths '$route/8.3.diagnosis.superposition.envelope.yield.md' --output '$route/.reviews/$stone.peer-review.envelope.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

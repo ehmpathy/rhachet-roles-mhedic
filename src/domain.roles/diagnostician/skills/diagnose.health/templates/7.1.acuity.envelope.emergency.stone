@@ -1,0 +1,30 @@
+# 7.1.acuity.envelope.emergency.stone
+
+## .what
+
+set the **emergency floor** — which live scenarios demand care *now*, and what the worst-case bound
+of the superposition forces as the minimum urgency. acuity is set by the **envelope**: the most
+time-critical live scenario sets the floor, even if it is not the most probable.
+
+## .inputs
+
+- `5.3.scenario.rerank.redteam.refine.yield.md` — the live survivor set + ranks
+- `6.1.scenario.superposition.bounds.yield.md` — the worst-case bounds
+
+## .do
+
+- scan every live scenario for a worst-case bound that is **time-critical** (deteriorates in hours,
+  or a window to intervene closes)
+- if any un-eliminated scenario is time-critical, the acuity floor is **emergency** — state it
+  plainly, name the scenario that forces it
+- write the **red-line signs** — the concrete observations that mean "go now", drawn from the
+  worst-case bounds
+
+## .emit
+
+into `7.1.acuity.envelope.emergency.yield.md` — the emergency floor (set or not), the scenario that
+forces it, and the red-line go-now signs.
+
+## .done when
+
+the emergency floor is stated, the scenario that sets it is named, and the red-line signs are listed.

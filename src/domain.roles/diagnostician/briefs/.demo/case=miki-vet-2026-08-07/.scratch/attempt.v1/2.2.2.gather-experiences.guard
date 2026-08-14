@@ -1,0 +1,60 @@
+# guard for 2.2.2.gather-experiences
+#
+# the citation gate. every gathered case must trace to a bhrowser read, spread across
+# sources, with the comments read. a wrong citation here poisons the disentangle downstream
+# and, in a medical registry, can carry into guidance a human acts on. the bar is absolute.
+
+artifacts:
+  - $route/2.2.2.gather-experiences.yield.md
+
+reviews:
+  self:
+    - slug: has-bhrowser-citations
+      say: |
+        every case must trace to a bhrowser read — never WebSearch or WebFetch.
+
+        for each case, check:
+        - is there a source url?
+        - is there a verbatim quote from what the bhrowser returned?
+        - could a reader re-open that url and find the same text?
+
+        if any case lacks a bhrowser-verified url + verbatim quote, it is a blocker.
+        (rule.require.bhrowser-citations)
+
+    - slug: has-comments-read
+      say: |
+        social posts are signal, not fact — the comments carry the correction.
+
+        for each social thread, check:
+        - were the replies read and captured, not just the original post?
+        - did a reply contradict, qualify, or confirm the post? is that recorded?
+
+        an original post saved without its comments is a blocker.
+        (rule.require.read-social-comments)
+
+    - slug: has-source-spread
+      say: |
+        do not lean on one subreddit — r/AskVet auto-strips anecdotes.
+
+        are the cases spread across multiple sources
+        (r/cats, r/CatAdvice, r/Pets, vet forums), not a single well?
+
+    - slug: has-bias-recorded
+      say: |
+        the sample skews to problems — people post when a pet suffers, rarely when it is fine.
+
+        is that selection bias recorded here, so the downstream stats carry it forward
+        as an upper bound, not a base rate?
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/code/haiku --rules '.agent/repo=.this/role=any/briefs/rule.require.{bhrowser-citations,read-social-comments,source-inventory,seven-distinct-citations}.*.md' --paths '$route/2.2.2.gather-experiences.yield.md' --output '$route/.reviews/$stone.peer-review.citations.md'
+    # citation-count reviewer — the deepseek l1 rule (rule.require.fifty-divergent-citations).
+    # NOTE: fireworks/deepseek/v4-flash is the preferred brain but is not registered here; and
+    # xai/grok atoms fault in this env (supplier.creds is not a function). the proven-working
+    # provider is anthropic/claude/code, so a DISTINCT anthropic brain (sonnet, separate from the
+    # haiku citations reviewer above) enforces the count rule as an independent second l1.
+    # once the fireworks provider + FIREWORKS_API_KEY are wired, swap this back to deepseek.
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/code/sonnet --rules '.agent/repo=.this/role=any/briefs/rule.require.{fifty-divergent-citations,bhrowser-citations}.*.md' --paths '$route/2.2.2.gather-experiences.yield.md' --output '$route/.reviews/$stone.peer-review.citation-count.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3
