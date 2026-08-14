@@ -1,0 +1,228 @@
+{"stone":"1.1.intake.capture","status":"arrived","reason":"entered guard reviews"}
+{"stone":"1.1.intake.capture","status":"blocked","blocker":"review.self","reason":"review.self required: has-verbatim-fidelity"}
+{"stone":"1.1.intake.capture","status":"promised","reason":"promised review.self: has-verbatim-fidelity"}
+{"stone":"1.1.intake.capture","status":"promised","reason":"promised review.self: has-pii-redacted"}
+{"stone":"1.1.intake.capture","status":"promised","reason":"promised review.self: has-source-tags"}
+{"stone":"1.1.intake.capture","status":"arrived","reason":"entered guard reviews"}
+{"stone":"1.1.intake.capture","status":"passed"}
+{"stone":"1.2.intake.structure","status":"arrived","reason":"entered guard reviews"}
+{"stone":"1.2.intake.structure","status":"blocked","blocker":"review.self","reason":"review.self required: has-complete-timeline"}
+{"stone":"1.2.intake.structure","status":"promised","reason":"promised review.self: has-complete-timeline"}
+{"stone":"1.2.intake.structure","status":"promised","reason":"promised review.self: has-exposures-and-effects-split"}
+{"stone":"1.2.intake.structure","status":"promised","reason":"promised review.self: has-dose-detail"}
+{"stone":"1.2.intake.structure","status":"arrived","reason":"entered guard reviews"}
+{"stone":"1.2.intake.structure","status":"passed"}
+{"stone":"1.3.intake.gaps","status":"arrived","reason":"entered guard reviews"}
+{"stone":"1.3.intake.gaps","status":"blocked","blocker":"review.self","reason":"review.self required: has-no-guessed-values"}
+{"stone":"1.3.intake.gaps","status":"promised","reason":"promised review.self: has-no-guessed-values"}
+{"stone":"1.3.intake.gaps","status":"promised","reason":"promised review.self: has-gap-triage"}
+{"stone":"1.3.intake.gaps","status":"arrived","reason":"entered guard reviews"}
+{"stone":"1.3.intake.gaps","status":"passed"}
+{"stone":"2.1.scenario.enumeration.from.imagination","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.1.scenario.enumeration.from.imagination","status":"blocked","blocker":"review.self","reason":"review.self required: has-cant-miss-branches"}
+{"stone":"2.1.scenario.enumeration.from.imagination","status":"promised","reason":"promised review.self: has-cant-miss-branches"}
+{"stone":"2.1.scenario.enumeration.from.imagination","status":"promised","reason":"promised review.self: has-mechanism-per-scenario"}
+{"stone":"2.1.scenario.enumeration.from.imagination","status":"promised","reason":"promised review.self: has-no-premature-weights"}
+{"stone":"2.1.scenario.enumeration.from.imagination","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.1.scenario.enumeration.from.imagination","status":"passed"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"blocked","blocker":"review.self","reason":"review.self required: has-bhrowser-citations"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"promised","reason":"promised review.self: has-bhrowser-citations"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"promised","reason":"promised review.self: has-both-streams"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"promised","reason":"promised review.self: has-accrued-facts"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"malfunction"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"blocked"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"blocked"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"malfunction"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"malfunction"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"malfunction"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (3 > 0)"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (3 > 0)"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"contemplated","reason":"contemplated review.peer: bash"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (3 > 0)"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.scenario.enumeration.from.literature","status":"passed"}
+{"stone":"2.3.scenario.enumeration.blend","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.3.scenario.enumeration.blend","status":"blocked","blocker":"review.self","reason":"review.self required: has-complete-union"}
+{"stone":"2.3.scenario.enumeration.blend","status":"promised","reason":"promised review.self: has-complete-union"}
+{"stone":"2.3.scenario.enumeration.blend","status":"promised","reason":"promised review.self: has-provenance-tags"}
+{"stone":"2.3.scenario.enumeration.blend","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.3.scenario.enumeration.blend","status":"passed"}
+{"stone":"3.1.scenario.disentangle.correlation.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"3.1.scenario.disentangle.correlation.literature","status":"blocked","blocker":"review.self","reason":"review.self required: has-honest-denominators"}
+{"stone":"3.1.scenario.disentangle.correlation.literature","status":"promised","reason":"promised review.self: has-honest-denominators"}
+{"stone":"3.1.scenario.disentangle.correlation.literature","status":"promised","reason":"promised review.self: has-no-anecdote-bleed"}
+{"stone":"3.1.scenario.disentangle.correlation.literature","status":"promised","reason":"promised review.self: has-accrued-facts"}
+{"stone":"3.1.scenario.disentangle.correlation.literature","status":"arrived","reason":"entered guard reviews"}
+{"stone":"3.1.scenario.disentangle.correlation.literature","status":"passed"}
+{"stone":"3.2.scenario.disentangle.correlation.anecdotes","status":"arrived","reason":"entered guard reviews"}
+{"stone":"3.2.scenario.disentangle.correlation.anecdotes","status":"blocked","blocker":"review.self","reason":"review.self required: has-both-directions"}
+{"stone":"3.2.scenario.disentangle.correlation.anecdotes","status":"promised","reason":"promised review.self: has-both-directions"}
+{"stone":"3.2.scenario.disentangle.correlation.anecdotes","status":"promised","reason":"promised review.self: has-upper-bound-flags"}
+{"stone":"3.2.scenario.disentangle.correlation.anecdotes","status":"promised","reason":"promised review.self: has-confounds-noted"}
+{"stone":"3.2.scenario.disentangle.correlation.anecdotes","status":"arrived","reason":"entered guard reviews"}
+{"stone":"3.2.scenario.disentangle.correlation.anecdotes","status":"passed"}
+{"stone":"3.3.scenario.disentangle.correlation.blend","status":"arrived","reason":"entered guard reviews"}
+{"stone":"3.3.scenario.disentangle.correlation.blend","status":"blocked","blocker":"review.self","reason":"review.self required: has-bracket-not-pool"}
+{"stone":"3.3.scenario.disentangle.correlation.blend","status":"promised","reason":"promised review.self: has-bracket-not-pool"}
+{"stone":"3.3.scenario.disentangle.correlation.blend","status":"promised","reason":"promised review.self: has-severity-floor"}
+{"stone":"3.3.scenario.disentangle.correlation.blend","status":"promised","reason":"promised review.self: has-ordinal-not-magnitude"}
+{"stone":"3.3.scenario.disentangle.correlation.blend","status":"arrived","reason":"entered guard reviews"}
+{"stone":"3.3.scenario.disentangle.correlation.blend","status":"malfunction"}
+{"stone":"3.3.scenario.disentangle.correlation.blend","status":"arrived","reason":"entered guard reviews"}
+{"stone":"3.3.scenario.disentangle.correlation.blend","status":"passed"}
+{"stone":"4.1.scenario.elimination.assay.enumerate","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.1.scenario.elimination.assay.enumerate","status":"blocked","blocker":"review.self","reason":"review.self required: has-test-per-live-scenario"}
+{"stone":"4.1.scenario.elimination.assay.enumerate","status":"promised","reason":"promised review.self: has-test-per-live-scenario"}
+{"stone":"4.1.scenario.elimination.assay.enumerate","status":"promised","reason":"promised review.self: has-catastrophic-coverage"}
+{"stone":"4.1.scenario.elimination.assay.enumerate","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.1.scenario.elimination.assay.enumerate","status":"passed"}
+{"stone":"4.2.scenario.elimination.assay.rank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.2.scenario.elimination.assay.rank","status":"blocked","blocker":"review.self","reason":"review.self required: has-catastrophic-priority"}
+{"stone":"4.2.scenario.elimination.assay.rank","status":"promised","reason":"promised review.self: has-catastrophic-priority"}
+{"stone":"4.2.scenario.elimination.assay.rank","status":"promised","reason":"promised review.self: has-power-cost-basis"}
+{"stone":"4.2.scenario.elimination.assay.rank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.2.scenario.elimination.assay.rank","status":"passed"}
+{"stone":"4.3.scenario.elimination.assay.plan","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.3.scenario.elimination.assay.plan","status":"blocked","blocker":"review.self","reason":"review.self required: has-result-elimination-map"}
+{"stone":"4.3.scenario.elimination.assay.plan","status":"promised","reason":"promised review.self: has-result-elimination-map"}
+{"stone":"4.3.scenario.elimination.assay.plan","status":"promised","reason":"promised review.self: has-irreducible-set"}
+{"stone":"4.3.scenario.elimination.assay.plan","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.3.scenario.elimination.assay.plan","status":"passed"}
+{"stone":"5.1.scenario.rerank.redteam.steelman","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.1.scenario.rerank.redteam.steelman","status":"blocked","blocker":"review.self","reason":"review.self required: has-steelman-per-survivor"}
+{"stone":"5.1.scenario.rerank.redteam.steelman","status":"promised","reason":"promised review.self: has-steelman-per-survivor"}
+{"stone":"5.1.scenario.rerank.redteam.steelman","status":"promised","reason":"promised review.self: has-unattested-severity-case"}
+{"stone":"5.1.scenario.rerank.redteam.steelman","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.1.scenario.rerank.redteam.steelman","status":"passed"}
+{"stone":"5.2.scenario.rerank.redteam.attack","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.2.scenario.rerank.redteam.attack","status":"blocked","blocker":"review.self","reason":"review.self required: has-attack-per-survivor"}
+{"stone":"5.2.scenario.rerank.redteam.attack","status":"promised","reason":"promised review.self: has-attack-per-survivor"}
+{"stone":"5.2.scenario.rerank.redteam.attack","status":"promised","reason":"promised review.self: has-no-absence-drop"}
+{"stone":"5.2.scenario.rerank.redteam.attack","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.2.scenario.rerank.redteam.attack","status":"passed"}
+{"stone":"5.3.scenario.rerank.redteam.refine","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.3.scenario.rerank.redteam.refine","status":"blocked","blocker":"review.self","reason":"review.self required: has-refined-ordinal-rank"}
+{"stone":"5.3.scenario.rerank.redteam.refine","status":"promised","reason":"promised review.self: has-refined-ordinal-rank"}
+{"stone":"5.3.scenario.rerank.redteam.refine","status":"promised","reason":"promised review.self: has-severity-kept-distinct"}
+{"stone":"5.3.scenario.rerank.redteam.refine","status":"promised","reason":"promised review.self: has-survivor-set-named"}
+{"stone":"5.3.scenario.rerank.redteam.refine","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.3.scenario.rerank.redteam.refine","status":"passed"}
+{"stone":"6.1.scenario.superposition.bounds","status":"arrived","reason":"entered guard reviews"}
+{"stone":"6.1.scenario.superposition.bounds","status":"blocked","blocker":"review.self","reason":"review.self required: has-both-bounds-per-survivor"}
+{"stone":"6.1.scenario.superposition.bounds","status":"promised","reason":"promised review.self: has-both-bounds-per-survivor"}
+{"stone":"6.1.scenario.superposition.bounds","status":"promised","reason":"promised review.self: has-worst-case-for-veto"}
+{"stone":"6.1.scenario.superposition.bounds","status":"promised","reason":"promised review.self: has-accrued-facts"}
+{"stone":"6.1.scenario.superposition.bounds","status":"arrived","reason":"entered guard reviews"}
+{"stone":"6.1.scenario.superposition.bounds","status":"passed"}
+{"stone":"6.1.scenario.superposition.bounds","status":"arrived","reason":"entered guard reviews"}
+{"stone":"6.1.scenario.superposition.bounds","status":"passed"}
+{"stone":"6.2.scenario.superposition.prevention","status":"arrived","reason":"entered guard reviews"}
+{"stone":"6.2.scenario.superposition.prevention","status":"blocked","blocker":"review.self","reason":"review.self required: has-prevention-and-recurrence"}
+{"stone":"6.2.scenario.superposition.prevention","status":"promised","reason":"promised review.self: has-prevention-and-recurrence"}
+{"stone":"6.2.scenario.superposition.prevention","status":"promised","reason":"promised review.self: has-accrued-facts"}
+{"stone":"6.2.scenario.superposition.prevention","status":"arrived","reason":"entered guard reviews"}
+{"stone":"6.2.scenario.superposition.prevention","status":"passed"}
+{"stone":"6.2.scenario.superposition.prevention","status":"arrived","reason":"entered guard reviews"}
+{"stone":"6.2.scenario.superposition.prevention","status":"passed"}
+{"stone":"6.3.scenario.superposition.care","status":"arrived","reason":"entered guard reviews"}
+{"stone":"6.3.scenario.superposition.care","status":"blocked","blocker":"review.self","reason":"review.self required: has-care-per-survivor"}
+{"stone":"6.3.scenario.superposition.care","status":"promised","reason":"promised review.self: has-care-per-survivor"}
+{"stone":"6.3.scenario.superposition.care","status":"promised","reason":"promised review.self: has-noregret-flagged"}
+{"stone":"6.3.scenario.superposition.care","status":"promised","reason":"promised review.self: has-conflicts-flagged"}
+{"stone":"6.3.scenario.superposition.care","status":"arrived","reason":"entered guard reviews"}
+{"stone":"6.3.scenario.superposition.care","status":"passed"}
+{"stone":"6.3.scenario.superposition.care","status":"arrived","reason":"entered guard reviews"}
+{"stone":"6.3.scenario.superposition.care","status":"passed"}
+{"stone":"7.1.acuity.envelope.emergency","status":"arrived","reason":"entered guard reviews"}
+{"stone":"7.1.acuity.envelope.emergency","status":"blocked","blocker":"review.self","reason":"review.self required: has-envelope-not-mode"}
+{"stone":"7.1.acuity.envelope.emergency","status":"promised","reason":"promised review.self: has-envelope-not-mode"}
+{"stone":"7.1.acuity.envelope.emergency","status":"promised","reason":"promised review.self: has-redline-signs"}
+{"stone":"7.1.acuity.envelope.emergency","status":"arrived","reason":"entered guard reviews"}
+{"stone":"7.1.acuity.envelope.emergency","status":"passed"}
+{"stone":"7.1.acuity.envelope.emergency","status":"arrived","reason":"entered guard reviews"}
+{"stone":"7.1.acuity.envelope.emergency","status":"passed"}
+{"stone":"7.2.acuity.envelope.sameday","status":"arrived","reason":"entered guard reviews"}
+{"stone":"7.2.acuity.envelope.sameday","status":"blocked","blocker":"review.self","reason":"review.self required: has-window-and-scenario"}
+{"stone":"7.2.acuity.envelope.sameday","status":"promised","reason":"promised review.self: has-window-and-scenario"}
+{"stone":"7.2.acuity.envelope.sameday","status":"promised","reason":"promised review.self: has-escalate-signs"}
+{"stone":"7.2.acuity.envelope.sameday","status":"arrived","reason":"entered guard reviews"}
+{"stone":"7.2.acuity.envelope.sameday","status":"passed"}
+{"stone":"7.2.acuity.envelope.sameday","status":"arrived","reason":"entered guard reviews"}
+{"stone":"7.2.acuity.envelope.sameday","status":"passed"}
+{"stone":"7.3.acuity.envelope.watch","status":"arrived","reason":"entered guard reviews"}
+{"stone":"7.3.acuity.envelope.watch","status":"blocked","blocker":"review.self","reason":"review.self required: has-cadence-and-tripwires"}
+{"stone":"7.3.acuity.envelope.watch","status":"promised","reason":"promised review.self: has-cadence-and-tripwires"}
+{"stone":"7.3.acuity.envelope.watch","status":"promised","reason":"promised review.self: has-envelope-closed"}
+{"stone":"7.3.acuity.envelope.watch","status":"arrived","reason":"entered guard reviews"}
+{"stone":"7.3.acuity.envelope.watch","status":"passed"}
+{"stone":"7.3.acuity.envelope.watch","status":"arrived","reason":"entered guard reviews"}
+{"stone":"7.3.acuity.envelope.watch","status":"passed"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"blocked","blocker":"review.self","reason":"review.self required: has-package-per-scenario"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"promised","reason":"promised review.self: has-package-per-scenario"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"promised","reason":"promised review.self: has-hedge-not-verdict"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (1 > 0)"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"contemplated","reason":"contemplated review.peer: bash"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"passed"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.1.diagnosis.superposition.ranked","status":"passed"}
+{"stone":"8.2.diagnosis.superposition.eliminated","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.2.diagnosis.superposition.eliminated","status":"blocked","blocker":"review.self","reason":"review.self required: has-evidence-per-elimination"}
+{"stone":"8.2.diagnosis.superposition.eliminated","status":"promised","reason":"promised review.self: has-evidence-per-elimination"}
+{"stone":"8.2.diagnosis.superposition.eliminated","status":"promised","reason":"promised review.self: has-no-lowrank-drop"}
+{"stone":"8.2.diagnosis.superposition.eliminated","status":"promised","reason":"promised review.self: has-irreducible-set"}
+{"stone":"8.2.diagnosis.superposition.eliminated","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.2.diagnosis.superposition.eliminated","status":"passed"}
+{"stone":"8.2.diagnosis.superposition.eliminated","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.2.diagnosis.superposition.eliminated","status":"passed"}
+{"stone":"8.3.diagnosis.superposition.envelope","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.3.diagnosis.superposition.envelope","status":"blocked","blocker":"review.self","reason":"review.self required: has-both-corners"}
+{"stone":"8.3.diagnosis.superposition.envelope","status":"promised","reason":"promised review.self: has-both-corners"}
+{"stone":"8.3.diagnosis.superposition.envelope","status":"promised","reason":"promised review.self: has-noregret-core"}
+{"stone":"8.3.diagnosis.superposition.envelope","status":"promised","reason":"promised review.self: has-acuity-carried"}
+{"stone":"8.3.diagnosis.superposition.envelope","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.3.diagnosis.superposition.envelope","status":"passed"}
+{"stone":"8.3.diagnosis.superposition.envelope","status":"arrived","reason":"entered guard reviews"}
+{"stone":"8.3.diagnosis.superposition.envelope","status":"passed"}
+{"stone":"9.1.treatment.superposition.noregret","status":"arrived","reason":"entered guard reviews"}
+{"stone":"9.1.treatment.superposition.noregret","status":"blocked","blocker":"review.self","reason":"review.self required: has-noregret-safe-both-corners"}
+{"stone":"9.1.treatment.superposition.noregret","status":"promised","reason":"promised review.self: has-noregret-safe-both-corners"}
+{"stone":"9.1.treatment.superposition.noregret","status":"promised","reason":"promised review.self: has-citations-and-dose"}
+{"stone":"9.1.treatment.superposition.noregret","status":"promised","reason":"promised review.self: has-disclaimer"}
+{"stone":"9.1.treatment.superposition.noregret","status":"arrived","reason":"entered guard reviews"}
+{"stone":"9.1.treatment.superposition.noregret","status":"passed"}
+{"stone":"9.1.treatment.superposition.noregret","status":"arrived","reason":"entered guard reviews"}
+{"stone":"9.1.treatment.superposition.noregret","status":"passed"}
+{"stone":"9.2.treatment.superposition.conditional","status":"arrived","reason":"entered guard reviews"}
+{"stone":"9.2.treatment.superposition.conditional","status":"blocked","blocker":"review.self","reason":"review.self required: has-order-keyed-to-assay"}
+{"stone":"9.2.treatment.superposition.conditional","status":"promised","reason":"promised review.self: has-order-keyed-to-assay"}
+{"stone":"9.2.treatment.superposition.conditional","status":"promised","reason":"promised review.self: has-prevention-rider"}
+{"stone":"9.2.treatment.superposition.conditional","status":"promised","reason":"promised review.self: has-citations-and-disclaimer"}
+{"stone":"9.2.treatment.superposition.conditional","status":"arrived","reason":"entered guard reviews"}
+{"stone":"9.2.treatment.superposition.conditional","status":"passed"}
+{"stone":"9.2.treatment.superposition.conditional","status":"arrived","reason":"entered guard reviews"}
+{"stone":"9.2.treatment.superposition.conditional","status":"passed"}
+{"stone":"9.3.treatment.superposition.veto","status":"arrived","reason":"entered guard reviews"}
+{"stone":"9.3.treatment.superposition.veto","status":"blocked","blocker":"review.self","reason":"review.self required: has-veto-per-catastrophic-branch"}
+{"stone":"9.3.treatment.superposition.veto","status":"promised","reason":"promised review.self: has-veto-per-catastrophic-branch"}
+{"stone":"9.3.treatment.superposition.veto","status":"promised","reason":"promised review.self: has-lift-condition-per-veto"}
+{"stone":"9.3.treatment.superposition.veto","status":"promised","reason":"promised review.self: has-assembled-plan"}
+{"stone":"9.3.treatment.superposition.veto","status":"promised","reason":"promised review.self: has-disclaimer"}
+{"stone":"9.3.treatment.superposition.veto","status":"arrived","reason":"entered guard reviews"}
+{"stone":"9.3.treatment.superposition.veto","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (1 > 0); wait for human approval"}
+{"stone":"9.3.treatment.superposition.veto","status":"contemplated","reason":"contemplated review.peer: bash"}
+{"stone":"9.3.treatment.superposition.veto","status":"arrived","reason":"entered guard reviews"}
+{"stone":"9.3.treatment.superposition.veto","status":"blocked","blocker":"approval","reason":"wait for human approval"}

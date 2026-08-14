@@ -1,0 +1,25 @@
+# 1.1.intake.capture.stone
+
+## .what
+
+capture the raw history verbatim — the owner's words, the timeline of events, the reported effect —
+with no interpretation yet. this is the ground the whole route stands on.
+
+## .inputs
+
+- `0.seed.md` — the verbatim input + event ledger
+
+## .do
+
+- transcribe the reported effect(s), exposures, and timeline exactly as stated
+- preserve the owner's own words for later re-read (do not paraphrase away detail)
+- redact identity to a persona handle (`rule.forbid.pii`)
+- note the source of each datum (owner-reported vs observed vs record)
+
+## .emit
+
+into `1.1.intake.capture.yield.md`.
+
+## .done when
+
+the verbatim history + timeline is captured, PII-safe, with each datum's source marked.

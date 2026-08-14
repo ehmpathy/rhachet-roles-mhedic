@@ -1,0 +1,1 @@
+../../../../src/domain.roles/diagnostician/briefs/define.causal-chain-frame.[lesson].md

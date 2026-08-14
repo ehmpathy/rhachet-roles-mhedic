@@ -1,0 +1,52 @@
+🦉 the way speaks for itself
+
+🗿 route.stone.set
+   ├─ stone = 9.3.treatment.superposition.veto
+   ├─ passage = blocked
+   ├─ reason = wait for human approval
+   └─ guard
+      ├─ artifacts
+      │   └─ $route/9.3.treatment.superposition.veto.yield.md
+      ├─ reviews
+      │   └─ r1: bash (l1, 2/∞)
+      │       ├─ approved 15.0s
+      │       ├─ 0 blockers ✓
+      │       ├─ 0 nitpicks ✓
+      │       ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/9.3.treatment.superposition.veto._.review.i002.cc4b46a3a89e81888d.r001._.given.by_peer.bash.md
+      │       └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/9.3.treatment.superposition.veto._.review.i002.cc4b46a3a89e81888d.r001._.taken.by_self.bash.md
+      └─ judges
+          ├─ j1: rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3
+          │   └─ finished 0.4s ✓
+          └─ j2: rhx route.stone.judge --mechanism approved? --stone $stone --route $route
+              ├─ finished 0.3s ✗
+              └─ reason: wait for human approval
+
+────────────────────────────────────────────────────────────────
+
+🪶 judge 2
+   ├─ stdout
+   │  ├─
+   │  │
+   │  │  🪨 run solid skill repo=bhrain/role=driver/skill=route.stone.judge
+   │  │  
+   │  │  passed: false
+   │  │  reason: wait for human approval
+   │  │  
+   │  │  ✋ halted, human approval required
+   │  │     ├─ please ask your human to
+   │  │     │  └─ rhx route.stone.set --stone 9.3.treatment.superposition.veto --as approved
+   │  │     │
+   │  │     └─ after human approves, run
+   │  │        └─ rhx route.stone.set --stone 9.3.treatment.superposition.veto --as passed
+   │  │
+   │  └─
+   ├─ stderr
+   │  ├─
+   │  │
+   │  │  🪨 run solid skill repo=bhrain/role=driver/skill=route.stone.judge
+   │  │     └─ ✋ blocked by constraints
+   │  │
+   │  └─
+   └─ passage blocked
+      ├─ blocked by constraints
+      └─ exit code: 2 ✋

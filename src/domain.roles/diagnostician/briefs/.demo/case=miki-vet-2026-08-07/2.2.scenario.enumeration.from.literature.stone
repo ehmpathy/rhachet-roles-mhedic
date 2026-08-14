@@ -1,0 +1,36 @@
+# 2.2.scenario.enumeration.from.literature.stone
+
+## .what
+
+enumerate the candidate scenarios from **bhrowser ground truth** — what the literature + social
+corpus actually report as causes of this effect. this stream catches the branch first-principles
+logic blind-spots. this is a **research stone**: it gathers cited sources.
+
+## .inputs
+
+- `1.2.intake.structure.yield.md` — the exposures + effects (the search targets)
+- the two-stream method: `howto.research-effect-socials-and-formals.[lesson].md`
+
+## .do
+
+- gather via the **bhrowser** only — never WebSearch/WebFetch (`rule.require.bhrowser-citations`)
+- pull both streams: **formal** (PMC/FDA/guideline ground truth) and **social/anecdote** (owner
+  reports, forum threads with clinician replies)
+- read the comments, not just the headline (`rule.require.read-social-comments`)
+- for each reported cause, name the scenario + cite the source verbatim
+
+## .emit
+
+into `2.2.scenario.enumeration.from.literature.yield.md` — the literature-derived scenario list, each
+with its citation.
+
+## .accrue
+
+lift every generic, cited fact (incidence rates, reported cause frequencies, mechanism facts) into
+`accrue/inventory.of=<topic>.md`, case-neutral, per `rule.require.accrue-research`. the case list
+stays in the yield; the reusable facts go to `accrue/`.
+
+## .done when
+
+the literature-derived scenario list is complete, each scenario cited (bhrowser-verified), and the
+generic facts are accrued.

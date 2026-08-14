@@ -1,0 +1,26 @@
+artifacts:
+  - $route/5.3.scenario.rerank.redteam.refine.yield.md
+
+reviews:
+  self:
+    - slug: has-refined-ordinal-rank
+      say: |
+        is each survivor's refined weight ordinal + bracketed, reconciled from
+        steelman vs attack — not a false-precision midpoint? the red-team
+        licenses a sharper order, not a fabricated number.
+    - slug: has-severity-kept-distinct
+      say: |
+        is severity kept distinct from probability — does a low-probability but
+        severe branch stay live for the veto? a severe branch dropped by rank is
+        a blocker (rule.require.superposition-until-elimination).
+    - slug: has-survivor-set-named
+      say: |
+        is the phase-6 survivor set named explicitly, with every un-eliminated
+        catastrophic branch included regardless of rank? deep research must cover
+        the landmines, not just the front-runners.
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.superposition-until-elimination*.md' --rules '.agent/**/define.diagnosis-superposition*.md' --paths '$route/5.3.scenario.rerank.redteam.refine.yield.md' --output '$route/.reviews/$stone.peer-review.rerank.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

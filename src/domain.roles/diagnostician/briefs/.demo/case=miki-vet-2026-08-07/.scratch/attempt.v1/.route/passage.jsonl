@@ -1,0 +1,113 @@
+{"stone":"1.intake","status":"passed"}
+{"stone":"2.1.differential.enumerate","status":"passed"}
+{"stone":"2.2.1.craft-queries","status":"passed"}
+{"stone":"2.2.2.gather-experiences","status":"blocked"}
+{"stone":"2.2.2.gather-experiences","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.2.gather-experiences","status":"blocked","blocker":"review.self","reason":"review.self required: has-bhrowser-citations"}
+{"stone":"2.2.2.gather-experiences","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.2.gather-experiences","status":"blocked","blocker":"review.self","reason":"review.self required: has-bhrowser-citations"}
+{"stone":"2.2.2.gather-experiences","status":"promised","reason":"promised review.self: has-bhrowser-citations"}
+{"stone":"2.2.2.gather-experiences","status":"promised","reason":"promised review.self: has-comments-read"}
+{"stone":"2.2.2.gather-experiences","status":"promised","reason":"promised review.self: has-source-spread"}
+{"stone":"2.2.2.gather-experiences","status":"promised","reason":"promised review.self: has-bias-recorded"}
+{"stone":"2.2.2.gather-experiences","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.2.gather-experiences","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.2.gather-experiences","status":"malfunction"}
+{"stone":"2.2.2.gather-experiences","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.2.gather-experiences","status":"passed"}
+{"stone":"2.2.3.itemize-inventory","status":"passed"}
+{"stone":"2.2.4.compute-correlations","status":"passed"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"blocked","blocker":"review.self","reason":"review.self required: has-gate-passed"}
+{"stone":"2.2.5.attribute-rerank","status":"promised","reason":"promised review.self: has-gate-passed"}
+{"stone":"2.2.5.attribute-rerank","status":"promised","reason":"promised review.self: has-both-directions"}
+{"stone":"2.2.5.attribute-rerank","status":"promised","reason":"promised review.self: has-edges-crosschecked"}
+{"stone":"2.2.5.attribute-rerank","status":"promised","reason":"promised review.self: has-caveats-carried"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"malfunction"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"malfunction"}
+{"stone":"2.2.5.attribute-rerank","status":"blocked"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"passed"}
+{"stone":"3.assay","status":"passed"}
+{"stone":"4.triage","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.triage","status":"blocked","blocker":"review.self","reason":"review.self required: has-emergency-signs-assessed"}
+{"stone":"4.triage","status":"promised","reason":"promised review.self: has-emergency-signs-assessed"}
+{"stone":"4.triage","status":"promised","reason":"promised review.self: has-escalation-carveout"}
+{"stone":"4.triage","status":"promised","reason":"promised review.self: has-current-status-honest"}
+{"stone":"4.triage","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"passed"}
+{"stone":"2.2.2.gather-experiences","status":"rewound"}
+{"stone":"2.2.3.itemize-inventory","status":"rewound"}
+{"stone":"2.2.4.compute-correlations","status":"rewound"}
+{"stone":"2.2.5.attribute-rerank","status":"rewound"}
+{"stone":"3.assay","status":"rewound"}
+{"stone":"4.triage","status":"rewound"}
+{"stone":"5.diagnosis","status":"rewound"}
+{"stone":"2.2.2.gather-experiences","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.2.gather-experiences","status":"blocked","blocker":"review.self","reason":"review.self required: has-bhrowser-citations"}
+{"stone":"2.2.2.gather-experiences","status":"promised","reason":"promised review.self: has-bhrowser-citations"}
+{"stone":"2.2.2.gather-experiences","status":"promised","reason":"promised review.self: has-comments-read"}
+{"stone":"2.2.2.gather-experiences","status":"promised","reason":"promised review.self: has-source-spread"}
+{"stone":"2.2.2.gather-experiences","status":"promised","reason":"promised review.self: has-bias-recorded"}
+{"stone":"2.2.2.gather-experiences","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.2.gather-experiences","status":"malfunction"}
+{"stone":"2.2.2.gather-experiences","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.2.gather-experiences","status":"malfunction"}
+{"stone":"2.2.2.gather-experiences","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.2.gather-experiences","status":"passed"}
+{"stone":"2.2.3.itemize-inventory","status":"passed"}
+{"stone":"2.2.4.compute-correlations","status":"passed"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"blocked","blocker":"review.self","reason":"review.self required: has-gate-passed"}
+{"stone":"2.2.5.attribute-rerank","status":"promised","reason":"promised review.self: has-gate-passed"}
+{"stone":"2.2.5.attribute-rerank","status":"promised","reason":"promised review.self: has-both-directions"}
+{"stone":"2.2.5.attribute-rerank","status":"promised","reason":"promised review.self: has-edges-crosschecked"}
+{"stone":"2.2.5.attribute-rerank","status":"promised","reason":"promised review.self: has-caveats-carried"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"malfunction"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (2 > 0)"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (5 > 0)"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (2 > 0)"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (1 > 0)"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"blocked","blocker":"review.peer","reason":"nitpicks exceed threshold (4 > 3)"}
+{"stone":"2.2.5.attribute-rerank","status":"arrived","reason":"entered guard reviews"}
+{"stone":"2.2.5.attribute-rerank","status":"passed"}
+{"stone":"3.assay","status":"passed"}
+{"stone":"4.triage","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.triage","status":"blocked","blocker":"review.self","reason":"review.self required: has-emergency-signs-assessed"}
+{"stone":"4.triage","status":"promised","reason":"promised review.self: has-emergency-signs-assessed"}
+{"stone":"4.triage","status":"promised","reason":"promised review.self: has-escalation-carveout"}
+{"stone":"4.triage","status":"promised","reason":"promised review.self: has-current-status-honest"}
+{"stone":"4.triage","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.triage","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (1 > 0)"}
+{"stone":"4.triage","status":"arrived","reason":"entered guard reviews"}
+{"stone":"4.triage","status":"passed"}
+{"stone":"5.diagnosis","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.diagnosis","status":"blocked","blocker":"review.self","reason":"review.self required: has-disclaimer"}
+{"stone":"5.diagnosis","status":"promised","reason":"promised review.self: has-disclaimer"}
+{"stone":"5.diagnosis","status":"promised","reason":"promised review.self: has-no-overreach"}
+{"stone":"5.diagnosis","status":"promised","reason":"promised review.self: has-citations"}
+{"stone":"5.diagnosis","status":"promised","reason":"promised review.self: has-facts-not-tactics"}
+{"stone":"5.diagnosis","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.diagnosis","status":"blocked","blocker":"review.peer","reason":"nitpicks exceed threshold (4 > 0); wait for human approval"}
+{"stone":"5.diagnosis","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.diagnosis","status":"blocked","blocker":"review.peer","reason":"nitpicks exceed threshold (3 > 0); wait for human approval"}
+{"stone":"5.diagnosis","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.diagnosis","status":"blocked","blocker":"review.peer","reason":"nitpicks exceed threshold (4 > 0); wait for human approval"}
+{"stone":"5.diagnosis","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.diagnosis","status":"blocked","blocker":"review.peer","reason":"blockers exceed threshold (1 > 0); wait for human approval"}
+{"stone":"5.diagnosis","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.diagnosis","status":"blocked","blocker":"review.peer","reason":"nitpicks exceed threshold (3 > 0); wait for human approval"}
+{"stone":"5.diagnosis","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.diagnosis","status":"blocked","blocker":"review.peer","reason":"nitpicks exceed threshold (3 > 0); wait for human approval"}
+{"stone":"5.diagnosis","status":"arrived","reason":"entered guard reviews"}
+{"stone":"5.diagnosis","status":"blocked","blocker":"review.peer","reason":"nitpicks exceed threshold (3 > 0); wait for human approval"}
+{"stone":"5.diagnosis","status":"blocked"}

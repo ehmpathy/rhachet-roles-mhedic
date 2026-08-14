@@ -1,0 +1,26 @@
+artifacts:
+  - $route/8.2.diagnosis.superposition.eliminated.yield.md
+
+reviews:
+  self:
+    - slug: has-evidence-per-elimination
+      say: |
+        does every eliminated scenario cite the specific assay result that ruled
+        it out? an elimination with no test result behind it is a drop by
+        assertion — a blocker.
+    - slug: has-no-lowrank-drop
+      say: |
+        is any scenario moved to the eliminated set on low probability alone? a
+        low-rank but un-tested scenario stays LIVE, not eliminated
+        (rule.require.superposition-until-elimination) — that is a blocker.
+    - slug: has-irreducible-set
+      say: |
+        is the irreducible-if-inconclusive set named — the scenarios that stay
+        live when every assay is inconclusive? that set is what the treatment
+        plan must still cover.
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.superposition-until-elimination*.md' --rules '.agent/**/define.diagnosis-superposition*.md' --paths '$route/8.2.diagnosis.superposition.eliminated.yield.md' --output '$route/.reviews/$stone.peer-review.eliminated.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

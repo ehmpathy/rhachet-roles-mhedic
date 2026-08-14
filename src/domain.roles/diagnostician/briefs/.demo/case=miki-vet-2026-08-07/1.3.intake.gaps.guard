@@ -1,0 +1,13 @@
+artifacts:
+  - $route/1.3.intake.gaps.yield.md
+
+reviews:
+  self:
+    - slug: has-no-guessed-values
+      say: |
+        did you fill any gap with a guess? a gap must stay open until a fact
+        or a test closes it (absence-of-evidence is not evidence-of-absence).
+    - slug: has-gap-triage
+      say: |
+        is each gap tagged cheap-to-close (ask) vs test-needed (feeds phase 4)?
+        an untriaged gap cannot route to the assay.

@@ -1,0 +1,26 @@
+artifacts:
+  - $route/9.2.treatment.superposition.conditional.yield.md
+
+reviews:
+  self:
+    - slug: has-order-keyed-to-assay
+      say: |
+        is every conditional order keyed to a specific phase-4 assay result ("if
+        X confirms Z, then Y")? an order with no trigger cannot be acted on when
+        the superposition collapses.
+    - slug: has-prevention-rider
+      say: |
+        does each confirmed branch carry its prevention + recurrence rider (from
+        6.2), not just the acute care? a branch without follow-through drops half
+        its consequence package.
+    - slug: has-citations-and-disclaimer
+      say: |
+        is each order cited (bhrowser) with dose/route + inferred-dose caveat, and
+        the not-medical-advice disclaimer carried? an uncited or undisclaimed
+        order is a blocker.
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.recommendation-disclaimer*.md' --rules '.agent/**/rule.require.bhrowser-citations*.md' --paths '$route/9.2.treatment.superposition.conditional.yield.md' --output '$route/.reviews/$stone.peer-review.conditional.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

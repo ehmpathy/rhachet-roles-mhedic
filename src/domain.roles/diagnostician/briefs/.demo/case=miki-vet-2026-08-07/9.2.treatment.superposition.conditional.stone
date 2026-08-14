@@ -1,0 +1,38 @@
+# 9.2.treatment.superposition.conditional.stone
+
+> **prescriber stone**, authored under the prescriber role.
+
+## .what
+
+build the **conditional branches** — the scenario-specific treatments, each keyed to the assay result
+that would confirm its scenario. these are the treatments held in reserve: not started now, but
+pre-decided, so that the moment the assay collapses the superposition the correct care is ready.
+
+## .inputs
+
+- `8.1.diagnosis.superposition.ranked.yield.md` — the ranked live scenarios + packages
+- `4.3.scenario.elimination.assay.plan.yield.md` — the result → elimination map (the triggers)
+- `6.2.scenario.superposition.prevention.yield.md` / `6.3....care.yield.md` — the per-scenario care
+
+## .do
+
+- for each live scenario, write its **conditional order**: "if assay X confirms scenario Z, then
+  prescribe Y" — keyed to the exact phase-4 result
+- cite each order (`rule.require.bhrowser-citations`) with dose/route + the label-target caveat where
+  the dose is inferred
+- state the **prevention + recurrence** rider per scenario (from 6.2), so the confirmed branch carries
+  its follow-through, not just the acute care
+
+## .emit
+
+into `9.2.treatment.superposition.conditional.yield.md` — the conditional branches, each keyed to an
+assay result, cited, with prevention riders.
+
+## .disclaimer
+
+carry the not-medical-advice disclaimer (`rule.require.recommendation-disclaimer`).
+
+## .done when
+
+every live scenario has a conditional order keyed to a specific assay result, each cited with its
+prevention rider, and the disclaimer is carried.

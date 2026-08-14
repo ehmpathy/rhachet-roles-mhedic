@@ -1,0 +1,13 @@
+artifacts:
+  - $route/4.3.scenario.elimination.assay.plan.yield.md
+
+reviews:
+  self:
+    - slug: has-result-elimination-map
+      say: |
+        does each test carry a result -> elimination map (which scenarios each
+        outcome drops)? a test with no such map cannot collapse the superposition.
+    - slug: has-irreducible-set
+      say: |
+        is the set of scenarios that stay live if every test is inconclusive named
+        explicitly? that irreducible set is what the treatment plan must cover.

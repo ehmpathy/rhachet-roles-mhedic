@@ -1,0 +1,17 @@
+artifacts:
+  - $route/1.2.intake.structure.yield.md
+
+reviews:
+  self:
+    - slug: has-complete-timeline
+      say: |
+        is every event from the capture on the timeline, in temporal order?
+        an event dropped here is a scenario missed downstream.
+    - slug: has-exposures-and-effects-split
+      say: |
+        are exposures (cause:exposure) and effects (effect:symptom) itemized
+        as separate sets, per define.causal-chain-frame? do not conflate them.
+    - slug: has-dose-detail
+      say: |
+        for each exposure, is dose/quantity/route captured where stated?
+        a dose omitted here cannot be flagged as above-label later.

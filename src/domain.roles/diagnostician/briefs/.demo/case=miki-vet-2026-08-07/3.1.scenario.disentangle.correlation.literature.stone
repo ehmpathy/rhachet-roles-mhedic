@@ -1,0 +1,33 @@
+# 3.1.scenario.disentangle.correlation.literature.stone
+
+## .what
+
+weight each scenario against the case's exposures from **formal ground truth** — base rates,
+controlled incidence, honest denominators. this is the *base-rate* half of the disentangle; it is
+kept apart from the anecdote half on purpose (bracket, don't pool).
+
+## .inputs
+
+- `2.3.scenario.enumeration.blend.yield.md` — the sourced lineup
+- `1.2.intake.structure.yield.md` — the case's exposures + effects
+- `accrue/inventory.of=<topic>.md` — the formal facts already accrued in phase 2
+
+## .do
+
+- for each scenario, state the **formal base rate** of its effect given its exposure (cited)
+- keep denominators honest — a rate is (events / population), not an anecdote tally
+- where the accrued facts cover it, reuse them; where not, gather more via the bhrowser
+- do NOT mix in anecdote signal here — that is phase 3.2
+
+## .emit
+
+into `3.1.scenario.disentangle.correlation.literature.yield.md` — a base-rate per scenario, cited.
+
+## .accrue
+
+lift any newly-gathered generic base rates into `accrue/inventory.of=<topic>.md`
+(`rule.require.accrue-research`).
+
+## .done when
+
+each scenario carries a cited formal base rate, denominators honest, no anecdote signal mixed in.

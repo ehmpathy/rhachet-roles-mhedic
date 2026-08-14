@@ -1,0 +1,21 @@
+🦉 the way speaks for itself
+
+🗿 route.stone.set
+   ├─ stone = 4.triage
+   ├─ passage = allowed
+   ├─ guard
+   │  ├─ artifacts
+   │  │   └─ $route/4.triage.yield.md
+   │  ├─ reviews
+   │  │   └─ r1: $rhachet (l1, 2/∞)
+   │  │       ├─ approved 20.6s
+   │  │       ├─ 0 blockers ✓
+   │  │       ├─ 0 nitpicks ✓
+   │  │       ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/4.triage._.review.i002.0eb18e065336b79fbe.r001._.given.by_peer.$rhachet.md
+   │  │       └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/4.triage._.review.i002.0eb18e065336b79fbe.r001._.taken.by_self.$rhachet.md
+   │  └─ judges
+   │      └─ j1: rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 0
+   │          └─ finished 0.3s ✓
+   │
+   └─ the way continues, run
+      └─ rhx route.drive

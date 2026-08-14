@@ -1,0 +1,34 @@
+# 6.1.scenario.superposition.bounds.stone
+
+## .what
+
+for each survivor, deep-research its **bounds** — the best-case and the worst-case trajectory. this
+is the first consequence-package facet: what happens if this scenario is true and goes well, and what
+happens if it is true and goes badly. this is a **research stone**: it gathers cited ground truth.
+
+## .inputs
+
+- `5.3.scenario.rerank.redteam.refine.yield.md` — the survivor set (only these earn deep research)
+
+## .do
+
+- gather via the **bhrowser** only — never WebSearch/WebFetch (`rule.require.bhrowser-citations`)
+- for each survivor, state the **best-case** bound (self-limited, benign resolution — cite the
+  natural history) and the **worst-case** bound (the catastrophic trajectory — cite the mechanism +
+  outcome)
+- the worst-case bound of a catastrophic branch is what powers the treatment veto in phase 9 — state
+  it plainly, with its citation
+
+## .emit
+
+into `6.1.scenario.superposition.bounds.yield.md` — best-case + worst-case bound per survivor, each
+cited.
+
+## .accrue
+
+lift every generic, cited fact (natural-history rates, worst-case outcome frequencies, mechanism
+facts) into `accrue/inventory.of=<topic>.md`, case-neutral, per `rule.require.accrue-research`.
+
+## .done when
+
+every survivor carries a cited best-case and worst-case bound, and the generic facts are accrued.

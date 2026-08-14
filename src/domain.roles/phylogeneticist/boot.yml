@@ -1,0 +1,22 @@
+always:
+  briefs:
+    say:
+      # scope + method
+      - briefs/define.phylogeneticist-scope.[lesson].md
+      - briefs/practices/rule.require.evolutionary-relation-to-human.md
+      - briefs/define.mechanism-briefs-by-clade-depth.md
+      - briefs/biological.mechanisms/readme.md
+    ref:
+      # mechanism library, per organism at common clade depths
+      - briefs/biological.mechanisms/clade=metazoa/mechanism.cox.prostaglandin-synthesis.md
+      - briefs/biological.mechanisms/clade=bilateria/mechanism.pla2.arachidonic-acid-liberation.md
+      - briefs/biological.mechanisms/clade=vertebrata/mechanism.pge2.nociceptor-sensitization.md
+      - briefs/biological.mechanisms/clade=vertebrata/mechanism.inflammation.vascular-response.md
+      - briefs/biological.mechanisms/clade=mammalia/mechanism.cox.isoform-split.md
+      - briefs/biological.mechanisms/clade=mammalia/mechanism.pge2.hypothalamic-fever.md
+      - briefs/biological.mechanisms/clade=mammalia/mechanism.cox2.spinal-sensitization.md
+      - briefs/biological.mechanisms/clade=felidae/mechanism.ugt1a6.glucuronidation-loss.md
+
+  skills:
+    ref:
+      # - skills land here as they are built

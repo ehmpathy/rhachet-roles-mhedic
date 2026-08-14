@@ -1,0 +1,33 @@
+# 6.2.scenario.superposition.prevention.stone
+
+## .what
+
+for each survivor, deep-research its **prevention** and **recurrence** — how to stop this scenario
+from recurring, and how likely it is to return if untreated or if the exposure repeats. this is the
+second consequence-package facet. this is a **research stone**: it gathers cited ground truth.
+
+## .inputs
+
+- `5.3.scenario.rerank.redteam.refine.yield.md` — the survivor set
+- `6.1.scenario.superposition.bounds.yield.md` — the bounds already researched
+
+## .do
+
+- gather via the **bhrowser** only — never WebSearch/WebFetch (`rule.require.bhrowser-citations`)
+- for each survivor, state the **prevention** path (what avoids recurrence — cite the guideline) and
+  the **recurrence** likelihood (how often it returns — cite the natural history)
+- where prevention differs by whether the exposure repeats, state both branches
+
+## .emit
+
+into `6.2.scenario.superposition.prevention.yield.md` — prevention + recurrence per survivor, cited.
+
+## .accrue
+
+lift every generic, cited fact (prevention protocols, recurrence rates) into
+`accrue/inventory.of=<topic>.md`, case-neutral, per `rule.require.accrue-research`.
+
+## .done when
+
+every survivor carries a cited prevention path and recurrence likelihood, and the generic facts are
+accrued.

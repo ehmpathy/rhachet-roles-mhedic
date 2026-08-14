@@ -1,0 +1,37 @@
+# 6.3.scenario.superposition.care.stone
+
+## .what
+
+for each survivor, deep-research its **best supportive-care path** — the care that helps regardless
+of the fine diagnosis, plus the care specific to this scenario. this is the third consequence-package
+facet, and it seeds the no-regret core of the phase-9 plan. this is a **research stone**: it gathers
+cited ground truth.
+
+## .inputs
+
+- `5.3.scenario.rerank.redteam.refine.yield.md` — the survivor set
+- `6.1.scenario.superposition.bounds.yield.md` — the bounds
+- `6.2.scenario.superposition.prevention.yield.md` — the prevention paths
+
+## .do
+
+- gather via the **bhrowser** only — never WebSearch/WebFetch (`rule.require.bhrowser-citations`)
+- for each survivor, state the **supportive-care** path (cite the guideline), and flag which care
+  steps are **no-regret** — helpful under this scenario and harmless under the others
+- flag any care step that helps one survivor but **harms** another — that conflict is what phase 9
+  must arbitrate via the envelope
+
+## .emit
+
+into `6.3.scenario.superposition.care.yield.md` — supportive-care path per survivor, with no-regret
+steps and cross-scenario conflicts flagged, each cited.
+
+## .accrue
+
+lift every generic, cited fact (care protocols, dose ranges, contraindications) into
+`accrue/inventory.of=<topic>.md`, case-neutral, per `rule.require.accrue-research`.
+
+## .done when
+
+every survivor carries a cited supportive-care path, no-regret steps and cross-scenario conflicts are
+flagged, and the generic facts are accrued.

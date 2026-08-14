@@ -1,0 +1,24 @@
+artifacts:
+  - $route/6.3.scenario.superposition.care.yield.md
+
+reviews:
+  self:
+    - slug: has-care-per-survivor
+      say: |
+        does every survivor carry a cited supportive-care path? a survivor with
+        no care path has an incomplete consequence package.
+    - slug: has-noregret-flagged
+      say: |
+        are the no-regret care steps flagged — helpful under this scenario and
+        harmless under the others? those steps seed the phase-9 no-regret core.
+    - slug: has-conflicts-flagged
+      say: |
+        is any care step that helps one survivor but harms another flagged as a
+        cross-scenario conflict? an unflagged conflict cannot be arbitrated by
+        the phase-9 envelope — that is a blocker.
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/rule.require.bhrowser-citations*.md' --rules '.agent/**/rule.require.accrue-research*.md' --paths '$route/6.3.scenario.superposition.care.yield.md' --output '$route/.reviews/$stone.peer-review.care.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

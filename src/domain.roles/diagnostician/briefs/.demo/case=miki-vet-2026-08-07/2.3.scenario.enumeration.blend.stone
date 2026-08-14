@@ -1,0 +1,28 @@
+# 2.3.scenario.enumeration.blend.stone
+
+## .what
+
+merge the two candidate sets — imagination + literature — into **one lineup**, with each scenario's
+source stream marked. the disagreement between streams is itself signal.
+
+## .inputs
+
+- `2.1.scenario.enumeration.from.imagination.yield.md`
+- `2.2.scenario.enumeration.from.literature.yield.md`
+
+## .do
+
+- union the two sets into one deduplicated scenario list
+- tag each scenario's provenance: imagination-only · literature-only · both
+- flag **imagination-only** scenarios as "plausible but unattested" — they carry no literature
+  weight, so they will lean hard on the assay (they survive on severity, per superposition-until-elimination)
+- flag **literature-only** scenarios as a logic blind-spot worth a second look
+
+## .emit
+
+into `2.3.scenario.enumeration.blend.yield.md` — the single sourced lineup.
+
+## .done when
+
+one deduplicated lineup exists, each scenario provenance-tagged, imagination-only + literature-only
+branches flagged.

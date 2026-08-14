@@ -1,0 +1,1 @@
+../../../../src/domain.roles/prescriber/briefs/howto.identify-official-drug-label.[lesson].md

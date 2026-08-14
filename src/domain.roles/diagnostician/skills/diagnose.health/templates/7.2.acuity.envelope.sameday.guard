@@ -1,0 +1,14 @@
+artifacts:
+  - $route/7.2.acuity.envelope.sameday.yield.md
+
+reviews:
+  self:
+    - slug: has-window-and-scenario
+      say: |
+        is the same-day tier stated with a concrete time window and the scenario
+        that drives it named? a tier with no window cannot be acted on.
+    - slug: has-escalate-signs
+      say: |
+        are the escalate-sooner signs listed — the observations that lift a
+        same-day case to emergency? a tier with no escalation path drops the
+        envelope's safety net.

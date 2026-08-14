@@ -1,0 +1,30 @@
+# 8.2.diagnosis.superposition.eliminated.stone
+
+## .what
+
+state the **eliminated set** — the scenarios ruled out, and for each, the **specific test result**
+that eliminated it. this is the audit trail of the collapse: it proves each drop was earned by
+evidence, never by low probability alone.
+
+## .inputs
+
+- `4.3.scenario.elimination.assay.plan.yield.md` — the result → elimination map
+- `2.3.scenario.enumeration.blend.yield.md` — the full enumerated set (to show what was dropped)
+
+## .do
+
+- list each eliminated scenario with the **assay result** that ruled it out (per the phase-4 map) —
+  "test X came back Y, which eliminates Z"
+- state plainly which scenarios remain **un-eliminated but low-rank** — these are NOT eliminated; they
+  stay in the live set (8.1), covered by the acuity envelope (phase 7) and the veto (phase 9)
+- name the **irreducible set** — the scenarios that stay live if every assay is inconclusive
+
+## .emit
+
+into `8.2.diagnosis.superposition.eliminated.yield.md` — the eliminated set with per-scenario
+evidence, and the irreducible-if-inconclusive set.
+
+## .done when
+
+every eliminated scenario cites the test result that ruled it out, no scenario is dropped on low
+probability alone, and the irreducible set is named.

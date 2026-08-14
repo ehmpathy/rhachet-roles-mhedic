@@ -1,0 +1,21 @@
+artifacts:
+  - $route/8.1.diagnosis.superposition.ranked.yield.md
+
+reviews:
+  self:
+    - slug: has-package-per-scenario
+      say: |
+        does every ranked scenario carry its full consequence package (best/worst
+        bound, prevention, care) inline? a rank without its package is a bare
+        guess, not a superposition state.
+    - slug: has-hedge-not-verdict
+      say: |
+        does the yield lead with the hedge — a ranked set of hypotheses, not a
+        confirmed verdict? a single-verdict voice collapses the superposition
+        prematurely (define.diagnosis-superposition).
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/define.diagnosis-superposition*.md' --rules '.agent/**/rule.require.recommendation-disclaimer*.md' --paths '$route/8.1.diagnosis.superposition.ranked.yield.md' --output '$route/.reviews/$stone.peer-review.ranked.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

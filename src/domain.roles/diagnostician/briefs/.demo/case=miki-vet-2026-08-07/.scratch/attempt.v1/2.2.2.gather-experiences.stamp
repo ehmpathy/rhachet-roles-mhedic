@@ -1,0 +1,26 @@
+🦉 the way speaks for itself
+
+🗿 route.stone.set
+   ├─ stone = 2.2.2.gather-experiences
+   ├─ passage = allowed
+   ├─ guard
+   │  ├─ artifacts
+   │  │   └─ $route/2.2.2.gather-experiences.yield.md
+   │  ├─ reviews
+   │  │   ├─ r1: $rhachet.1 (l1, 2/∞)
+   │  │   │   ├─ approved, cached
+   │  │   │   ├─ 0 blockers ✓
+   │  │   │   ├─ 1 nitpick 🟠
+   │  │   │   ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/2.2.2.gather-experiences._.review.i002.7470efe191d1955f09.r001._.given.by_peer.$rhachet.1.md
+   │  │   │   └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/2.2.2.gather-experiences._.review.i002.7470efe191d1955f09.r001._.taken.by_self.$rhachet.1.md
+   │  │   └─ r2: $rhachet.2 (l1, 1/∞)
+   │  │       ├─ malfunction 💥
+   │  │       ├─ terminal — does not block higher levels
+   │  │       ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/2.2.2.gather-experiences._.review.i003.7470efe191d1955f09.r002._.given.by_peer.$rhachet.2.md
+   │  │       └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/2.2.2.gather-experiences._.review.i003.7470efe191d1955f09.r002._.taken.by_self.$rhachet.2.md
+   │  └─ judges
+   │      └─ j1: rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3
+   │          └─ finished 0.4s ✓
+   │
+   └─ the way continues, run
+      └─ rhx route.drive

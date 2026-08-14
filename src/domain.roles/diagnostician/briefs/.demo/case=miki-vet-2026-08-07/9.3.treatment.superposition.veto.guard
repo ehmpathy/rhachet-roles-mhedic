@@ -1,0 +1,32 @@
+artifacts:
+  - $route/9.3.treatment.superposition.veto.yield.md
+
+reviews:
+  self:
+    - slug: has-veto-per-catastrophic-branch
+      say: |
+        does every un-eliminated catastrophic branch list the treatments it
+        contraindicates, vetoed now even when attractive for the top-ranked
+        scenario? a missed veto lets severity be overridden by probability — the
+        exact failure rule.require.superposition-until-elimination forbids.
+    - slug: has-lift-condition-per-veto
+      say: |
+        does each veto name the specific assay result that lifts it? a veto with
+        no lift condition is a dead end, not a gate.
+    - slug: has-assembled-plan
+      say: |
+        is the final plan assembled — no-regret core now, conditional branches on
+        assay, veto list as the gate — and is it worst-case-safe, best-case-not-
+        wasteful, no-regret-first?
+    - slug: has-disclaimer
+      say: |
+        is the not-medical-advice disclaimer carried, plus the emergency line if
+        the acuity floor is emergency? guidance without the disclaimer is a
+        blocker.
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.superposition-until-elimination*.md' --rules '.agent/**/rule.require.recommendation-disclaimer*.md' --rules '.agent/**/rule.require.bhrowser-citations*.md' --paths '$route/9.3.treatment.superposition.veto.yield.md' --output '$route/.reviews/$stone.peer-review.veto.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3
+  - rhx route.stone.judge --mechanism approved? --stone $stone --route $route

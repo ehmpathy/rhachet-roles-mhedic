@@ -1,0 +1,27 @@
+# 4.3.scenario.elimination.assay.plan.stone
+
+## .what
+
+sequence the ranked tests into an **ordered assay plan**, and state — for each test — **what each
+result eliminates**. this is the map that collapses the superposition: run test, read result, drop
+the scenarios it rules out, repeat.
+
+## .inputs
+
+- `4.2.scenario.elimination.assay.rank.yield.md` — the ranked tests
+
+## .do
+
+- order the tests (cheap high-power + catastrophic-branch first)
+- for each test, write the result → elimination map ("fever present → keeps systemic branch; absent →
+  lowers it"), so the driver knows exactly which scenarios each outcome drops
+- name which scenarios **remain live** if every test comes back inconclusive (the irreducible set)
+
+## .emit
+
+into `4.3.scenario.elimination.assay.plan.yield.md` — the ordered plan + per-result elimination map.
+
+## .done when
+
+the tests are ordered, each carries a result→elimination map, and the irreducible-if-inconclusive set
+is named.

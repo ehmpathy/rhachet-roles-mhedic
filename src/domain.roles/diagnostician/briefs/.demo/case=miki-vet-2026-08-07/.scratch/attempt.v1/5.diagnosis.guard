@@ -1,0 +1,55 @@
+# guard for 5.diagnosis
+#
+# the final output a human may act on. it must carry the disclaimer, state facts under
+# full sun (not tactics), trace every claim to a citation, and never overreach from a
+# ranked hypothesis to a verdict.
+
+artifacts:
+  - $route/5.diagnosis.yield.md
+
+reviews:
+  self:
+    - slug: has-disclaimer
+      say: |
+        this output carries guidance a human may act on.
+
+        does it carry the not-medical-advice disclaimer plainly
+        (informational only, consult a licensed clinician)?
+
+        guidance output without the disclaimer is a blocker.
+        (motto.not-medical-advice, rule.require.recommendation-disclaimer)
+
+    - slug: has-no-overreach
+      say: |
+        the diagnosis is a ranked hypothesis from biased signal, not a verdict.
+
+        check the language:
+        - does it say "most plausible" / "top hypothesis", not "this IS the cause"?
+        - does it defer the confirm to the clinician + the assay stage?
+
+        a leap from ranked plausibility to certainty is a blocker.
+
+    - slug: has-citations
+      say: |
+        every factual claim must trace to a bhrowser-verified or trusted source.
+
+        walk the claims: is each one cited, or is it an unbacked assertion?
+        (rule.require.bhrowser-citations)
+
+    - slug: has-facts-not-tactics
+      say: |
+        state the medical facts in full sun — do not obscure them into vague tactics.
+
+        does the yield name the actual candidate mechanisms and doses plainly
+        (e.g. the ~3x-label Onsior dose flag), not soften them away?
+        (rule.require.fullsun-facts-not-tactics)
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/code/haiku --rules '.agent/repo=.this/role=any/briefs/{motto.not-medical-advice,rule.require.recommendation-disclaimer,rule.require.bhrowser-citations,rule.require.fullsun-facts-not-tactics}.*.md' --paths '$route/5.diagnosis.yield.md' --output '$route/.reviews/$stone.peer-review.diagnosis.md'
+    # second opinion via enroll. NOTE: "diagnostician"/"prescriber" are briefs-only demo roles, not
+    # linked rhachet roles here, so enroll uses the linked "reviewer" role for the skeptical second read.
+    - $rhachet enroll claude --roles reviewer -p "review src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/5.diagnosis.yield.md as a skeptical second opinion: is the ranked cause a hypothesis or is it overstated as a verdict? is the ~3x-label Onsior dose surfaced plainly? is the not-medical-advice disclaimer present? flag overreach or an absent disclaimer as a blocker. emit BLOCKERS and NITPICKS."
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 0
+  - rhx route.stone.judge --mechanism approved? --stone $stone --route $route

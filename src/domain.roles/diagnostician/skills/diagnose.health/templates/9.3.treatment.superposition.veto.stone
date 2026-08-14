@@ -1,0 +1,43 @@
+# 9.3.treatment.superposition.veto.stone
+
+> **prescriber stone**, authored under the prescriber role. this is the route's terminal stone.
+
+## .what
+
+state the **veto list** — the treatments that are *forbidden* while a catastrophic branch stays
+un-eliminated, and the exact assay result that would lift each veto. this is where severity overrides
+probability: a treatment contraindicated by a 5%-but-catastrophic branch is vetoed until that branch
+is ruled out, no matter how attractive it is for the front-runner scenario
+(`rule.require.superposition-until-elimination`).
+
+## .inputs
+
+- `8.3.diagnosis.superposition.envelope.yield.md` — the worst-case corner (the veto source)
+- `8.2.diagnosis.superposition.eliminated.yield.md` — what is already ruled out (what is NOT a veto)
+- `9.2.treatment.superposition.conditional.yield.md` — the conditional orders (which may be vetoed)
+
+## .do
+
+- for each un-eliminated catastrophic branch, list the treatments it **contraindicates** — these are
+  vetoed *now*, even if they are the obvious choice for the top-ranked scenario
+- for each veto, name the **lift condition**: the specific assay result (phase 4) that eliminates the
+  catastrophic branch and releases the treatment
+- assemble the **final plan**: the no-regret core (9.1) starts now, the conditional branches (9.2) wait
+  on the assay, and the veto list gates them — worst-case-safe, best-case-not-wasteful, no-regret-first
+
+## .emit
+
+into `9.3.treatment.superposition.veto.yield.md` — the veto list with per-veto lift conditions, and
+the assembled final plan.
+
+## .disclaimer
+
+carry the not-medical-advice disclaimer (`rule.require.recommendation-disclaimer`); if the acuity
+floor is emergency, carry the emergency-care escalation line.
+
+## .done when
+
+every un-eliminated catastrophic branch has its vetoed treatments listed with lift conditions, the
+final plan is assembled (no-regret now, conditional on assay, veto-gated), and the disclaimer is
+carried. this stone gates on human `approved?` — the plan is a proposal until a licensed clinician
+signs off.

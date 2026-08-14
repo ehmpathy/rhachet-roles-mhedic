@@ -11,9 +11,10 @@ describe('getRoleRegistry', () => {
         expect(registry.slug).toEqual('mhedic');
       });
 
-      then('it declares the five baseline roles', () => {
+      then('it declares the six baseline roles', () => {
         expect(registry.roles.map((role) => role.slug).sort()).toEqual([
           'diagnostician',
+          'phylogeneticist',
           'physician',
           'prescriber',
           'preventer',

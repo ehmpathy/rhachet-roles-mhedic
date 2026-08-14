@@ -1,0 +1,27 @@
+# 4.1.scenario.elimination.assay.enumerate.stone
+
+## .what
+
+for **each live scenario**, name the test(s) that could rule it out. the assay phase exists to shrink
+the superposition — so first enumerate, per scenario, what observation or test would eliminate it.
+
+## .inputs
+
+- `3.3.scenario.disentangle.correlation.blend.yield.md` — the coarse-ranked live set + floor
+- `1.3.intake.gaps.yield.md` — the knowledge gaps (some tests close these)
+
+## .do
+
+- for every live scenario (the low-probability / high-severity landmines too), name the test, exam
+  sign, or observation that would **rule it out** (or confirm it)
+- a scenario with **no** test to rule it out is a standing hazard — flag it plainly (it stays live)
+- prefer tests that separate **between** scenarios (high information), not just confirm one
+
+## .emit
+
+into `4.1.scenario.elimination.assay.enumerate.yield.md` — a test-per-scenario map.
+
+## .done when
+
+every live scenario has a named test to rule it out (or a flag that none exists), with the
+between-scenario tests marked.

@@ -1,0 +1,17 @@
+artifacts:
+  - $route/3.1.scenario.disentangle.correlation.literature.yield.md
+
+reviews:
+  self:
+    - slug: has-honest-denominators
+      say: |
+        is each rate a true (events / population) base rate, cited — not an
+        anecdote tally dressed as a rate? a bad denominator poisons the bracket.
+    - slug: has-no-anecdote-bleed
+      say: |
+        did any anecdote signal leak into this formal half? the two streams must
+        stay separate until 3.3 brackets them (bracket, don't pool).
+    - slug: has-accrued-facts
+      say: |
+        were newly-gathered base rates lifted into accrue/inventory.of=<topic>
+        (rule.require.accrue-research)?

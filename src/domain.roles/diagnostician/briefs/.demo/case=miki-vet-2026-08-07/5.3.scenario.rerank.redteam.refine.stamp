@@ -1,0 +1,21 @@
+🦉 the way speaks for itself
+
+🗿 route.stone.set
+   ├─ stone = 5.3.scenario.rerank.redteam.refine
+   ├─ passage = allowed
+   ├─ guard
+   │  ├─ artifacts
+   │  │   └─ $route/5.3.scenario.rerank.redteam.refine.yield.md
+   │  ├─ reviews
+   │  │   └─ r1: bash (l1, 1/∞)
+   │  │       ├─ approved 8.4s
+   │  │       ├─ 0 blockers ✓
+   │  │       ├─ 0 nitpicks ✓
+   │  │       ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/5.3.scenario.rerank.redteam.refine._.review.i001.6d32c8b4f32febcd70.r001._.given.by_peer.bash.md
+   │  │       └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/5.3.scenario.rerank.redteam.refine._.review.i001.6d32c8b4f32febcd70.r001._.taken.by_self.bash.md
+   │  └─ judges
+   │      └─ j1: rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3
+   │          └─ finished 0.8s ✓
+   │
+   └─ the way continues, run
+      └─ rhx route.drive

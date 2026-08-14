@@ -1,0 +1,32 @@
+# 7.3.acuity.envelope.watch.stone
+
+## .what
+
+set the **watchful-wait tier** — which live scenarios are benign enough to observe at home, the
+observation cadence, and the **tripwires** that escalate a watched case to same-day or emergency. this
+is the floor band of the acuity envelope, and it closes the envelope with an explicit safety net.
+
+## .inputs
+
+- `7.1.acuity.envelope.emergency.yield.md` — the emergency floor
+- `7.2.acuity.envelope.sameday.yield.md` — the same-day tier
+- `6.1.scenario.superposition.bounds.yield.md` — the best-case bounds
+
+## .do
+
+- for the live scenarios whose worst-case bound is benign / self-limited, state the **watch** plan:
+  what to observe and how often
+- write the **tripwires** — the concrete observations that promote a watched case up the envelope
+  (to same-day per 7.2, or emergency per 7.1)
+- state plainly: watchful wait is only licensed while every catastrophic branch stays eliminated or
+  is covered by a tripwire (`rule.require.superposition-until-elimination`)
+
+## .emit
+
+into `7.3.acuity.envelope.watch.yield.md` — the watch tier, the observation cadence, and the
+tripwires that escalate.
+
+## .done when
+
+the watch tier is stated with its cadence, the tripwires are listed, and the envelope is closed —
+every live scenario sits in exactly one acuity band.

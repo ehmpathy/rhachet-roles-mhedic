@@ -1,0 +1,22 @@
+🦉 the way speaks for itself
+
+🗿 route.stone.set
+   ├─ stone = 8.2.diagnosis.superposition.eliminated
+   ├─ passage = allowed
+   ├─ guard
+   │  ├─ artifacts
+   │  │   └─ $route/8.2.diagnosis.superposition.eliminated.yield.md
+   │  ├─ reviews
+   │  │   └─ r1: bash (l1, 1/∞)
+   │  │       ├─ approved, cached
+   │  │       ├─ 0 blockers ✓
+   │  │       ├─ 0 nitpicks ✓
+   │  │       ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/8.2.diagnosis.superposition.eliminated._.review.i001.1b1ada911a7898cc92.r001._.given.by_peer.bash.md
+   │  │       └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/8.2.diagnosis.superposition.eliminated._.review.i001.1b1ada911a7898cc92.r001._.taken.by_self.bash.md
+   │  └─ judges
+   │      └─ j1: rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3
+   │          └─ · cached
+   │             └─ on $route/8.2.diagnosis.superposition.eliminated.yield.md
+   │
+   └─ the way continues, run
+      └─ rhx route.drive

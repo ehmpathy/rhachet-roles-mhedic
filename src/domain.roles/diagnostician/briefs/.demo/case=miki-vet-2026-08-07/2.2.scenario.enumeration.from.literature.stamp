@@ -1,0 +1,21 @@
+🦉 the way speaks for itself
+
+🗿 route.stone.set
+   ├─ stone = 2.2.scenario.enumeration.from.literature
+   ├─ passage = allowed
+   ├─ guard
+   │  ├─ artifacts
+   │  │   └─ $route/2.2.scenario.enumeration.from.literature.yield.md
+   │  ├─ reviews
+   │  │   └─ r1: bash (l1, 2/∞)
+   │  │       ├─ approved 8.7s
+   │  │       ├─ 0 blockers ✓
+   │  │       ├─ 0 nitpicks ✓
+   │  │       ├─ given: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/2.2.scenario.enumeration.from.literature._.review.i008.84ff05668f5226fdef.r001._.given.by_peer.bash.md
+   │  │       └─ taken: src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/.reviews/peer/2.2.scenario.enumeration.from.literature._.review.i008.84ff05668f5226fdef.r001._.taken.by_self.bash.md
+   │  └─ judges
+   │      └─ j1: rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3
+   │          └─ finished 0.3s ✓
+   │
+   └─ the way continues, run
+      └─ rhx route.drive

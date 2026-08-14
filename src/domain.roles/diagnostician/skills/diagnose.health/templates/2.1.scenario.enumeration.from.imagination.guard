@@ -1,0 +1,19 @@
+artifacts:
+  - $route/2.1.scenario.enumeration.from.imagination.yield.md
+
+reviews:
+  self:
+    - slug: has-cant-miss-branches
+      say: |
+        did you include the low-probability / high-severity landmines, or only
+        the likely causes? a missed can't-miss branch defeats the whole method
+        (rule.require.superposition-until-elimination).
+    - slug: has-mechanism-per-scenario
+      say: |
+        does each scenario carry a one-line causal chain (cause:exposure ->
+        cause:mechanism -> effect:mechanism -> effect:symptom)? a scenario with
+        no mechanism cannot be assayed later.
+    - slug: has-no-premature-weights
+      say: |
+        did you rank or weight any scenario here? this stone is the lineup only.
+        weights belong to phase 3 (disentangle).

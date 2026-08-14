@@ -1,0 +1,14 @@
+artifacts:
+  - $route/4.2.scenario.elimination.assay.rank.yield.md
+
+reviews:
+  self:
+    - slug: has-catastrophic-priority
+      say: |
+        do the tests that rule out live catastrophic scenarios rank first, even
+        when costly? the veto they lift is worth the cost — a cheap-but-low-power
+        test must not bury a test that clears a landmine.
+    - slug: has-power-cost-basis
+      say: |
+        is each test scored by separation-power against cost, not ranked by gut?
+        show the basis so the order is auditable.

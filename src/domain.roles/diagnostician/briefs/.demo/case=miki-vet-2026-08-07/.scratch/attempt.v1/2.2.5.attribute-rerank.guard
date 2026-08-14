@@ -1,0 +1,54 @@
+# guard for 2.2.5.attribute-rerank
+#
+# the disentangle conclusion the diagnosis rests on. the rank must follow from the
+# two-direction matrix (not from a hunch), the convergence gate must have ruled pass,
+# and the caveats must ride along — the rank is plausibility from biased signal, not
+# epidemiology.
+
+artifacts:
+  - $route/2.2.5.attribute-rerank.yield.md
+
+reviews:
+  self:
+    - slug: has-gate-passed
+      say: |
+        this stone runs only after 2.2.4 ruled pass.
+
+        confirm the convergence gate passed before you rank:
+        - does each exposure have >= 3 "X alone" cases?
+        - does each have >= 1 effect-yes and >= 1 effect-no?
+
+        if the gate was thin, you should have rewound to 2.2.1, not ranked. verify.
+
+    - slug: has-both-directions
+      say: |
+        the rank must weigh both directions, not one.
+
+        for each exposure, check the yield carries:
+        - forward  P(effect | X alone) — the risk of the action
+        - backtrack P(X | effect)      — how implicated the action is
+
+        a rank built on one direction alone is a blocker.
+
+    - slug: has-edges-crosschecked
+      say: |
+        for the top exposures, was the cause→effect edge cross-checked against a
+        trusted source (does vaccine→myositis have real incidence)?
+
+        an edge asserted with no trusted-source confirmation is a nitpick to flag.
+
+    - slug: has-caveats-carried
+      say: |
+        the rank is plausibility from biased signal, not a verdict.
+
+        does the yield state plainly that this is a hypothesis for the clinician +
+        the assay stage, and that small-n + selection-bias caveats hold?
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/code/haiku --rules '.agent/repo=.this/role=any/briefs/rule.require.{fullsun-facts-not-tactics,source-inventory}.*.md' --paths '$route/2.2.5.attribute-rerank.yield.md' --output '$route/.reviews/$stone.peer-review.disentangle.md'
+    # second opinion via enroll. NOTE: "diagnostician" is a briefs-only demo role, not a linked
+    # rhachet role here, so enroll uses the linked "reviewer" role for the skeptical second read.
+    - $rhachet enroll claude --roles reviewer -p "review src/domain.roles/diagnostician/briefs/.demo/case=miki-vet-2026-08-07/2.2.5.attribute-rerank.yield.md as a skeptical second opinion: does the exposure rank follow from the two-direction contingency matrix in 2.2.4, or from a hunch? are the caveats (small n, selection bias, association-not-causation) carried? flag any leap from correlation to verdict as a blocker. emit BLOCKERS and NITPICKS."
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3
