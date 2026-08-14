@@ -9,7 +9,8 @@ import { Role } from 'rhachet';
 export const ROLE_PHYLOGENETICIST: Role = Role.build({
   slug: 'phylogeneticist',
   name: 'Phylogeneticist',
-  purpose: 'reconstruct where a mechanism arose on the tree of life and who inherits it',
+  purpose:
+    'reconstruct where a mechanism arose on the tree of life and who inherits it',
   readme: { uri: `${__dirname}/readme.md` },
   boot: { uri: `${__dirname}/boot.yml` },
   keyrack: { uri: `${__dirname}/keyrack.yml` },
