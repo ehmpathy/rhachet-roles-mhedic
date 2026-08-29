@@ -1,0 +1,50 @@
+# 2.1.score.stone
+
+## .what
+
+apply the **fixed, pre-cited instruments** to this lesion — the ABCDE rule and a validated dermoscopy
+checklist — against the thresholds already researched into the build-time inventory. this is the
+compiled core: it **applies** a known instrument, it does not enumerate or re-justify one. the
+pigmented-lesion differential is a known constant (see the inventory), not rebuilt per case.
+
+## .inputs
+
+- `1.1.intake.yield.md` — the captured ABCDE features, red-flags, image-kind
+- the build-time cited inventory (the amortized thresholds), read from
+  the diagnostician role leaf `src/domain.roles/diagnostician/briefs/inventory/`:
+  - `inventory.of=melanoma-abcde.md` — ABCDE sensitivity/specificity (in-person 83%/88%, image-based 53%/71%)
+  - `inventory.of=dermoscopy-algorithms._.md` — the INDEX over the per-algorithm cells; each cutoff is its own cell:
+    - `inventory.of=dermoscopy-algorithms.case=abcd-rule.md` — ABCD-rule > 4.75 → 0.81/0.72 (image)
+    - `inventory.of=dermoscopy-algorithms.case=7-point-checklist.md` — 7PCL ≥ 3 → 0.80/0.67 (image)
+    - `inventory.of=dermoscopy-algorithms.case=3-point-checklist.md` — 3PCL ≥ 2 → 0.74/0.60 (image)
+  - `inventory.of=pigmented-lesion-differential.md` — the fixed candidate set
+
+## .do
+
+- score the lesion on **ABCDE** as a **spot-evaluation** — the naked-eye pattern per axis. frame it
+  honestly: ABCDE is a spot-eval, **not** a screen; a single axis is a signal, not a verdict; an
+  over-read axis is a melanoma-specific hazard
+- if a **dermoscopic image** exists (per the intake image-kind), apply a validated dermoscopy checklist
+  and its cited cutoff (ABCD-rule > 4.75, or 7-point ≥ 3); no single algorithm is superior, so apply a
+  checklist, not a mandated one. if **only a naked-eye / phone photo** exists, apply ABCDE alone and
+  state the weak image-based sensitivity (53%) — a phone photo does not carry dermoscopy signal
+- rank the fixed candidate set (melanoma vs the benign candidates) by the scored signal; keep the
+  cited threshold beside each score so the read is auditable
+- if the case lacks an axis (a phase-1 gap), carry the gap — do not fill it by guess
+- gather any absent instrument evidence via the **bhrowser** only (`rule.require.bhrowser-citations`);
+  the pre-cited thresholds already live in the inventory and need only be referenced
+
+## .emit
+
+into `2.1.score.yield.md` — the ABCDE score, the dermoscopy score where an image supports it, and the
+candidate rank, each carried with its cited threshold.
+
+## .accrue
+
+if the case forced a new instrument citation not already in the build-time inventory, lift it,
+case-neutral, into `accrue/inventory.of=<topic>.md` (`rule.require.accrue-research`).
+
+## .done when
+
+the lesion is scored on ABCDE (spot-eval, framed honestly), on a dermoscopy checklist where an image
+supports it, the fixed candidate set is ranked, every score carries its cited threshold, gaps carried.

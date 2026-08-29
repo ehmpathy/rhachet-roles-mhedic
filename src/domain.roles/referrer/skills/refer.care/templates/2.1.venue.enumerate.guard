@@ -1,0 +1,33 @@
+artifacts:
+  - $route/2.1.venue.enumerate.yield.md
+
+reviews:
+  self:
+    - slug: has-urgency-not-regraded
+      say: |
+        did the venue map translate the GIVEN urgency into venue fit and NOT
+        re-grade acuity? the urgency is the diagnostician's; a venue map that
+        silently re-judges severity is a scope-boundary blocker
+        (define.referrer-scope).
+    - slug: has-all-venue-types
+      say: |
+        are all venue types enumerated — ER, urgent care, primary, specialist,
+        telehealth — each marked fit / no-fit against the given urgency with a
+        reason? a dropped venue narrows the patient's options unfairly.
+    - slug: has-boundary-cited
+      say: |
+        is the diagnostician boundary cited explicitly in the yield, so a reader
+        can see the urgency was carried in, not derived here?
+    - slug: has-telederm-tradeoff-cited
+      say: |
+        does the telederm venue on a pigmented lesion carry the cited
+        virtual-vs-in-person tradeoff (wish Q3) — telederm as a triage/start,
+        the weaker melanoma evidence named, not presented as an equal substitute?
+        the figure must trace to inventory.of=teledermatology-concordance.md
+        (rule.require.bhrowser-citations).
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/rule.require.bhrowser-citations*.md' --rules '.agent/**/motto.not-medical-advice*.md' --paths '$route/2.1.venue.enumerate.yield.md' --output '$route/.reviews/$stone.peer-review.venue.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

@@ -1,0 +1,35 @@
+# 1.1.intake.stone
+
+## .what
+
+capture the raw lesion history verbatim — the person's own words, the lesion timeline, the reported
+ABCDE observations, the red-flag symptoms — with no interpretation yet. mark what the case lacks. this
+is the ground the compiled route stands on.
+
+## .inputs
+
+- `0.seed.md` — the verbatim input: lesion description, history, location/access constraints
+
+## .do
+
+- transcribe the reported lesion features and timeline exactly as stated
+- capture the **ABCDE** observations as reported: Asymmetry, Border, Color, Diameter, Evolution
+- capture the **red-flag** symptoms as reported: blood, ulceration, rapid change, itch, a new lesion
+  on normal skin, a lesion that stands out from the person's others (the outlier)
+- capture **UV / sun-exposure** history (sunburns, indoor-tan-bed use, cumulative outdoor time)
+- capture **personal + family melanoma / skin-cancer** history as reported
+- note whether a **dermoscopic image** exists, or only a naked-eye / phone photo — the score stone
+  needs to know which signal the case carries
+- preserve the person's own words for later re-read (do not paraphrase away detail)
+- redact identity to a persona handle (`rule.forbid.pii`)
+- note the source of each datum (self-reported vs observed vs record), and note each **gap** where a
+  datum the score or redteam needs is absent (do not fill a gap by guess)
+
+## .emit
+
+into `1.1.intake.yield.md`.
+
+## .done when
+
+the verbatim lesion history, ABCDE observations, red-flag symptoms, UV history, personal/family
+history, timeline, and image-kind are captured, PII-safe, each datum's source marked, each gap noted.

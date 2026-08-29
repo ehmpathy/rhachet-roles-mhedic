@@ -1,0 +1,45 @@
+# 2.1.venue.enumerate.stone
+
+## .what
+
+enumerate the venue types that fit the **given** urgency: ER, urgent care, primary, specialist,
+telehealth. map urgency → venue and **do not** re-judge acuity — the urgency is the diagnostician's,
+carried in from 1.1; this stone only translates it into venue fit.
+
+## .inputs
+
+- `1.1.intake.need.yield.md` — the specialty, the given urgency, the access constraints
+- the build-time cited inventory, read from the diagnostician role leaf
+  `src/domain.roles/diagnostician/briefs/inventory/` (a diagnostic-accuracy fact the diagnostician
+  owns, cited here across the role boundary — per `rule.require.accrue-research`):
+  - `inventory.of=teledermatology-concordance.md` — the virtual-vs-in-person evidence (wish Q3):
+    telederm triage sensitivity is high (~94.9% for any skin cancer), but for **melanoma / pigmented
+    lesions** accuracy is more variable (sensitivity 59%–100%), and comparative data vs in-person are
+    scarce — so a telederm venue for a pigmented lesion is a reasonable **start**, not an equal
+    substitute (Cochrane/PMC6517019)
+
+## .do
+
+- list the candidate venue types: ER, urgent care, primary care, specialist (the implied specialty),
+  telehealth / telederm
+- for each venue, state whether it fits the **given** urgency and why (e.g. emergency → ER now;
+  soon → specialist or telederm; watch → primary or telehealth)
+- for the **telederm** venue on a pigmented lesion, carry the cited virtual-vs-in-person tradeoff
+  from the inventory (wish Q3): telederm is a strong **triage/start** but the melanoma evidence is
+  weaker and scarcer than in-person, so frame "start virtual, upgrade to in-person if flagged" — do
+  not present virtual as an equal substitute for a possible melanoma
+- cite the boundary explicitly: the urgency is carried as GIVEN from the diagnostician; this stone
+  does not re-grade it (`define.referrer-scope`)
+- note the access shape of each venue type in the abstract (typical wait, typical cost band) so
+  phase 3 knows what to search for
+
+## .emit
+
+into `2.1.venue.enumerate.yield.md` — the venue types, each marked fit / no-fit against the given
+urgency, with the boundary cited.
+
+## .done when
+
+the venue types are enumerated, each mapped to the given urgency with a reason, the telederm venue
+carries the cited virtual-vs-in-person tradeoff for pigmented lesions (wish Q3), the diagnostician
+boundary is cited, and no acuity was re-judged.

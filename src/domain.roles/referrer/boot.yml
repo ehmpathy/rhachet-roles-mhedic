@@ -5,4 +5,4 @@ always:
 
   skills:
     ref:
-      # - skills land here as they are built
+      - skills/refer.care.sh

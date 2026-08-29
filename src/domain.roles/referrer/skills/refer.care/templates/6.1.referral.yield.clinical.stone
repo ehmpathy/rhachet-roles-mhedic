@@ -1,0 +1,36 @@
+# 6.1.referral.yield.clinical.stone
+
+## .what
+
+assemble the **clinical layer** of the referral — the full detail: the venue options mapped to the
+given urgency, the ranked clinician options with their access constraints and citations, and the
+repeatable search method. this layer is the **engine**: it is what a clinician who wants the full
+picture reads. the plain-language patient summary (6.2) sits on top of it.
+
+## .inputs
+
+- `2.1.venue.enumerate.yield.md` — the venue types mapped to the given urgency
+- `3.1.clinician.find.yield.md` — the clinician options + citations + search method
+- `4.1.access.rank.yield.md` — the walkable rank + trade-offs
+- `5.1.prepare.yield.md` — the preparation sheet
+
+## .do
+
+- carry the **given urgency** forward verbatim (from 1.1) — do not re-judge it here
+- present the **venue options** and their fit to that urgency
+- present the **ranked clinician options**, each with its access constraints, trade-off, and
+  bhrowser citation
+- attach the **repeatable search method** so the list can be refreshed when stale
+- fold in the **preparation sheet** so the clinical layer is self-contained
+- carry the not-medical-advice disclaimer (this is guidance output)
+
+## .emit
+
+into `6.1.referral.yield.clinical.yield.md` — the full referral detail, citations intact, method
+attached, disclaimer carried.
+
+## .done when
+
+the venue options, the ranked cited clinician options, the search method, and the prep sheet are
+assembled into one clinical layer, the given urgency is carried (not re-judged), and the disclaimer
+is present.

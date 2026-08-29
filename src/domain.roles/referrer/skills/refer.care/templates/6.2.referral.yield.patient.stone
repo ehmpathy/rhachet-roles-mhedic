@@ -1,0 +1,32 @@
+# 6.2.referral.yield.patient.stone
+
+## .what
+
+write the **patient layer** — the plain-language summary a layperson reads: "here's who to see and
+how to get seen." this is the **interface** on top of the clinical engine (6.1). the raw rank and
+citations sit beneath; the patient is never handed a raw list to self-interpret.
+
+## .inputs
+
+- `6.1.referral.yield.clinical.yield.md` — the full clinical detail (the engine to translate)
+
+## .do
+
+- translate the top-ranked options into plain language: who to see, the venue (virtual or in-person),
+  and how to get seen (the walkable path — open-this-week vs covered-but-waits)
+- state the **given urgency** in plain words, exactly as the diagnostician set it — do not soften or
+  sharpen it (a "soon" stays "soon", not re-judged into "whenever")
+- point to the preparation sheet in plain terms (what to carry, what to ask)
+- carry the **not-medical-advice disclaimer** — this output is read by a layperson and acted on
+- add the **emergency carve-out**: if the case reads as an emergency, say plainly "call your local
+  emergency number now" (per `motto.not-medical-advice`)
+
+## .emit
+
+into `6.2.referral.yield.patient.yield.md` — the plain-language summary, disclaimer + emergency
+carve-out attached.
+
+## .done when
+
+the plain-language "who to see and how to get seen" summary is written, the given urgency is stated
+unaltered, the not-medical-advice disclaimer is present, and the emergency carve-out is included.

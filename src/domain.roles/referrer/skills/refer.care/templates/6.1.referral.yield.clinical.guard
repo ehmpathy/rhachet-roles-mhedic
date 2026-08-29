@@ -1,0 +1,26 @@
+artifacts:
+  - $route/6.1.referral.yield.clinical.yield.md
+
+reviews:
+  self:
+    - slug: has-citations-intact
+      say: |
+        does every clinician option in the clinical layer still carry its
+        bhrowser citation (never WebSearch/WebFetch)? a referral detail that
+        drops its citations breaks the traceable chain
+        (rule.require.bhrowser-citations).
+    - slug: has-method-attached
+      say: |
+        is the repeatable search method attached so a stale list can be
+        refreshed? the method is the durable half of the deliverable.
+    - slug: has-disclaimer-carried
+      say: |
+        does the clinical layer carry the not-medical-advice disclaimer? this is
+        guidance output; guidance without the disclaimer is a blocker
+        (motto.not-medical-advice).
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/rule.require.bhrowser-citations*.md' --rules '.agent/**/motto.not-medical-advice*.md' --paths '$route/6.1.referral.yield.clinical.yield.md' --output '$route/.reviews/$stone.peer-review.clinical.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

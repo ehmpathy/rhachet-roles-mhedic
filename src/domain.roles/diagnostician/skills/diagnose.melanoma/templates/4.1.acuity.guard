@@ -1,0 +1,38 @@
+artifacts:
+  - $route/4.1.acuity.yield.md
+
+reviews:
+  self:
+    - slug: has-binary-not-tiered
+      say: |
+        is the acuity a binary (emergency-now vs. see-a-clinician-soon), NOT a
+        three-tier grade? a finer grade over-resolves urgency for a possible cancer
+        — a blocker.
+    - slug: has-no-watch-tier
+      say: |
+        did you avoid a self-managed "watch and see" tier for a melanoma-flagged
+        lesion — the read is "have a clinician look, promptly"? a watch tier is the
+        false reassurance that is the costly miss — a blocker.
+    - slug: has-cleared-path-guarded
+      say: |
+        if the redteam confidently cleared the lesion, is the routine read fired ONLY
+        because every can't-miss member was excluded by an exam-grade read (not by low
+        probability), and does it still carry the disclaimer + "a future change
+        warrants a fresh look"? a routine read on a still-live melanoma is the watch
+        tier in disguise — a blocker.
+    - slug: has-emergency-floor
+      say: |
+        did you check the emergency-now floor (blood, ulceration, rapid change) and
+        carry "call your local emergency number now" where it fired
+        (motto.not-medical-advice carve-out)? an emergency-shaped case without it is
+        a blocker.
+    - slug: has-venue-deferred
+      say: |
+        does the stone name the onward-care kind (dermatology) but leave WHERE to the
+        referrer? a venue named here leaks the referrer-boundary.
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/motto.not-medical-advice*.md' --rules '.agent/**/rule.require.recommendation-disclaimer*.md' --paths '$route/4.1.acuity.yield.md' --output '$route/.reviews/$stone.peer-review.acuity.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

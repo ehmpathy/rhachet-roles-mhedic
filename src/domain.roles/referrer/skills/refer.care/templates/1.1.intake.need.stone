@@ -1,0 +1,41 @@
+# 1.1.intake.need.stone
+
+## .what
+
+capture what the diagnostician handed over: the specialty implied, the urgency read (as GIVEN), and
+the patient's access constraints. this is the ground the whole referral stands on. the referrer does
+**not** re-judge the urgency — it records it verbatim and routes on it.
+
+## .inputs
+
+- `0.seed.md` — the diagnostician's hand-off + the patient's stated access constraints.
+  the **canonical hand-off shape** is the diagnostician's `4.1.acuity.yield.md`: it carries
+  the onward-care kind + the urgency read, and stops short of the venue — exactly the
+  referrer's input, no more (the clinical `5.1` and patient `5.2` layers are for the human
+  reader, not the referral engine). seed `0.seed.md` from `4.1.acuity.yield.md`.
+
+## .do
+
+- transcribe the **specialty implied** by the case (e.g. dermatology for a pigmented lesion)
+- transcribe the **urgency read as given** by the diagnostician — quote it verbatim in whatever tiers
+  that diagnostician used (a melanoma hand-off is binary while melanoma is still live — emergency vs
+  see-soon, no self-managed watch tier — plus a routine read for a lesion confidently cleared of
+  melanoma), and do not re-derive, re-grade, or re-tier it (the diagnostician's call, per
+  `define.referrer-scope`)
+- capture the patient's **access constraints** in four dimensions: cost/coverage, distance/transport,
+  wait tolerance, language/accessibility needs
+- redact identity to a persona handle (`rule.forbid.pii`) — note that the **care-search area**
+  (the city/region to look for care in) is a search parameter, not the patient's home location:
+  coarsen the patient's *home address* to region (PII), but keep the *search target area* at
+  city-level so the clinician search can work (reconciled in `3.1.clinician.find.stone`)
+- note the source of each datum (diagnostician hand-off vs patient-stated)
+
+## .emit
+
+into `1.1.intake.need.yield.md` — the specialty, the given urgency (quoted), and the four access
+constraints, PII-safe, each datum's source marked.
+
+## .done when
+
+the specialty, the given urgency (as quoted from the diagnostician), and the four access constraints
+are captured, PII-safe, with each datum's source marked — and no acuity was re-judged.

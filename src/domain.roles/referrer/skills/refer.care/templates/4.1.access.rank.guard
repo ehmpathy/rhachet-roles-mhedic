@@ -1,0 +1,23 @@
+artifacts:
+  - $route/4.1.access.rank.yield.md
+
+reviews:
+  self:
+    - slug: has-walkable-metric
+      say: |
+        is the rank driven by the WALKABLE path — wait × cost × distance ×
+        language fit — weighted by the patient's own constraints, not by the
+        clinical ideal alone? a rank that ignores access ranks a path the
+        patient cannot walk.
+    - slug: has-urgency-floor-held
+      say: |
+        does the given-urgency floor hold — a slow option never outranks a fast
+        one when the urgency demands speed? urgency is carried from the
+        diagnostician, not traded away here.
+    - slug: has-tradeoffs-stated
+      say: |
+        is each top option's trade-off stated plainly (open-now vs covered,
+        near vs cheap)? a rank with no trade-offs hides the cost of each choice.
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

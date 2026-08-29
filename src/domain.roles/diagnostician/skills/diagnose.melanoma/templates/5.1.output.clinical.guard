@@ -1,0 +1,28 @@
+artifacts:
+  - $route/5.1.output.clinical.yield.md
+
+reviews:
+  self:
+    - slug: has-scores-and-cant-miss
+      say: |
+        does the layer carry the candidate rank with cited ABCDE + dermoscopy scores
+        AND the can't-miss check with any "cannot-exclude → excise" flag? a clinical
+        layer that lacks the can't-miss check hides the asymmetric miss.
+    - slug: has-binary-acuity
+      say: |
+        is the binary acuity (emergency-now vs. see-a-clinician-soon) stated as the
+        hand-off the referrer consumes, with the onward-care kind but not the venue?
+    - slug: has-hedge-kept
+      say: |
+        is it framed as a ranked read, NOT a verdict? a verdict voice on a possible
+        cancer is a blocker.
+    - slug: has-bhrowser-citations
+      say: |
+        does every factual claim trace to a bhrowser-read source (never
+        WebSearch/WebFetch), verbatim with URL/PMID (rule.require.bhrowser-citations)?
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.bhrowser-citations*.md' --paths '$route/5.1.output.clinical.yield.md' --output '$route/.reviews/$stone.peer-review.citations.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

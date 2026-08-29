@@ -46,14 +46,50 @@ area so it is not trapped in one case's private conclusion.
 stone researches
    ├─ case application  → $route/N.stone.yield.md            (obscure, per-case)
    └─ generic facts     → $route/accrue/inventory.of=<topic>.md   (fullsun, route-held)
-                              └─ promote (deliberate) →
-                                 .agent/repo=.this/role=any/briefs/inventory/    (repo-shared, cross-case)
+                              └─ promote (deliberate) → the MOST-COMMON-DENOMINATOR home:
+                                 ├─ used by ONE role  → src/domain.roles/<role>/briefs/inventory/   (role-scoped, cross-case)
+                                 └─ used by 2+ roles  → .agent/repo=.this/role=any/briefs/inventory/  (repo-shared, cross-case)
 ```
 
 - **`accrue/` is cheap** — no ceremony, held per-route, high-recall (accrue liberally).
 - **promotion is deliberate** — a curated lift of a fact proven generic enough to serve every future
-  route, so the repo-shared inventory stays clean, not flooded. this mirrors
+  route, so the inventory home stays clean, not flooded. this mirrors
   `rule.prefer.most-common-denominator` (push to the leaf; lift when reused), applied to research.
+
+## .the promotion destination — most-common-denominator by ROLE
+
+promotion has **two** scope axes, and both obey most-common-denominator. it is not enough to lift a
+fact from route-held to cross-case; it must also land at the **least-common role ancestor** that
+actually consumes it:
+
+| the fact is NATIVE to… | its promoted home |
+|------------------------|-------------------|
+| exactly ONE role's expertise (a melanoma dermoscopy fact, a telederm-accuracy fact → diagnostician; a provider census → referrer) | `src/domain.roles/<role>/briefs/inventory/` |
+| the shared expertise of TWO OR MORE roles (a fact each role would author on its own) | `.agent/repo=.this/role=any/briefs/inventory/` |
+
+`role=any` is the **repo-wide common ancestor** — the home for a fact genuinely shared across roles.
+to promote a single-role fact there is a **premature lift**: it pollutes every role's namespace with
+knowledge only one role owns, exactly the anti-pattern `rule.prefer.most-common-denominator` forbids
+(push to the outermost leaf; lift to the ancestor only when a second owner proves the reuse).
+
+## .native-to, NOT cited-by — the trap
+
+the axis is **ownership**, not usage. a fact is native to the role whose *domain expertise* it
+belongs to — not every role that happens to reference it. one role frequently **cites** another's
+knowledge across the role boundary; that citation does NOT make the fact shared.
+
+worked example — `teledermatology-concordance` (telederm sensitivity/specificity vs in-person):
+
+- the referrer's venue stone **cites** it to weigh "virtual now vs in-person later"
+- but the fact — *can a photo-based read diagnose a melanoma as accurately as an in-person exam?* —
+  is a **diagnostic-accuracy** fact. only the **diagnostician** would author, update, or vouch for
+  it. the referrer consumes a diagnostician output; it does not co-own the evidence.
+- verdict: **diagnostician role leaf**, cited across the boundary by the referrer — NOT `role=any`.
+
+the test, before you promote: **"which role's expertise would AUTHOR this fact?"** — not "who reads
+it". one role owns it → that role's `briefs/inventory/`. genuinely two+ roles would each author it
+independently → `role=any`. a cross-role citation is normal and expected; it never, on its own,
+earns `role=any`. when unsure, prefer the role leaf; a later lift is cheap, the reverse is churn.
 
 ## .what an accrued entry must carry
 
@@ -93,6 +129,9 @@ accrued. it demands:
 - a **patient-specific decision** written into `accrue/` (fullsun) instead of the yield (obscure) =
   **blocker** (a fullsun leak, per `rule.require.fullsun-facts-not-tactics`)
 - a route with a research phase but **no `accrue/` dir** = **blocker**
+- a promoted inventory placed at repo-wide `role=any` when **only one role's expertise owns it** =
+  **blocker** (premature lift; it belongs at `src/domain.roles/<role>/briefs/inventory/` — a
+  cross-role *citation* does not earn `role=any`, only shared *authorship* does)
 
 ## .see also
 

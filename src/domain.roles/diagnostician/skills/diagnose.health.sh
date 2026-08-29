@@ -11,7 +11,7 @@
 #
 # usage:
 #   rhx diagnose.health init --at .demo/case=<slug>  # stamp + bind the route at a dir
-#   rhx diagnose.health init                         # stamp at .route/v$date.diagnose.health
+#   rhx diagnose.health init                         # stamp at .route/v<DATE>.diagnose.health
 #   rhx diagnose.health --help
 #
 # guarantee:
@@ -39,7 +39,10 @@ while [[ $# -gt 0 ]]; do
   case $1 in
     # rhachet passes these - ignore them
     --skill|--repo|--role)
-      shift 2
+      # guard the value shift — a flag with no value must not `shift 2` past the
+      # end (raw "shift count out of range" under set -u); shift the value only if present
+      shift
+      [[ $# -gt 0 ]] && shift
       ;;
     --help|-h)
       echo "usage: rhx diagnose.health <subcommand> [--at <dir>]"
@@ -48,7 +51,7 @@ while [[ $# -gt 0 ]]; do
       echo "  init    stamp the superposition-diagnosis route and bind it"
       echo ""
       echo "options:"
-      echo "  --at <dir>   where to stamp the route (default: .route/v\$date.diagnose.health)"
+      echo "  --at <dir>   where to stamp the route (default: .route/v<DATE>.diagnose.health)"
       echo ""
       echo "examples:"
       echo "  rhx diagnose.health init --at .demo/case=miki-vet-2026-08-07"
@@ -60,17 +63,20 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
     *)
+      # unknown token before a subcommand is a bad invocation — fail fast, no else branch
       if [[ -z "$SUBCOMMAND" ]]; then
+        # all error context on stderr so a caller can capture it as one stream
         print_error "unknown subcommand: $1"
-        echo ""
-        echo "   valid subcommands: init"
-        echo ""
-        echo "   run \`rhx diagnose.health --help\` for usage"
-        exit 1
-      else
-        PASSTHROUGH_ARGS+=("$1")
-        shift
+        echo "" >&2
+        echo "   valid subcommands: init" >&2
+        echo "" >&2
+        echo "   run \`rhx diagnose.health --help\` for usage" >&2
+        exit 2 # constraint: caller must fix the invocation (rule.require.exit-code-semantics)
       fi
+
+      # otherwise it is an arg for the subcommand — collect it
+      PASSTHROUGH_ARGS+=("$1")
+      shift
       ;;
   esac
 done
@@ -80,12 +86,13 @@ done
 ######################################################################
 
 if [[ -z "$SUBCOMMAND" ]]; then
+  # all error context on stderr so a caller can capture it as one stream
   print_error "no subcommand specified"
-  echo ""
-  echo "   valid subcommands: init"
-  echo ""
-  echo "   run \`rhx diagnose --help\` for usage"
-  exit 1
+  echo "" >&2
+  echo "   valid subcommands: init" >&2
+  echo "" >&2
+  echo "   run \`rhx diagnose.health --help\` for usage" >&2
+  exit 2 # constraint: caller must fix the invocation (rule.require.exit-code-semantics)
 fi
 
 case "$SUBCOMMAND" in
@@ -94,9 +101,10 @@ case "$SUBCOMMAND" in
     source "$SKILL_DIR/diagnose.health/init.sh"
     ;;
   *)
+    # all error context on stderr so a caller can capture it as one stream
     print_error "unknown subcommand: $SUBCOMMAND"
-    echo ""
-    echo "   valid subcommands: init"
-    exit 1
+    echo "" >&2
+    echo "   valid subcommands: init" >&2
+    exit 2 # constraint: caller must fix the invocation (rule.require.exit-code-semantics)
     ;;
 esac
