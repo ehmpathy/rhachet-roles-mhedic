@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`diagnose.melanoma.sh given: [case1] a human asks for help when: [t0] --help is passed then: it prints the usage, snapshot holds 1`] = `
+"usage: rhx diagnose.melanoma <subcommand> [--at <dir>]
+
+subcommands:
+  init    stamp the melanoma compiled-diagnosis route and bind it
+
+options:
+  --at <dir>   where to stamp the route (default: .route/v<DATE>.diagnose.melanoma)
+
+examples:
+  rhx diagnose.melanoma init --at .demo/case=shoulder-mole-2026-08-14
+  rhx diagnose.melanoma init
+
+next:
+  the route emits 4.1.acuity.yield.md (onward-care kind + urgency).
+  seed the companion 'rhx refer.care' route's 0.seed.md from THAT file
+  (not the 5.1/5.2 reader layers) to find who to see and where.
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case2] an unknown subcommand when: [t0] a bogus subcommand is passed then: it prints the error + valid subcommands to stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: unknown subcommand: frobnicate
+
+   valid subcommands: init
+
+   run \`rhx diagnose.melanoma --help\` for usage
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case3] init stamps a route at a target dir when: [t0] init --at <dir> runs (bind skipped for hermeticity) then: it prints the stamp confirmation, snapshot held 1`] = `
+"🐍 radical — the way is paved
+
+⚕️ diagnose.melanoma init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.stone
+      ├─ 2.1.score.stone
+      ├─ 3.1.redteam.stone
+      ├─ 4.1.acuity.stone
+      ├─ 5.1.output.clinical.stone
+      ├─ 5.2.output.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route <ROUTE> — stamped but NOT bound; bind it with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case4] route bind fails — the skill surfaces it loud when: [t0] rhx route.bind.set exits non-zero, init runs with bind live then: it names the bind fix on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: route.bind.set failed — route stamped at <ROUTE> but not bound; bind later with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case5] init with an unknown option when: [t0] init --root <dir> runs (--root is not a valid option) then: it names the unknown option on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: unknown option: --root — the only init option is --at <dir>
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case6] init when the templates dir is absent when: [t0] a skill copy without a templates dir runs init then: it names the absent templates dir on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: templates dir not found: <HOME>/diagnose.melanoma/templates
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case7] init when the templates dir holds no stones when: [t0] a skill copy with an empty templates dir runs init then: it names the no-stones condition on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: no .stone templates found in <HOME>/diagnose.melanoma/templates — cannot stamp an empty route
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case8] no subcommand at all when: [t0] the skill runs with zero args then: it says no subcommand was specified, on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: no subcommand specified
+
+   valid subcommands: init
+
+   run \`rhx diagnose.melanoma --help\` for usage
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case9] init with no --at (default dated route path) when: [t0] init runs with no --at, from a temp cwd then: it stamps at the default .route/v<DATE>.diagnose.melanoma path, snapshot held 1`] = `
+"🐍 radical — the way is paved
+
+⚕️ diagnose.melanoma init
+   ├─ route: .route/v<DATE>.diagnose.melanoma/ ✨
+   ├─ accrue: .route/v<DATE>.diagnose.melanoma/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.stone
+      ├─ 2.1.score.stone
+      ├─ 3.1.redteam.stone
+      ├─ 4.1.acuity.stone
+      ├─ 5.1.output.clinical.stone
+      ├─ 5.2.output.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route .route/v<DATE>.diagnose.melanoma — stamped but NOT bound; bind it with: rhx route.bind.set --route .route/v<DATE>.diagnose.melanoma
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case10] init --at with no value (the target is absent) when: [t0] init --at runs with --at as the last token then: it names the absent --at value on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: --at requires a directory value, e.g. --at .demo/case=<slug>
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case11] init --at an extant route is an idempotent re-stamp when: [t0] init runs twice, with a stone edited between the two runs then: the re-stamp success output holds, snapshot held 1`] = `
+"🐍 radical — the way is paved
+
+⚕️ diagnose.melanoma init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.stone
+      ├─ 2.1.score.stone
+      ├─ 3.1.redteam.stone
+      ├─ 4.1.acuity.stone
+      ├─ 5.1.output.clinical.stone
+      ├─ 5.2.output.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route <ROUTE> — stamped but NOT bound; bind it with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case12] bind succeeds but the branch cannot be read when: [t0] rhx is stubbed to pass but git rev-parse is stubbed to fail then: it names the inconsistent repo state on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: route bound but the current branch could not be read — repo state is inconsistent
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case13] the bind-success footer (bind ok, REAL git branch) when: [t0] rhx route.bind.set exits 0 and REAL git names the branch then: the footer names the branch <-> route bind, snapshot held 1`] = `
+"🐍 radical — the way is paved
+
+⚕️ diagnose.melanoma init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.stone
+      ├─ 2.1.score.stone
+      ├─ 3.1.redteam.stone
+      ├─ 4.1.acuity.stone
+      ├─ 5.1.output.clinical.stone
+      ├─ 5.2.output.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ branch <BRANCH> <-> route <ROUTE>
+"
+`;
+
+exports[`diagnose.melanoma.sh given: [case14] a REAL rhx route.bind.set against a route that does not exist when: [t0] rhx route.bind.set --route <ROUTE> runs for real then: the live rejection output holds its shape, snapshot held 1`] = `
+"🪨 run solid skill repo=bhrain/role=driver/skill=route.bind.set
+   └─ ✋ blocked by constraints
+
+error: BadRequestError: route directory does not exist: <ROUTE>
+
+{
+  "route": "<ROUTE>"
+}
+"
+`;

@@ -1,0 +1,53 @@
+# 5.2.output.patient.stone
+
+## .what
+
+translate the clinical layer (5.1) into the **patient layer** — the plain-language top layer the
+ultimate human reader sees. it answers "how worried / what next" in calm, lay words. it never hands
+the reader a raw rank to self-interpret; the scores sit beneath, in 5.1.
+
+## .inputs
+
+- `5.1.output.clinical.yield.md` — the clinical engine layer
+- `4.1.acuity.yield.md` — the binary acuity
+- `motto.not-medical-advice.[motto].md` — the disclaimer + emergency carve-out text
+- the build-time cited inventory, read from the diagnostician role leaf `src/domain.roles/diagnostician/briefs/inventory/`:
+  - `inventory.of=melanoma-ai-classifiers.md` — the phone-limit figure this layer cites
+    (consumer classifier sensitivity floors at 7%; range 7%–73%, Cochrane/PMC6517294). the "7%"
+    is referenced from here, not inlined as a bare literal, so it stays in sync with its source
+
+## .do
+
+- open with the **not-medical-advice disclaimer** (verbatim from the motto)
+- translate the read into plain words: how much concern this lesion warrants —
+  **emergency-now** ("call your local emergency number now"), **see a clinician soon** (a dermatologist,
+  weeks not months), or, where the redteam confidently cleared it, **routine** (no urgent visit needed,
+  but the disclaimer holds and any future change warrants a fresh look)
+- if the emergency floor fired, carry the **emergency carve-out** prominently: "if this is a medical
+  emergency, call your local emergency number now"
+- do NOT offer a self-managed "watch and see" for a melanoma-flagged lesion — while melanoma is still
+  in play the honest lay message is "have a professional look, promptly"
+- be honest about the **phone limit**: a phone photo tracks **change**; it is not a diagnosis and does
+  not rule melanoma out (cited: consumer classifier sensitivity floors at 7%). frame the phone as a
+  change-detector, not a firefighter
+- name **what to watch for** in the meantime (the red-line signs) and **what to carry** to the visit
+  (photos with a scale, the timeline) — the reader is not asked to self-diagnose
+- answer the wish's **self-scan question** with a one-line signpost: a fixed-cadence self-surveillance
+  schedule (weekly phone photos to catch change early) is a real practice, but the *surveillance
+  cadence* is the preventer/monitor role's job, not this diagnostician layer's (and that role is not
+  yet built). in the meantime the honest lay guidance is "photograph on a fixed cadence, from the same
+  angle and light, and escalate on any ABCDE change" — paired with the phone-limit note below
+- point to the referrer for **where** to be seen (venue is the referrer's, not this layer's)
+- keep it calm and lowercase-lean, free of a verdict voice — a ranked possibility, not a label
+
+## .emit
+
+into `5.2.output.patient.yield.md` — the plain-language patient summary, disclaimer + carve-out
+attached.
+
+## .done when
+
+the patient summary opens with the disclaimer, states the binary urgency in plain words, carries the
+emergency carve-out where it fired, offers no self-managed watch tier, frames the phone as a
+change-detector, signposts the self-scan cadence as the preventer/monitor role's (not-yet-built) job,
+and lists what to watch for + what to carry.

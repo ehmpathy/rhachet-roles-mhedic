@@ -1,0 +1,46 @@
+# 4.1.acuity.stone
+
+## .what
+
+collapse urgency to a **binary for a melanoma-flagged lesion** — the sharpest melanoma-specific move.
+for a possible cancer, a three-tier grade is a hazard: a self-managed "watch" tier reads as
+reassurance, and a false "watch" on a melanoma is a costly miss. so for any lesion the redteam could
+not confidently clear, the acuity is two states only — emergency-now or see-a-clinician-soon — with
+**no self-managed watch tier**. a lesion the redteam DID confidently clear (no can't-miss member left
+live) gets a distinct routine read; the binary applies precisely where melanoma is still in play.
+
+## .inputs
+
+- `3.1.redteam.yield.md` — the refined rank + any "cannot-exclude → excise" flag
+- `1.1.intake.yield.md` — the red-flag symptoms (blood, ulceration, rapid change)
+
+## .do
+
+- fire the **emergency-now** floor if the lesion bleeds, is ulcerated, or changes fast — the read is
+  "call your local emergency number now"
+- otherwise, for any melanoma-flagged lesion (a can't-miss member the redteam could not confidently
+  exclude), set **see-a-clinician-soon** — a dermatologist, weeks not months
+- for a lesion the redteam **confidently cleared** (every can't-miss member excluded by an exam-grade
+  read, not by low probability), set the **routine** read — no urgent referral — but carry two honest
+  caveats: the disclaimer still holds, and because over half of melanomas arise on normal skin, any
+  future **change** in the lesion (or a new outlier) warrants a fresh look. this is NOT a "watch the
+  melanoma" tier — it fires only when melanoma is no longer in play
+- do NOT emit a "watch and see" tier for a melanoma-flagged lesion; while melanoma is still live the
+  honest read is "have a clinician look, promptly"
+- do NOT claim a finer urgency grade than the binary — the tool must not over-grade urgency for a
+  possible cancer
+- name **which** onward care the urgency implies (dermatology), but not **where** — the venue is the
+  referrer's (the referrer-boundary)
+
+## .emit
+
+into `4.1.acuity.yield.md` — the read (emergency-now / see-a-clinician-soon / routine), the trigger
+that set it, and the onward-care kind (not the venue). **this yield is the canonical hand-off to the
+referrer**: `refer.care` seeds its `0.seed.md` from this file — not the `5.1`/`5.2` reader-side
+layers — because it carries the urgency + onward-care kind and stops short of the venue.
+
+## .done when
+
+the read is set from the redteam outcome, the emergency floor is checked, the melanoma-flagged path is
+a binary with no self-managed watch tier, the confidently-cleared path carries the disclaimer +
+change-triggers-a-fresh-look caveat, the venue is left to the referrer.

@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`diagnose.health.sh given: [case1] a human asks for help when: [t0] --help is passed then: it prints the usage, snapshot holds 1`] = `
+"usage: rhx diagnose.health <subcommand> [--at <dir>]
+
+subcommands:
+  init    stamp the superposition-diagnosis route and bind it
+
+options:
+  --at <dir>   where to stamp the route (default: .route/v<DATE>.diagnose.health)
+
+examples:
+  rhx diagnose.health init --at .demo/case=miki-vet-2026-08-07
+  rhx diagnose.health init
+"
+`;
+
+exports[`diagnose.health.sh given: [case2] an unknown subcommand when: [t0] a bogus subcommand is passed then: it prints the error + valid subcommands to stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: unknown subcommand: frobnicate
+
+   valid subcommands: init
+
+   run \`rhx diagnose.health --help\` for usage
+"
+`;
+
+exports[`diagnose.health.sh given: [case3] init stamps a route at a target dir when: [t0] init --at <dir> runs (bind skipped for hermeticity) then: it prints the stamp confirmation, snapshot held 1`] = `
+"🐍 radical — the way is paved
+
+⚕️ diagnose.health init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.capture.stone
+      ├─ 1.2.intake.structure.stone
+      ├─ 1.3.intake.gaps.stone
+      ├─ 2.1.scenario.enumeration.from.imagination.stone
+      ├─ 2.2.scenario.enumeration.from.literature.stone
+      ├─ 2.3.scenario.enumeration.blend.stone
+      ├─ 3.1.scenario.disentangle.correlation.literature.stone
+      ├─ 3.2.scenario.disentangle.correlation.anecdotes.stone
+      ├─ 3.3.scenario.disentangle.correlation.blend.stone
+      ├─ 4.1.scenario.elimination.assay.enumerate.stone
+      ├─ 4.2.scenario.elimination.assay.rank.stone
+      ├─ 4.3.scenario.elimination.assay.plan.stone
+      ├─ 5.1.scenario.rerank.redteam.steelman.stone
+      ├─ 5.2.scenario.rerank.redteam.attack.stone
+      ├─ 5.3.scenario.rerank.redteam.refine.stone
+      ├─ 6.1.scenario.superposition.bounds.stone
+      ├─ 6.2.scenario.superposition.prevention.stone
+      ├─ 6.3.scenario.superposition.care.stone
+      ├─ 7.1.acuity.envelope.emergency.stone
+      ├─ 7.2.acuity.envelope.sameday.stone
+      ├─ 7.3.acuity.envelope.watch.stone
+      ├─ 8.1.diagnosis.superposition.ranked.stone
+      ├─ 8.2.diagnosis.superposition.eliminated.stone
+      ├─ 8.3.diagnosis.superposition.envelope.stone
+      ├─ 9.1.treatment.superposition.noregret.stone
+      ├─ 9.2.treatment.superposition.conditional.stone
+      ├─ 9.3.treatment.superposition.veto.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route <ROUTE> — stamped but NOT bound; bind it with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`diagnose.health.sh given: [case4] route bind fails — the skill surfaces it loud when: [t0] rhx route.bind.set exits non-zero, init runs with bind live then: it names the bind fix on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: route.bind.set failed — route stamped at <ROUTE> but not bound; bind later with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`diagnose.health.sh given: [case5] init with an unknown option when: [t0] init --root <dir> runs (--root is not a valid option) then: it names the unknown option on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: unknown option: --root — the only init option is --at <dir>
+"
+`;
+
+exports[`diagnose.health.sh given: [case6] init when the templates dir is absent when: [t0] a skill copy without a templates dir runs init then: it names the absent templates dir on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: templates dir not found: <HOME>/diagnose.health/templates
+"
+`;
+
+exports[`diagnose.health.sh given: [case7] init when the templates dir holds no stones when: [t0] a skill copy with an empty templates dir runs init then: it names the no-stones condition on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: no .stone templates found in <HOME>/diagnose.health/templates — cannot stamp an empty route
+"
+`;
+
+exports[`diagnose.health.sh given: [case8] no subcommand at all when: [t0] the skill runs with zero args then: it says no subcommand was specified, on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: no subcommand specified
+
+   valid subcommands: init
+
+   run \`rhx diagnose.health --help\` for usage
+"
+`;
+
+exports[`diagnose.health.sh given: [case9] init with no --at (default dated route path) when: [t0] init runs with no --at, from a temp cwd then: it stamps at the default .route/v<DATE>.diagnose.health path, snapshot held 1`] = `
+"🐍 radical — the way is paved
+
+⚕️ diagnose.health init
+   ├─ route: .route/v<DATE>.diagnose.health/ ✨
+   ├─ accrue: .route/v<DATE>.diagnose.health/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.capture.stone
+      ├─ 1.2.intake.structure.stone
+      ├─ 1.3.intake.gaps.stone
+      ├─ 2.1.scenario.enumeration.from.imagination.stone
+      ├─ 2.2.scenario.enumeration.from.literature.stone
+      ├─ 2.3.scenario.enumeration.blend.stone
+      ├─ 3.1.scenario.disentangle.correlation.literature.stone
+      ├─ 3.2.scenario.disentangle.correlation.anecdotes.stone
+      ├─ 3.3.scenario.disentangle.correlation.blend.stone
+      ├─ 4.1.scenario.elimination.assay.enumerate.stone
+      ├─ 4.2.scenario.elimination.assay.rank.stone
+      ├─ 4.3.scenario.elimination.assay.plan.stone
+      ├─ 5.1.scenario.rerank.redteam.steelman.stone
+      ├─ 5.2.scenario.rerank.redteam.attack.stone
+      ├─ 5.3.scenario.rerank.redteam.refine.stone
+      ├─ 6.1.scenario.superposition.bounds.stone
+      ├─ 6.2.scenario.superposition.prevention.stone
+      ├─ 6.3.scenario.superposition.care.stone
+      ├─ 7.1.acuity.envelope.emergency.stone
+      ├─ 7.2.acuity.envelope.sameday.stone
+      ├─ 7.3.acuity.envelope.watch.stone
+      ├─ 8.1.diagnosis.superposition.ranked.stone
+      ├─ 8.2.diagnosis.superposition.eliminated.stone
+      ├─ 8.3.diagnosis.superposition.envelope.stone
+      ├─ 9.1.treatment.superposition.noregret.stone
+      ├─ 9.2.treatment.superposition.conditional.stone
+      ├─ 9.3.treatment.superposition.veto.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route .route/v<DATE>.diagnose.health — stamped but NOT bound; bind it with: rhx route.bind.set --route .route/v<DATE>.diagnose.health
+"
+`;
+
+exports[`diagnose.health.sh given: [case10] init --at with no value (the target is absent) when: [t0] init --at runs with --at as the last token then: it names the absent --at value on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: --at requires a directory value, e.g. --at .demo/case=<slug>
+"
+`;
+
+exports[`diagnose.health.sh given: [case11] init --at an extant route is an idempotent re-stamp when: [t0] init runs twice, with a stone edited between the two runs then: the re-stamp success output holds, snapshot held 1`] = `
+"🐍 radical — the way is paved
+
+⚕️ diagnose.health init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.capture.stone
+      ├─ 1.2.intake.structure.stone
+      ├─ 1.3.intake.gaps.stone
+      ├─ 2.1.scenario.enumeration.from.imagination.stone
+      ├─ 2.2.scenario.enumeration.from.literature.stone
+      ├─ 2.3.scenario.enumeration.blend.stone
+      ├─ 3.1.scenario.disentangle.correlation.literature.stone
+      ├─ 3.2.scenario.disentangle.correlation.anecdotes.stone
+      ├─ 3.3.scenario.disentangle.correlation.blend.stone
+      ├─ 4.1.scenario.elimination.assay.enumerate.stone
+      ├─ 4.2.scenario.elimination.assay.rank.stone
+      ├─ 4.3.scenario.elimination.assay.plan.stone
+      ├─ 5.1.scenario.rerank.redteam.steelman.stone
+      ├─ 5.2.scenario.rerank.redteam.attack.stone
+      ├─ 5.3.scenario.rerank.redteam.refine.stone
+      ├─ 6.1.scenario.superposition.bounds.stone
+      ├─ 6.2.scenario.superposition.prevention.stone
+      ├─ 6.3.scenario.superposition.care.stone
+      ├─ 7.1.acuity.envelope.emergency.stone
+      ├─ 7.2.acuity.envelope.sameday.stone
+      ├─ 7.3.acuity.envelope.watch.stone
+      ├─ 8.1.diagnosis.superposition.ranked.stone
+      ├─ 8.2.diagnosis.superposition.eliminated.stone
+      ├─ 8.3.diagnosis.superposition.envelope.stone
+      ├─ 9.1.treatment.superposition.noregret.stone
+      ├─ 9.2.treatment.superposition.conditional.stone
+      ├─ 9.3.treatment.superposition.veto.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route <ROUTE> — stamped but NOT bound; bind it with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`diagnose.health.sh given: [case12] bind succeeds but the branch cannot be read when: [t0] rhx is stubbed to pass but git rev-parse is stubbed to fail then: it names the inconsistent repo state on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: route bound but the current branch could not be read — repo state is inconsistent
+"
+`;
+
+exports[`diagnose.health.sh given: [case13] the bind-success footer (bind ok, REAL git branch) when: [t0] rhx route.bind.set exits 0 and REAL git names the branch then: the footer names the branch <-> route bind, snapshot held 1`] = `
+"🐍 radical — the way is paved
+
+⚕️ diagnose.health init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.capture.stone
+      ├─ 1.2.intake.structure.stone
+      ├─ 1.3.intake.gaps.stone
+      ├─ 2.1.scenario.enumeration.from.imagination.stone
+      ├─ 2.2.scenario.enumeration.from.literature.stone
+      ├─ 2.3.scenario.enumeration.blend.stone
+      ├─ 3.1.scenario.disentangle.correlation.literature.stone
+      ├─ 3.2.scenario.disentangle.correlation.anecdotes.stone
+      ├─ 3.3.scenario.disentangle.correlation.blend.stone
+      ├─ 4.1.scenario.elimination.assay.enumerate.stone
+      ├─ 4.2.scenario.elimination.assay.rank.stone
+      ├─ 4.3.scenario.elimination.assay.plan.stone
+      ├─ 5.1.scenario.rerank.redteam.steelman.stone
+      ├─ 5.2.scenario.rerank.redteam.attack.stone
+      ├─ 5.3.scenario.rerank.redteam.refine.stone
+      ├─ 6.1.scenario.superposition.bounds.stone
+      ├─ 6.2.scenario.superposition.prevention.stone
+      ├─ 6.3.scenario.superposition.care.stone
+      ├─ 7.1.acuity.envelope.emergency.stone
+      ├─ 7.2.acuity.envelope.sameday.stone
+      ├─ 7.3.acuity.envelope.watch.stone
+      ├─ 8.1.diagnosis.superposition.ranked.stone
+      ├─ 8.2.diagnosis.superposition.eliminated.stone
+      ├─ 8.3.diagnosis.superposition.envelope.stone
+      ├─ 9.1.treatment.superposition.noregret.stone
+      ├─ 9.2.treatment.superposition.conditional.stone
+      ├─ 9.3.treatment.superposition.veto.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ branch <BRANCH> <-> route <ROUTE>
+"
+`;
+
+exports[`diagnose.health.sh given: [case14] a REAL rhx route.bind.set against a route that does not exist when: [t0] rhx route.bind.set --route <ROUTE> runs for real then: the live rejection output holds its shape, snapshot held 1`] = `
+"🪨 run solid skill repo=bhrain/role=driver/skill=route.bind.set
+   └─ ✋ blocked by constraints
+
+error: BadRequestError: route directory does not exist: <ROUTE>
+
+{
+  "route": "<ROUTE>"
+}
+"
+`;

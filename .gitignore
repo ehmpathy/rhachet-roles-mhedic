@@ -6,6 +6,11 @@
 .cache
 !**/__fixtures__/**/.cache
 .env
+.claude/scheduled_tasks.lock
+.plan/temporary
+.play/temporary
+# (census db.* data caches are ignored by a local .gitignore inside each db.access/
+#  and db.federal/ dir — co-located there, so no repo-root glob is needed here)
 .rhachet
 .serverless
 .temp

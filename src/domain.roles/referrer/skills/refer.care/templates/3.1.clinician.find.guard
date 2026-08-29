@@ -1,0 +1,32 @@
+artifacts:
+  - $route/3.1.clinician.find.yield.md
+
+reviews:
+  self:
+    - slug: has-bhrowser-citations
+      say: |
+        is every clinician option traced to a bhrowser-read source (never
+        WebSearch/WebFetch), quoted verbatim with its URL? an unbacked clinician
+        option is a blocker (rule.require.bhrowser-citations).
+    - slug: has-repeatable-method
+      say: |
+        is the repeatable search method recorded — exact query terms, sites
+        walked, filters applied — so the human can re-run it when the list goes
+        stale? the method is the durable deliverable; a list with no method is a
+        frozen shortlist that rots.
+    - slug: has-access-per-option
+      say: |
+        does each option carry its access constraints — wait, cost/coverage,
+        distance, language fit? an option with no access shape cannot be ranked
+        in phase 4.
+    - slug: has-accrued-facts
+      say: |
+        did you lift the generic cited facts into accrue/inventory.of=<topic>,
+        case-neutral, separate from the yield (rule.require.accrue-research)?
+        research trapped only in the yield is a blocker.
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.bhrowser-citations*.md' --rules '.agent/**/rule.require.accrue-research*.md' --paths '$route/3.1.clinician.find.yield.md' --paths '$route/accrue/*.md' --output '$route/.reviews/$stone.peer-review.citations.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

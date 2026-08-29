@@ -1,0 +1,30 @@
+artifacts:
+  - $route/2.1.score.yield.md
+
+reviews:
+  self:
+    - slug: has-cited-thresholds
+      say: |
+        does every score carry its cited threshold from the build-time inventory
+        (ABCDE 83%/88%, ABCD-rule > 4.75, 7-point ≥ 3)? a score with no cited cutoff
+        is a guess, not a compiled read — a blocker (rule.require.bhrowser-citations).
+    - slug: has-abcde-as-spot-eval
+      say: |
+        is ABCDE framed as a spot-evaluation, not a screen — a single axis a signal,
+        not a verdict? an over-read ABCDE axis is the melanoma-specific hazard.
+    - slug: has-image-kind-honored
+      say: |
+        did you apply a dermoscopy checklist ONLY where a dermoscopic image exists,
+        and for a naked-eye / phone photo apply ABCDE alone and state its weak
+        image-based sensitivity (53%)? a phone photo carries no dermoscopy signal.
+    - slug: has-fixed-differential
+      say: |
+        did you rank the fixed candidate set from the inventory, not enumerate a new
+        one? the differential is a known constant — a re-enumerated one is the
+        open-engine ceremony this route exists to cut.
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.bhrowser-citations*.md' --rules '.agent/**/rule.require.accrue-research*.md' --paths '$route/2.1.score.yield.md' --paths '$route/accrue/*.md' --output '$route/.reviews/$stone.peer-review.citations.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

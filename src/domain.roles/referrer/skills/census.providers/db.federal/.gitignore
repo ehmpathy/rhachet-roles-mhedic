@@ -1,0 +1,5 @@
+# regenerable federal census data — public NPI-registry dumps + the coverage
+# projection, rebuilt by the census playbooks (federal.census.fetch, project.federal.coverage).
+# ignore all contents; keep only this .gitignore (anchors the dir).
+*
+!.gitignore

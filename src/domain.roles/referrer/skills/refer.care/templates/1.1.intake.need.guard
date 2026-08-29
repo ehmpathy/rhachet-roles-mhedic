@@ -1,0 +1,32 @@
+artifacts:
+  - $route/1.1.intake.need.yield.md
+
+reviews:
+  self:
+    - slug: has-seed-present
+      say: |
+        is 0.seed.md present at the route root, holding the diagnostician's
+        acuity read (the diagnose.melanoma route's 4.1.acuity.yield.md)? the
+        referral has no input without it. if it is absent, the operator skipped
+        the hand-off — seed it via `rhx refer.care init --seed-from <path>` or
+        hand-copy the acuity yield into 0.seed.md. an absent seed is a blocker.
+    - slug: has-urgency-as-given
+      say: |
+        is the diagnostician's urgency recorded AS GIVEN — quoted, not
+        re-derived or re-graded? a referrer that re-judges acuity has stepped
+        out of scope (define.referrer-scope). re-judged urgency is a blocker.
+    - slug: has-four-access-dimensions
+      say: |
+        are all four access constraints captured — cost/coverage,
+        distance/transport, wait tolerance, language/accessibility? a missed
+        dimension routes the patient down a path they cannot walk.
+    - slug: has-pii-redacted
+      say: |
+        is every identity a persona handle, not a real identifier? confirm
+        rule.forbid.pii holds across the whole intake.
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/rule.forbid.pii*.md' --paths '$route/1.1.intake.need.yield.md' --output '$route/.reviews/$stone.peer-review.pii.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

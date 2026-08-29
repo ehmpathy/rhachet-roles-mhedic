@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`refer.care.sh given: [case1] a human asks for help when: [t0] --help is passed then: it prints the usage, snapshot holds 1`] = `
+"usage: rhx refer.care <subcommand> [--at <dir>] [--seed-from <path>]
+
+subcommands:
+  init    stamp the care-referral route and bind it
+
+options:
+  --at <dir>          where to stamp the route (default: .route/v<DATE>.refer.care)
+  --seed-from <path>  copy <path> into the route's 0.seed.md at stamp time
+                      (mechanizes the diagnose.melanoma -> refer.care hand-off)
+
+examples:
+  rhx refer.care init --at .demo/case=dermo-panama-2026-08-14
+  rhx refer.care init --at .demo/case=x --seed-from .demo/case=x-melanoma/4.1.acuity.yield.md
+  rhx refer.care init
+
+input:
+  seed this route's 0.seed.md from the companion 'rhx diagnose.melanoma'
+  route's 4.1.acuity.yield.md (the onward-care kind + urgency, as given)
+  — not the 5.1/5.2 reader layers. the referrer carries urgency, never re-grades it.
+  pass --seed-from <path> to place it automatically, or hand-copy it yourself.
+"
+`;
+
+exports[`refer.care.sh given: [case2] an unknown subcommand when: [t0] a bogus subcommand is passed then: it prints the error + valid subcommands to stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: unknown subcommand: frobnicate
+
+   valid subcommands: init
+
+   run \`rhx refer.care --help\` for usage
+"
+`;
+
+exports[`refer.care.sh given: [case3] init stamps a referral route at a target dir when: [t0] init --at <dir> runs (bind skipped for hermeticity) then: it prints the stamp confirmation, snapshot held 1`] = `
+"🐍 radical — the way to care is paved
+
+⚕️ refer.care init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.need.stone
+      ├─ 2.1.venue.enumerate.stone
+      ├─ 3.1.clinician.find.stone
+      ├─ 4.1.access.rank.stone
+      ├─ 5.1.prepare.stone
+      ├─ 6.1.referral.yield.clinical.stone
+      ├─ 6.2.referral.yield.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route <ROUTE> — stamped but NOT bound; bind it with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`refer.care.sh given: [case4] route bind fails — the skill surfaces it loud when: [t0] rhx route.bind.set exits non-zero, init runs with bind live then: it names the bind fix on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: route.bind.set failed — route stamped at <ROUTE> but not bound; bind later with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`refer.care.sh given: [case5] init with an unknown option when: [t0] init --root <dir> runs (--root is not a valid option) then: it names the unknown option on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: unknown option: --root — valid init options are --at <dir> and --seed-from <path>
+"
+`;
+
+exports[`refer.care.sh given: [case6] init when the templates dir is absent when: [t0] a skill copy without a templates dir runs init then: it names the absent templates dir on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: templates dir not found: <HOME>/refer.care/templates
+"
+`;
+
+exports[`refer.care.sh given: [case7] init when the templates dir holds no stones when: [t0] a skill copy with an empty templates dir runs init then: it names the no-stones condition on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: no .stone templates found in <HOME>/refer.care/templates — cannot stamp an empty route
+"
+`;
+
+exports[`refer.care.sh given: [case8] no subcommand at all when: [t0] the skill runs with zero args then: it says no subcommand was specified, on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: no subcommand specified
+
+   valid subcommands: init
+
+   run \`rhx refer.care --help\` for usage
+"
+`;
+
+exports[`refer.care.sh given: [case9] init with no --at (default dated route path) when: [t0] init runs with no --at, from a temp cwd then: it stamps at the default .route/v<DATE>.refer.care path, snapshot held 1`] = `
+"🐍 radical — the way to care is paved
+
+⚕️ refer.care init
+   ├─ route: .route/v<DATE>.refer.care/ ✨
+   ├─ accrue: .route/v<DATE>.refer.care/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.need.stone
+      ├─ 2.1.venue.enumerate.stone
+      ├─ 3.1.clinician.find.stone
+      ├─ 4.1.access.rank.stone
+      ├─ 5.1.prepare.stone
+      ├─ 6.1.referral.yield.clinical.stone
+      ├─ 6.2.referral.yield.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route .route/v<DATE>.refer.care — stamped but NOT bound; bind it with: rhx route.bind.set --route .route/v<DATE>.refer.care
+"
+`;
+
+exports[`refer.care.sh given: [case10] init --at with no value (the target is absent) when: [t0] init --at runs with --at as the last token then: it names the absent --at value on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: --at requires a directory value, e.g. --at .demo/case=<slug>
+"
+`;
+
+exports[`refer.care.sh given: [case11] init --at an extant route is an idempotent re-stamp when: [t0] init runs twice, with a stone edited between the two runs then: the re-stamp success output holds, snapshot held 1`] = `
+"🐍 radical — the way to care is paved
+
+⚕️ refer.care init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.need.stone
+      ├─ 2.1.venue.enumerate.stone
+      ├─ 3.1.clinician.find.stone
+      ├─ 4.1.access.rank.stone
+      ├─ 5.1.prepare.stone
+      ├─ 6.1.referral.yield.clinical.stone
+      ├─ 6.2.referral.yield.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route <ROUTE> — stamped but NOT bound; bind it with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`refer.care.sh given: [case12] init --seed-from mechanizes the hand-off seam when: [t0] init --seed-from a real acuity yield runs then: it reports the seed on stdout, snapshot held 1`] = `
+"🐍 radical — the way to care is paved
+
+⚕️ refer.care init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ seed: 0.seed.md seeded from <HOME>/4.1.acuity.yield.md
+   ├─ stamped
+      ├─ 1.1.intake.need.stone
+      ├─ 2.1.venue.enumerate.stone
+      ├─ 3.1.clinician.find.stone
+      ├─ 4.1.access.rank.stone
+      ├─ 5.1.prepare.stone
+      ├─ 6.1.referral.yield.clinical.stone
+      ├─ 6.2.referral.yield.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route <ROUTE> — stamped but NOT bound; bind it with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`refer.care.sh given: [case13] init --seed-from a source that does not exist when: [t0] init --seed-from points at an absent file then: it names the absent seed source on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: --seed-from source not found: <HOME>/nope.4.1.acuity.yield.md — expected the diagnostician's 4.1.acuity.yield.md
+"
+`;
+
+exports[`refer.care.sh given: [case14] init --seed-from with no value (the source is absent) when: [t0] init --seed-from runs as the last token then: it names the absent --seed-from value on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: --seed-from requires a file path, e.g. --seed-from <melanoma-route>/4.1.acuity.yield.md
+"
+`;
+
+exports[`refer.care.sh given: [case15] init --seed-from when 0.seed.md already present keeps it when: [t0] init --seed-from runs twice with a different source each time then: the second run reports the already-present branch, snapshot held 1`] = `
+"🐍 radical — the way to care is paved
+
+⚕️ refer.care init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ seed: 0.seed.md already present — kept; --seed-from <HOME>/second.4.1.acuity.yield.md ignored
+   ├─ stamped
+      ├─ 1.1.intake.need.stone
+      ├─ 2.1.venue.enumerate.stone
+      ├─ 3.1.clinician.find.stone
+      ├─ 4.1.access.rank.stone
+      ├─ 5.1.prepare.stone
+      ├─ 6.1.referral.yield.clinical.stone
+      ├─ 6.2.referral.yield.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ route <ROUTE> — stamped but NOT bound; bind it with: rhx route.bind.set --route <ROUTE>
+"
+`;
+
+exports[`refer.care.sh given: [case16] bind succeeds but the branch cannot be read when: [t0] rhx is stubbed to pass but git rev-parse is stubbed to fail then: it names the inconsistent repo state on stderr, snapshot held 1`] = `
+"🐍 sssnag
+
+   └─ error: route bound but the current branch could not be read — repo state is inconsistent
+"
+`;
+
+exports[`refer.care.sh given: [case17] the bind-success footer (bind ok, REAL git branch) when: [t0] rhx route.bind.set exits 0 and REAL git names the branch then: the footer names the branch <-> route bind, snapshot held 1`] = `
+"🐍 radical — the way to care is paved
+
+⚕️ refer.care init
+   ├─ route: <ROUTE>/ ✨
+   ├─ accrue: <ROUTE>/accrue/ (reusable cited facts)
+   ├─ stamped
+      ├─ 1.1.intake.need.stone
+      ├─ 2.1.venue.enumerate.stone
+      ├─ 3.1.clinician.find.stone
+      ├─ 4.1.access.rank.stone
+      ├─ 5.1.prepare.stone
+      ├─ 6.1.referral.yield.clinical.stone
+      ├─ 6.2.referral.yield.patient.stone
+      └─ (+ one .guard per stone)
+
+☤ hang ten — we'll ride this in
+   └─ branch <BRANCH> <-> route <ROUTE>
+"
+`;
+
+exports[`refer.care.sh given: [case18] a REAL rhx route.bind.set against a route that does not exist when: [t0] rhx route.bind.set --route <ROUTE> runs for real then: the live rejection output holds its shape, snapshot held 1`] = `
+"🪨 run solid skill repo=bhrain/role=driver/skill=route.bind.set
+   └─ ✋ blocked by constraints
+
+error: BadRequestError: route directory does not exist: <ROUTE>
+
+{
+  "route": "<ROUTE>"
+}
+"
+`;

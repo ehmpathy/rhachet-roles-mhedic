@@ -1,0 +1,31 @@
+artifacts:
+  - $route/3.1.redteam.yield.md
+
+reviews:
+  self:
+    - slug: has-cant-miss-set-covered
+      say: |
+        is every can't-miss member checked — amelanotic/hypomelanotic, nodular,
+        acral lentiginous, melanoma-from-normal-skin, and the outlier sign? a skipped
+        member is the asymmetric miss this stone exists to catch — a blocker.
+    - slug: has-no-false-benign
+      say: |
+        did you refrain to drop any candidate by low probability alone? a candidate
+        is dropped only by an exam or a test. "no prior mole" and "low pigment" are
+        NOT benignity — treat them as such and it is a blocker.
+    - slug: has-excise-flag
+      say: |
+        is any lesion that cannot be confidently classified benign flagged
+        "cannot-exclude → excise / refer" (the validated management rule)? a lesion
+        left unflagged that the score could not clear is a false reassurance.
+    - slug: has-bhrowser-citations
+      say: |
+        is every new can't-miss claim traced to a bhrowser-read source (never
+        WebSearch/WebFetch), verbatim with URL/PMID? the cited set lives in the
+        inventory; a new unbacked claim is a blocker.
+
+  peer:
+    - bash -c ". .agent/repo=.this/role=any/skills/use.apikeys.sh && $rhachet run --repo bhrain --skill review --rules '.agent/**/rule.require.bhrowser-citations*.md' --rules '.agent/**/rule.require.accrue-research*.md' --paths '$route/3.1.redteam.yield.md' --paths '$route/accrue/*.md' --output '$route/.reviews/$stone.peer-review.citations.md'"
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

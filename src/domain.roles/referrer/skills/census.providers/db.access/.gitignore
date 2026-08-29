@@ -1,0 +1,6 @@
+# regenerable census access data — per-provider scraped snapshots, rebuilt by the
+# census playbooks. ignore all contents; keep only this .gitignore (anchors the dir)
+# and readme.md (the schema doc a fresh clone needs to read the shape).
+*
+!.gitignore
+!readme.md

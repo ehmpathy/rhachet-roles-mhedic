@@ -1,0 +1,28 @@
+artifacts:
+  - $route/6.2.referral.yield.patient.yield.md
+
+reviews:
+  self:
+    - slug: has-disclaimer-and-carveout
+      say: |
+        does the patient summary carry BOTH the not-medical-advice disclaimer
+        AND the emergency carve-out ("call your local emergency number now" for
+        an emergency-shaped case)? guidance without the disclaimer is a blocker,
+        and an emergency-shaped case without the carve-out is a blocker
+        (motto.not-medical-advice).
+    - slug: has-plain-language
+      say: |
+        is this a plain-language "who to see and how to get seen" summary — no
+        raw rank, no differential, no jargon a layperson would self-interpret?
+        the raw detail belongs in 6.1, not here.
+    - slug: has-urgency-unaltered
+      say: |
+        is the given urgency stated in plain words exactly as the diagnostician
+        set it — not softened, not sharpened, not re-judged? a re-worded urgency
+        is a scope-boundary blocker (define.referrer-scope).
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/motto.not-medical-advice*.md' --rules '.agent/**/rule.require.recommendation-disclaimer*.md' --paths '$route/6.2.referral.yield.patient.yield.md' --output '$route/.reviews/$stone.peer-review.patient.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

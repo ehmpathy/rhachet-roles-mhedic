@@ -1,0 +1,34 @@
+artifacts:
+  - $route/1.1.intake.yield.md
+
+reviews:
+  self:
+    - slug: has-verbatim-fidelity
+      say: |
+        did you preserve the person's own words, or paraphrase detail away?
+        re-read 0.seed and confirm no reported lesion datum was dropped or softened.
+    - slug: has-abcde-redflags-history
+      say: |
+        are the ABCDE observations, the red-flag symptoms (blood, ulceration, rapid
+        change, outlier), the UV/sun history, and personal/family melanoma history
+        all captured where the seed states them? a dropped feature is a signal missed.
+    - slug: has-image-kind
+      say: |
+        is it noted whether a dermoscopic image exists, or only a naked-eye / phone
+        photo? the score stone applies a different instrument for each — an unmarked
+        image-kind hides which signal the case carries.
+    - slug: has-pii-redacted
+      say: |
+        is every identity a persona handle, not a real identifier?
+        confirm rule.forbid.pii holds across the whole capture.
+    - slug: has-gaps-and-source-tags
+      say: |
+        is each datum tagged self-reported vs observed vs record, and each gap the
+        score/redteam needs noted (not filled by guess)? an untagged datum hides how
+        much to trust it; an unnoted gap becomes an over-read downstream.
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/rule.forbid.pii*.md' --paths '$route/1.1.intake.yield.md' --output '$route/.reviews/$stone.peer-review.pii.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

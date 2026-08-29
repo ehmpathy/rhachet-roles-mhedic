@@ -1,0 +1,31 @@
+# 5.1.prepare.stone
+
+## .what
+
+write the preparation sheet: what to carry, what to ask, what to expect. this turns the ranked
+referral into an actionable step for the patient — the difference between a name on a list and a
+visit that goes well.
+
+## .inputs
+
+- `1.1.intake.need.yield.md` — the specialty + the case context
+- `4.1.access.rank.yield.md` — the ranked options (the likely venue shapes the prep)
+
+## .do
+
+- **what to carry** — the concrete items the visit needs (e.g. photos of the lesion over time, a
+  list of current medications, insurance/coverage details, prior records if any)
+- **what to ask** — the questions that make the visit count (e.g. "is this consistent with X?",
+  "do i need a biopsy?", "what change means i should come back sooner?")
+- **what to expect** — the shape of the visit for the likely venue (a telederm store-and-forward
+  flow vs an in-person exam), so the patient is not surprised
+- keep it venue-aware: a telederm prep differs from an in-person prep (photo quality matters more)
+
+## .emit
+
+into `5.1.prepare.yield.md` — the three sections (carry, ask, expect), venue-aware.
+
+## .done when
+
+the carry / ask / expect sections are written, concrete, and matched to the likely venue from the
+top-ranked option.

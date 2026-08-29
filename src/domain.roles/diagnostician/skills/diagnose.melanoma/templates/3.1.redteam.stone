@@ -1,0 +1,50 @@
+# 3.1.redteam.stone
+
+## .what
+
+the **can't-miss** guard — the one adversarial stone a closed domain still needs, because the miss is
+asymmetric: an under-called melanoma costs a life, an over-called benign lesion costs a biopsy. check
+the lesion against the **closed, cited can't-miss set** — the presentations where the score reads as
+false comfort. the rule is "confidently benign vs excise": absence of a worrisome feature is never
+benignity.
+
+## .inputs
+
+- `2.1.score.yield.md` — the ranked score
+- `1.1.intake.yield.md` — the red-flags + outlier note
+- the build-time cited inventory:
+  - `inventory.of=pigmented-lesion-differential.md` — the can't-miss subtypes + base rates
+  - `inventory.of=melanoma-biopsy-thresholds.md` — the outlier sign + the excise rule
+
+## .do
+
+- steelman the case that "this benign-look lesion IS melanoma", then attack the front-runner. do not
+  let a low ABCDE score coast — check each **can't-miss** member of the cited set:
+  - **amelanotic / hypomelanotic** melanoma — the hardest miss (number-needed-to-excise 27.3); a lesion
+    with little pigment is NOT thereby benign
+  - **nodular** melanoma — fast, symmetric, can score low on ABCDE
+  - **acral lentiginous** — palms, soles, nail beds; a hidden-site lesion is easy to under-weight
+  - **melanoma from normal skin** — over half of melanomas arise on normal skin, so "no prior mole" is
+    NOT reassurance
+  - the **outlier ("ugly duckling")** — a lesion that stands out from the person's others, or that
+    changes, warrants a closer eye even at a low score (the outlier search governs sensitivity)
+- for each can't-miss member the case cannot confidently exclude, mark the lesion **"cannot be
+  confidently classified benign → excise / refer"** — the validated management rule
+- refine the rank: a candidate is dropped only if an exam or a test could drop it, never by low
+  probability alone
+- back any new can't-miss evidence via the **bhrowser** only (`rule.require.bhrowser-citations`)
+
+## .emit
+
+into `3.1.redteam.yield.md` — the can't-miss check per member, the refined rank, and any
+"cannot-exclude → excise" flag.
+
+## .accrue
+
+lift any newly-gathered generic can't-miss evidence into `accrue/inventory.of=<topic>.md`
+(`rule.require.accrue-research`).
+
+## .done when
+
+every can't-miss member of the cited set is checked, no candidate dropped by probability alone, any
+lesion that cannot be confidently classified benign is flagged to excise / refer.

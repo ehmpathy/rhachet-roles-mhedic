@@ -1,0 +1,73 @@
+# 3.1.clinician.find.stone
+
+## .what
+
+find real clinician options for the venues that fit. there is **no** sanctioned provider directory
+(wisher's call), so the referrer finds options **via bhrowser search** — and records the repeatable
+search method so the human can re-run it. this is a **research stone**: it gathers cited sources and
+accrues the reusable facts.
+
+## .inputs
+
+- `1.1.intake.need.yield.md` — the specialty + access constraints (the search targets)
+- `2.1.venue.enumerate.yield.md` — the venue types that fit the given urgency
+
+## .do
+
+- search via the **bhrowser** only — never WebSearch/WebFetch (`rule.require.bhrowser-citations`)
+- when the ask is an **exhaustive** local roster (not a first-few shortlist), run a directory
+  census per `howto.census-area-providers`, mechanized by the three runnable engines in
+  `../skills/census.providers/`: `frame.npi.play.ts` (the systemic NPI-frame search, ZIP-partitioned
+  over the radius), `review.census.play.ts` (the independent NPI reproduction over a wider ZIP net),
+  and `frame.license.play.ts` (the SECOND frame — the FL DOH / MQA license registry, which verifies
+  each provider's license reads `Clear/Active` and backstops the cash-only gap NPI is blind to).
+  per `rule.require.census-peer-review`, the roster is **not exhaustive/clean until BOTH reviews
+  return 0 blockers** — fold each missed provider in (frame 1) and flag each inactive-license
+  provider (frame 2), then re-review until both clear. carry the `.how coverage was proven` claim
+  (both frames, ZIP set, verdicts); a recall-listed roster that only asserts completeness is a blocker.
+- when the ask also needs each provider's **appointment access** (contact + mechanism +
+  availability), build the on-disk `census.providers/db.access/` records (one per practice, plus a
+  per-provider `providers.json`) from real salespage reads, then run the THIRD review,
+  `census.providers/review.access.play.ts`. per `rule.require.access-coverage-review`, the access
+  dimension is **not surveyed until that review returns 0 blockers** on `providers.json` — every
+  provider's mechanism must be proven on a salespage entrypoint, not inferred from a registry. the
+  review names each unproven provider (the worklist); carry its `entrypointsSearched` + `howProven`
+  per provider as the deterministic proof-of-search.
+- for each fit venue, surface real clinician options (virtual + physical): name, venue type,
+  and the source page read verbatim with its URL
+- for each option, record its **access constraints** as found: wait time, cost/coverage, distance,
+  language/accessibility fit
+- record the **repeatable search method** — the exact query terms, the sites walked, the filters
+  applied — so the human can re-run the search when the list goes stale (the method is the durable
+  deliverable; the list is not)
+- surface a telehealth / wider-radius fallback when local physical options run thin, so the
+  patient never hits a dead end
+
+## .note — search geography is not patient PII
+
+`rule.forbid.pii` coarsens *a subject's* geolocation (a patient's home address / zip) to region,
+because that pins an identifiable person. the **care-search area** — the city/region the human seeks
+care in ("panama city beach, fl", which the wish itself states in the open) — is a
+**search parameter**, not an identifier of the patient, so it stays at the granularity the search
+needs (city-level) to be useful. the two are distinct: coarsen the patient's *home location* to
+region (PII); keep the *search target area* at city-level (a query input). a clinician's public
+practice address is likewise a business fact, not patient PII, and is recorded as found.
+
+## .emit
+
+into `3.1.clinician.find.yield.md` — the clinician options per venue, each with its access
+constraints and a bhrowser citation, plus the repeatable search method.
+
+## .accrue
+
+lift every generic, cited fact (a venue's general access profile, a telederm cost band, the search
+method itself) into `accrue/inventory.of=<topic>.md`, case-neutral, per
+`rule.require.accrue-research`. the patient-specific shortlist stays in the yield; the reusable facts
+go to `accrue/`.
+
+## .done when
+
+each clinician option is bhrowser-cited (never WebSearch/WebFetch), carries its access constraints,
+the repeatable search method is recorded, and the generic facts are accrued. when an exhaustive
+roster was asked, the census carries its `.how coverage was proven` claim (directory + towns swept,
+the bound, the cross-checks, the irreducible gap) — a recall that only asserts completeness fails.

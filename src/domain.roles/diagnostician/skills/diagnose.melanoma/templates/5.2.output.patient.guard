@@ -1,0 +1,36 @@
+artifacts:
+  - $route/5.2.output.patient.yield.md
+
+reviews:
+  self:
+    - slug: has-disclaimer-and-carve-out
+      say: |
+        does the patient layer open with the not-medical-advice disclaimer, and —
+        where the emergency floor fired — carry the carve-out "if this is a medical
+        emergency, call your local emergency number now" (motto.not-medical-advice)?
+        guidance without the disclaimer, or an emergency-shaped case without the
+        carve-out, is a blocker.
+    - slug: has-no-watch-reassurance
+      say: |
+        does the lay message avoid a self-managed "watch and see" for a
+        melanoma-flagged lesion — it says "have a professional look, promptly"
+        instead? a false reassurance is the costly miss — a blocker.
+    - slug: has-phone-limit-honest
+      say: |
+        does the layer frame the phone as a change-detector, NOT a diagnosis — a
+        phone photo does not rule melanoma out (classifier sensitivity floors at 7%)?
+        an over-promise of the phone is a blocker.
+    - slug: has-plain-not-raw
+      say: |
+        is the layer plain-language "how worried / what next", NOT a raw rank handed
+        to a layperson to self-interpret? the scores belong in 5.1, beneath this layer.
+    - slug: has-venue-deferred
+      say: |
+        does the layer point to the referrer for where to be seen, rather than a
+        venue it names itself? the venue is the referrer's (the referrer-boundary).
+
+  peer:
+    - $rhachet run --repo bhrain --skill review --brain anthropic/claude/sonnet --rules '.agent/**/motto.not-medical-advice*.md' --rules '.agent/**/rule.require.recommendation-disclaimer*.md' --paths '$route/5.2.output.patient.yield.md' --output '$route/.reviews/$stone.peer-review.patient.md'
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

@@ -1,0 +1,18 @@
+artifacts:
+  - $route/5.1.prepare.yield.md
+
+reviews:
+  self:
+    - slug: has-three-sections
+      say: |
+        are all three sections present and concrete — what to carry, what to
+        ask, what to expect? a prep sheet that lacks one section leaves the
+        patient under-equipped for the visit.
+    - slug: has-venue-aware-prep
+      say: |
+        is the prep matched to the likely venue from the top-ranked option (a
+        telederm photo-quality prep differs from an in-person exam prep)? a
+        venue-blind prep sends the wrong items to the wrong visit.
+
+judges:
+  - rhx route.stone.judge --mechanism reviewed? --stone $stone --route $route --allow-blockers 0 --allow-nitpicks 3

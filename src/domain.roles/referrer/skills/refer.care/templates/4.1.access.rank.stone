@@ -1,0 +1,40 @@
+# 4.1.access.rank.stone
+
+## .what
+
+rank the found options by the path the patient can actually walk. the clinical ideal is not the
+metric — the **walkable** path is: wait × cost × distance × language fit. the shortest path to the
+right care is the one the patient can actually walk.
+
+## .inputs
+
+- `3.1.clinician.find.yield.md` — the clinician options, each with its access constraints
+- `1.1.intake.need.yield.md` — the patient's access constraints (the weights)
+
+## .do
+
+- FIRST, probe a real availability signal for every option per `howto.probe-real-availability`
+  (required by `rule.require.availability-probe`): a live slot, a self-schedule page, or a stated
+  telederm turnaround — read via the bhrowser, never a guessed wait. an option with no online
+  signal is flagged **phone-gated** (a real result, not a dead end).
+- score each option across the four access dimensions: wait time (from the probe above),
+  cost/coverage, distance/transport, language/accessibility fit
+- weight the score by the patient's stated constraints from 1.1 (a patient with no car weights
+  distance heavily; a patient on a tight budget weights cost heavily)
+- rank the options by the composite walkable score — best first
+- keep the given urgency as the hard floor: a same-week urgency does not let a cheap-but-slow option
+  outrank a fast one (urgency is carried, not re-judged)
+- state the trade-off for each top option plainly (e.g. "telederm: open this week, self-pay ~$X;
+  in-person clinic B: covered, but a 4-week wait")
+
+## .emit
+
+into `4.1.access.rank.yield.md` — the options ranked by walkable score, each with its trade-off
+stated, the given-urgency floor respected.
+
+## .done when
+
+every option carries an observed availability signal (a slot, a turnaround, or a phone-gated
+flag) — never a guessed wait; the options are ranked by the walkable composite; the patient's
+constraints weight the score; the given-urgency floor holds; and each top option's trade-off is
+stated.
