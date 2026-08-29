@@ -31,7 +31,16 @@ const DB_FEDERAL = path.join(HERE, 'db.federal');
 const DB_ACCESS = path.join(HERE, 'db.access');
 
 // PCB core near-band (0-30min): Panama City Beach + Panama City + Lynn Haven
-const CORE_POSTALS = new Set(['32407', '32408', '32413', '32401', '32404', '32405', '32409', '32444']);
+const CORE_POSTALS = new Set([
+  '32407',
+  '32408',
+  '32413',
+  '32401',
+  '32404',
+  '32405',
+  '32409',
+  '32444',
+]);
 
 const asDay = (): string => new Date().toISOString().slice(0, 10);
 
@@ -53,7 +62,9 @@ const asPostal5 = (raw: string | null | undefined): string | null =>
 
 const pickLocationAddress = (result: any): any => {
   const addrs: any[] = Array.isArray(result?.addresses) ? result.addresses : [];
-  const locs: any[] = Array.isArray(result?.practiceLocations) ? result.practiceLocations : [];
+  const locs: any[] = Array.isArray(result?.practiceLocations)
+    ? result.practiceLocations
+    : [];
   const all = [...addrs, ...locs];
   return (
     all.find((a) => a?.address_purpose === 'LOCATION' && a?.state === 'FL') ||
@@ -72,7 +83,9 @@ const asFedProvider = (result: any): FedProvider | null => {
   const name = isOrg
     ? String(basic.organization_name ?? '(unnamed org)')
     : `${basic.first_name ?? ''} ${basic.last_name ?? ''}`.trim();
-  const taxes: any[] = Array.isArray(result?.taxonomies) ? result.taxonomies : [];
+  const taxes: any[] = Array.isArray(result?.taxonomies)
+    ? result.taxonomies
+    : [];
   const primaryTax = taxes.find((t) => t?.primary) ?? taxes[0] ?? null;
   const loc = pickLocationAddress(result);
   return {
@@ -106,10 +119,14 @@ const readOurNpis = (): { npis: Set<string>; sourceFiles: number } => {
 export const action = async (_input: { page: Page; browser: Browser }) => {
   // 1. project the federal frame from all raw captures, deduped by NPI
   const byNpi = new Map<string, FedProvider>();
-  const rawFiles = fs.readdirSync(DB_FEDERAL).filter((f) => f.startsWith('raw.') && f.endsWith('.json'));
+  const rawFiles = fs
+    .readdirSync(DB_FEDERAL)
+    .filter((f) => f.startsWith('raw.') && f.endsWith('.json'));
   for (const f of rawFiles) {
     const doc = JSON.parse(fs.readFileSync(path.join(DB_FEDERAL, f), 'utf8'));
-    const results: any[] = Array.isArray(doc?.raw?.results) ? doc.raw.results : [];
+    const results: any[] = Array.isArray(doc?.raw?.results)
+      ? doc.raw.results
+      : [];
     for (const r of results) {
       const fp = asFedProvider(r);
       if (fp && !byNpi.has(fp.npi)) byNpi.set(fp.npi, fp);
@@ -119,7 +136,12 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
   fs.writeFileSync(
     path.join(DB_FEDERAL, 'federal.providers.json'),
     JSON.stringify(
-      { retrievedAt: asDay(), rawFiles, count: federal.length, providers: federal },
+      {
+        retrievedAt: asDay(),
+        rawFiles,
+        count: federal.length,
+        providers: federal,
+      },
       null,
       2,
     ),
@@ -132,7 +154,8 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
   // dermatologists, so we gate on the PRIMARY taxonomy being Dermatology-family
   // (a deterministic string test, not a judgement). non-derm-primary individuals
   // are bucketed separately and never counted as a derm gap.
-  const isDermPrimary = (p: FedProvider): boolean => (p.taxonomy ?? '').toLowerCase().startsWith('dermatology');
+  const isDermPrimary = (p: FedProvider): boolean =>
+    (p.taxonomy ?? '').toLowerCase().startsWith('dermatology');
   const { npis: ourNpis, sourceFiles } = readOurNpis();
   const allIndividuals = federal.filter((p) => p.kind === 'individual');
   const individuals = allIndividuals.filter(isDermPrimary);
@@ -147,7 +170,8 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
   // 45min-2hr away, a different metro) is OUT OF AREA for a PCB-area referral, exactly
   // as the central-FL out-of-area provider is already excused. an out-of-area federal provider is
   // NOT a coverage gap — it is correctly outside the census scope, cited by county.
-  const isPcbArea = (p: FedProvider): boolean => (p.locationPostal5 ?? '').startsWith('324');
+  const isPcbArea = (p: FedProvider): boolean =>
+    (p.locationPostal5 ?? '').startsWith('324');
 
   const covered: FedProvider[] = [];
   const gapInArea: FedProvider[] = []; // a PCB-area (324xx) dermatologist NOT in our records — a REAL gap
@@ -161,7 +185,11 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
     }
     if (isPcbArea(p)) {
       gapInArea.push(p);
-      if ((p.locationPostal5 ?? '') && CORE_POSTALS.has(p.locationPostal5 ?? '')) gapInAreaCore.push(p);
+      if (
+        (p.locationPostal5 ?? '') &&
+        CORE_POSTALS.has(p.locationPostal5 ?? '')
+      )
+        gapInAreaCore.push(p);
     } else {
       outOfArea.push(p);
     }
@@ -188,7 +216,10 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
     nonDermPrimary,
     orgs,
   };
-  fs.writeFileSync(path.join(DB_FEDERAL, 'coverage.federal.json'), JSON.stringify(coverage, null, 2));
+  fs.writeFileSync(
+    path.join(DB_FEDERAL, 'coverage.federal.json'),
+    JSON.stringify(coverage, null, 2),
+  );
 
   return {
     federalTotal: federal.length,
@@ -197,7 +228,13 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
     federalOrgs: orgs.length,
     ourNpiCount: ourNpis.size,
     counts: coverage.counts,
-    gapInAreaNames: gapInArea.map((p) => `${p.name} (${p.npi}) ${p.locationCity} ${p.locationPostal5}`),
-    outOfAreaSample: outOfArea.slice(0, 6).map((p) => `${p.name} (${p.npi}) ${p.locationCity} ${p.locationPostal5}`),
+    gapInAreaNames: gapInArea.map(
+      (p) => `${p.name} (${p.npi}) ${p.locationCity} ${p.locationPostal5}`,
+    ),
+    outOfAreaSample: outOfArea
+      .slice(0, 6)
+      .map(
+        (p) => `${p.name} (${p.npi}) ${p.locationCity} ${p.locationPostal5}`,
+      ),
   };
 };

@@ -59,8 +59,10 @@ const RADIUS_ZIPS: { zip: string; area: string }[] = [
 
 const npiUrl = (postal: string): string =>
   'https://npiregistry.cms.hhs.gov/api/?version=2.1' +
-  '&taxonomy_description=' + encodeURIComponent(TAXONOMY) +
-  '&country_code=US&postal_code=' + encodeURIComponent(postal) +
+  '&taxonomy_description=' +
+  encodeURIComponent(TAXONOMY) +
+  '&country_code=US&postal_code=' +
+  encodeURIComponent(postal) +
   '&limit=200';
 
 type FrameRow = {
@@ -97,7 +99,9 @@ export const action = async (input: { page: Page; browser: Browser }) => {
         seen.add(npi);
         const b = r.basic || {};
         const loc =
-          (r.addresses || []).find((a: any) => a.address_purpose === 'LOCATION') || {};
+          (r.addresses || []).find(
+            (a: any) => a.address_purpose === 'LOCATION',
+          ) || {};
         const taxes = r.taxonomies || [];
         const primary = taxes.find((t: any) => t.primary) || taxes[0] || {};
         const mohs = taxes.some((t: any) => /MOHS/i.test(t.desc || ''));

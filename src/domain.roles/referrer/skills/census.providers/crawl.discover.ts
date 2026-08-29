@@ -93,7 +93,10 @@ export const discoverSiteUrls = async (input: {
   const viaCrawl = new Set<string>();
   try {
     const page = await input.page.context().newPage();
-    await page.goto(input.base, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.goto(input.base, {
+      waitUntil: 'domcontentloaded',
+      timeout: 30000,
+    });
     await page.waitForTimeout(1500);
     const hrefs = await page.evaluate(() =>
       Array.from(document.querySelectorAll('a[href]')).map(

@@ -1,6 +1,6 @@
-import type { Browser, Page } from 'playwright';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import type { Browser, Page } from 'playwright';
 
 /**
  * .what = the PEER-REVIEW engine for an exhaustive provider census. it does NOT
@@ -45,12 +45,16 @@ const DB_DIR = join(
 // unioned with the org + satellite NPIs in claimed-orgs.json (org NPI-2 records
 // + per-office registrations that carry no individual providers.json row).
 const loadClaimedNpis = (): Set<string> => {
-  const providersDoc = JSON.parse(readFileSync(join(DB_DIR, 'providers.json'), 'utf8'));
+  const providersDoc = JSON.parse(
+    readFileSync(join(DB_DIR, 'providers.json'), 'utf8'),
+  );
   const individualNpis: string[] = (providersDoc.providers ?? [])
     .map((p: { npi?: string | null }) => p.npi)
     .filter((npi: string | null | undefined): npi is string => !!npi);
 
-  const orgsDoc = JSON.parse(readFileSync(join(DB_DIR, 'claimed-orgs.json'), 'utf8'));
+  const orgsDoc = JSON.parse(
+    readFileSync(join(DB_DIR, 'claimed-orgs.json'), 'utf8'),
+  );
   const orgNpis: string[] = orgsDoc.orgNpis ?? [];
   const additionalNpis: string[] = orgsDoc.additionalClaimedNpis ?? [];
 
@@ -62,16 +66,40 @@ const CLAIMED_NPIS = loadClaimedNpis();
 // the review's OWN ZIP sweep — a deliberate SUPERSET of the search engine's, to
 // challenge its coverage. adds Callaway/Springfield/Freeport/DeFuniak/FWB edges.
 const REVIEW_ZIPS = [
-  '32401', '32403', '32404', '32405', '32406', '32407', '32408', '32409',
-  '32410', '32413', '32444', '32466', '32428', '32462', '32446', '32448',
-  '32420', '32456', '32459', '32550', '32541', '32578', '32433', '32435',
-  '32547', '32548',
+  '32401',
+  '32403',
+  '32404',
+  '32405',
+  '32406',
+  '32407',
+  '32408',
+  '32409',
+  '32410',
+  '32413',
+  '32444',
+  '32466',
+  '32428',
+  '32462',
+  '32446',
+  '32448',
+  '32420',
+  '32456',
+  '32459',
+  '32550',
+  '32541',
+  '32578',
+  '32433',
+  '32435',
+  '32547',
+  '32548',
 ];
 
 const npiUrl = (postal: string): string =>
   'https://npiregistry.cms.hhs.gov/api/?version=2.1' +
-  '&taxonomy_description=' + encodeURIComponent(TAXONOMY) +
-  '&country_code=US&postal_code=' + encodeURIComponent(postal) +
+  '&taxonomy_description=' +
+  encodeURIComponent(TAXONOMY) +
+  '&country_code=US&postal_code=' +
+  encodeURIComponent(postal) +
   '&limit=200';
 
 export const action = async (input: { page: Page; browser: Browser }) => {
@@ -87,16 +115,23 @@ export const action = async (input: { page: Page; browser: Browser }) => {
   for (const zip of REVIEW_ZIPS) {
     const page = await input.page.context().newPage();
     try {
-      await page.goto(npiUrl(zip), { waitUntil: 'domcontentloaded', timeout: 45000 });
+      await page.goto(npiUrl(zip), {
+        waitUntil: 'domcontentloaded',
+        timeout: 45000,
+      });
       await page.waitForTimeout(800);
-      const json = JSON.parse(await page.evaluate(() => document.body.innerText));
+      const json = JSON.parse(
+        await page.evaluate(() => document.body.innerText),
+      );
       for (const r of json.results || []) {
         const npi = String(r.number);
         if (seen.has(npi)) continue;
         seen.add(npi);
         const b = r.basic || {};
         const loc =
-          (r.addresses || []).find((a: any) => a.address_purpose === 'LOCATION') || {};
+          (r.addresses || []).find(
+            (a: any) => a.address_purpose === 'LOCATION',
+          ) || {};
         const postal = (loc.postal_code || '').slice(0, 5);
         if (!REVIEW_ZIPS.includes(postal)) continue; // strict in-radius
         const taxes = r.taxonomies || [];
@@ -107,7 +142,9 @@ export const action = async (input: { page: Page; browser: Browser }) => {
         const isDerm = /dermatolog/i.test(primary.desc || '');
         frame.push({
           npi,
-          label: b.organization_name || `${b.first_name || ''} ${b.last_name || ''}`.trim(),
+          label:
+            b.organization_name ||
+            `${b.first_name || ''} ${b.last_name || ''}`.trim(),
           taxonomy: primary.desc || '',
           postal,
           isDerm,
@@ -134,8 +171,7 @@ export const action = async (input: { page: Page; browser: Browser }) => {
     verdict: {
       blockers,
       nitpicks,
-      summary:
-        `${blockers} blockers\n${nitpicks} nitpicks`,
+      summary: `${blockers} blockers\n${nitpicks} nitpicks`,
     },
     reproduced: {
       zipsSwept: REVIEW_ZIPS.length,
@@ -143,11 +179,17 @@ export const action = async (input: { page: Page; browser: Browser }) => {
       claimedCount: CLAIMED_NPIS.size,
     },
     blockers_missed_in_radius_derm: missed.map((m) => ({
-      npi: m.npi, label: m.label, taxonomy: m.taxonomy, postal: m.postal,
+      npi: m.npi,
+      label: m.label,
+      taxonomy: m.taxonomy,
+      postal: m.postal,
     })),
     nitpicks_claimed_not_reproduced: claimedNotInFrame,
     nitpicks_nonderm_to_exclude: nonDerm.map((n) => ({
-      npi: n.npi, label: n.label, taxonomy: n.taxonomy, postal: n.postal,
+      npi: n.npi,
+      label: n.label,
+      taxonomy: n.taxonomy,
+      postal: n.postal,
     })),
   };
 };

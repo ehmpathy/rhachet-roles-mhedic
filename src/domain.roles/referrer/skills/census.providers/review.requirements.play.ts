@@ -1,6 +1,6 @@
-import type { Browser, Page } from 'playwright';
-import { readFileSync, readdirSync } from 'fs';
+import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
+import type { Browser, Page } from 'playwright';
 
 /**
  * .what = the FOURTH review frame: a three-requirement enumeration audit. it does
@@ -33,17 +33,33 @@ import { join } from 'path';
  *              such a provider is not held to the three-requirement bar.
  */
 
-const DB_DIR = join(process.cwd(), 'src/domain.roles/referrer/skills/census.providers/db.access');
-const DB_FEDERAL = join(process.cwd(), 'src/domain.roles/referrer/skills/census.providers/db.federal');
+const DB_DIR = join(
+  process.cwd(),
+  'src/domain.roles/referrer/skills/census.providers/db.access',
+);
+const DB_FEDERAL = join(
+  process.cwd(),
+  'src/domain.roles/referrer/skills/census.providers/db.federal',
+);
 
-type FederalGap = { npi: string; name: string; locationCity: string | null; locationPostal5: string | null };
+type FederalGap = {
+  npi: string;
+  name: string;
+  locationCity: string | null;
+  locationPostal5: string | null;
+};
 type FederalCoverage = {
   federalTotal: number;
   federalDermatologists: number;
   federalNonDermPrimary: number;
   federalOrgs: number;
   ourNpiCount: number;
-  counts: { covered: number; gapInArea: number; gapInAreaCore: number; outOfArea: number };
+  counts: {
+    covered: number;
+    gapInArea: number;
+    gapInAreaCore: number;
+    outOfArea: number;
+  };
   gapInArea: FederalGap[];
   gapInAreaCore: FederalGap[];
   outOfArea: FederalGap[];
@@ -54,7 +70,9 @@ type FederalCoverage = {
 // rather than assume federal coverage it never checked.
 const readFederalCoverage = (): FederalCoverage | null => {
   try {
-    return JSON.parse(readFileSync(join(DB_FEDERAL, 'coverage.federal.json'), 'utf8')) as FederalCoverage;
+    return JSON.parse(
+      readFileSync(join(DB_FEDERAL, 'coverage.federal.json'), 'utf8'),
+    ) as FederalCoverage;
   } catch {
     return null;
   }
@@ -73,7 +91,11 @@ type PracticeRecord = {
   providers?: { name: string }[];
   contact?: { phonePrimary?: string | null };
   schedule?: { mechanism?: string[]; bookUrl?: string | null };
-  availabilitySignal?: { rung?: number; signal?: string; observedWait?: string | null };
+  availabilitySignal?: {
+    rung?: number;
+    signal?: string;
+    observedWait?: string | null;
+  };
   insurance?: Insurance;
   // a practice record may declare itself do-not-refer as a distinct entity: a
   // corporate NPI shell that dupes an audited practice, or an out-of-area
@@ -102,7 +124,8 @@ const asBookMethod = (
   if (mechanism.includes('self-schedule')) return 'online';
   if (mechanism.includes('patient-portal')) return 'online';
   if (mechanism.includes('online-request')) return 'online-request';
-  if (mechanism.includes('phone') || mechanism.includes('email')) return 'phone';
+  if (mechanism.includes('phone') || mechanism.includes('email'))
+    return 'phone';
   return 'unknown';
 };
 
@@ -122,12 +145,16 @@ const asBookMethod = (
 const asOnlineCapacity = (input: {
   mechanism: string[];
   observedWait: string | null;
-}): { tier: 'live-calendar' | 'online-request' | 'portal-prior' | 'phone-only'; earliest: string | null } => {
+}): {
+  tier: 'live-calendar' | 'online-request' | 'portal-prior' | 'phone-only';
+  earliest: string | null;
+} => {
   const wait = input.observedWait ?? '';
   const saysNoPublic = /no public earliest/i.test(wait);
   const saysPhoneGated = /^phone-gated/i.test(wait);
   // a live calendar names a concrete future date/slot in the probed observedWait
-  const namesConcreteDate = /\b20\d\d\b/.test(wait) && /(slot|appointment|@|available)/i.test(wait);
+  const namesConcreteDate =
+    /\b20\d\d\b/.test(wait) && /(slot|appointment|@|available)/i.test(wait);
   const hasSelfSchedule = input.mechanism.includes('self-schedule');
   const hasRequestForm = input.mechanism.includes('online-request');
   const hasPortal = input.mechanism.includes('patient-portal');
@@ -141,13 +168,17 @@ const asOnlineCapacity = (input: {
 };
 
 export const action = async (_input: { page: Page; browser: Browser }) => {
-  const providersDoc = JSON.parse(readFileSync(join(DB_DIR, 'providers.json'), 'utf8'));
+  const providersDoc = JSON.parse(
+    readFileSync(join(DB_DIR, 'providers.json'), 'utf8'),
+  );
   const providers: ProviderRow[] = providersDoc.providers;
 
   const practiceByKey = new Map<string, PracticeRecord>();
   for (const f of readdirSync(DB_DIR)) {
     if (!f.endsWith('.json') || f === 'providers.json') continue;
-    const rec: PracticeRecord = JSON.parse(readFileSync(join(DB_DIR, f), 'utf8'));
+    const rec: PracticeRecord = JSON.parse(
+      readFileSync(join(DB_DIR, f), 'utf8'),
+    );
     if (rec.practiceKey) practiceByKey.set(rec.practiceKey, rec);
   }
 
@@ -161,10 +192,16 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
     const insurance = practice?.insurance;
 
     // an excused provider (do-not-refer or own-site-not-found) is not held to the bar
-    const inactive = /retired|null and void|revoked|deceased|delinquent/i.test(p.licenseStatus ?? '');
-    const outOfArea = p.outOfArea === true || p.practiceKey === 'out-of-area' || /out of area/i.test(p.flag ?? '');
+    const inactive = /retired|null and void|revoked|deceased|delinquent/i.test(
+      p.licenseStatus ?? '',
+    );
+    const outOfArea =
+      p.outOfArea === true ||
+      p.practiceKey === 'out-of-area' ||
+      /out of area/i.test(p.flag ?? '');
     const ownSiteNotFound =
-      (p.ownSiteSearched?.entrypoints?.length ?? 0) > 0 && p.ownSiteSearched?.found === false;
+      (p.ownSiteSearched?.entrypoints?.length ?? 0) > 0 &&
+      p.ownSiteSearched?.found === false;
     const excused = inactive || outOfArea || ownSiteNotFound;
 
     // req1 = earliest appointment time declared.
@@ -176,7 +213,8 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
     // is satisfied whenever a book path (a request url or a phone) exists.
     const hasLiveCalendar = rung === 1;
     const bookPath = bookUrl ?? phone ?? null;
-    const req1EarliestDeclared = !!observedWait || (!hasLiveCalendar && !!bookPath);
+    const req1EarliestDeclared =
+      !!observedWait || (!hasLiveCalendar && !!bookPath);
 
     // req2 = book method (online vs phone) derivable from the mechanism.
     const bookMethod = asBookMethod(mechanism);
@@ -197,7 +235,9 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
     //                       cited terminal, a mirror of the access-review GAP)
     //   absent           = no insurance evidence at all (never searched) — the defect
     const acceptedList = insurance?.accepted ?? [];
-    const cignaResolved = insurance?.cignaAccepted !== undefined && insurance?.cignaAccepted !== null;
+    const cignaResolved =
+      insurance?.cignaAccepted !== undefined &&
+      insurance?.cignaAccepted !== null;
     const insuranceSearchedPages = insurance?.ownSiteSearched?.pages ?? [];
     const insuranceSearched = insuranceSearchedPages.length > 0;
     const insuranceState: 'published' | 'searched-quoted' | 'absent' =
@@ -285,7 +325,7 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
 
   const complete = reviewed.filter((r) => r.verdict === 'COMPLETE');
   const incomplete = reviewed.filter((r) => r.verdict === 'INCOMPLETE'); // blockers
-  const excusedRows = reviewed.filter((r) => r.verdict === 'EXCUSED');    // nitpicks
+  const excusedRows = reviewed.filter((r) => r.verdict === 'EXCUSED'); // nitpicks
 
   // FEDERAL COVERAGE — the exhaustiveness proof against the federal source of truth.
   // the coverage self-check above proves every practice FILE maps to an audited row;
@@ -307,14 +347,19 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
   // against the federal registry. a federal OUT-OF-AREA provider (325xx+, a
   // different metro 45min-2hr away) is NOT a gap — it is correctly outside the
   // PCB-area scope, cited by county, and surfaced only as an informational nitpick.
-  const blockers = incomplete.length + coverageBlockers.length + federalGapInArea.length;
-  const nitpicks = excusedRows.length + coverageExempt.length + federalOutOfArea.length;
+  const blockers =
+    incomplete.length + coverageBlockers.length + federalGapInArea.length;
+  const nitpicks =
+    excusedRows.length + coverageExempt.length + federalOutOfArea.length;
 
   // ONLINE APPOINTMENT CAPACITY — the direct answer to "for each with online
   // capacity, when is the earliest". one entry per REFERABLE practice (dedup by
   // practiceKey), its new-patient online tier + the earliest date when a live
   // calendar exposes one. ordered by tier so live-calendar practices lead.
-  const capacityByPractice = new Map<string, { practiceKey: string; tier: string; earliest: string | null }>();
+  const capacityByPractice = new Map<
+    string,
+    { practiceKey: string; tier: string; earliest: string | null }
+  >();
   for (const r of reviewed) {
     if (r.verdict === 'EXCUSED') continue;
     if (!capacityByPractice.has(r.practiceKey))
@@ -324,7 +369,12 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
         earliest: r.onlineEarliest,
       });
   }
-  const tierOrder: Record<string, number> = { 'live-calendar': 0, 'online-request': 1, 'portal-prior': 2, 'phone-only': 3 };
+  const tierOrder: Record<string, number> = {
+    'live-calendar': 0,
+    'online-request': 1,
+    'portal-prior': 2,
+    'phone-only': 3,
+  };
   const onlineCapacityByPractice = [...capacityByPractice.values()].sort(
     (a, b) => (tierOrder[a.tier] ?? 9) - (tierOrder[b.tier] ?? 9),
   );
@@ -385,13 +435,18 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
           ourNpiCount: federal.ourNpiCount,
           counts: federal.counts,
           gapInAreaBlockers: federalGapInArea.map(
-            (g) => `${g.name} (${g.npi}) — ${g.locationCity} ${g.locationPostal5} — PCB-area (324xx), absent from our records`,
+            (g) =>
+              `${g.name} (${g.npi}) — ${g.locationCity} ${g.locationPostal5} — PCB-area (324xx), absent from our records`,
           ),
           outOfAreaNitpicks: federalOutOfArea.map(
-            (g) => `${g.name} (${g.npi}) — ${g.locationCity} ${g.locationPostal5} — out of PCB area (adjacent county, 45min-2hr)`,
+            (g) =>
+              `${g.name} (${g.npi}) — ${g.locationCity} ${g.locationPostal5} — out of PCB area (adjacent county, 45min-2hr)`,
           ),
         }
-      : { computed: false, note: 'db.federal/coverage.federal.json absent — run project.federal.coverage to prove federal exhaustiveness' },
+      : {
+          computed: false,
+          note: 'db.federal/coverage.federal.json absent — run project.federal.coverage to prove federal exhaustiveness',
+        },
     totalProviders: reviewed.length,
     completeCount: complete.length,
     incompleteCount: incomplete.length,

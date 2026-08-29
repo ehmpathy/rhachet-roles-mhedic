@@ -54,7 +54,9 @@ describe('inventory wiring: stone citations -> inventory files', () => {
 
   // a cited filename is found if it exists in ANY inventory home (union lookup)
   const isCitedFileFound = (input: { citedFilename: string }): boolean =>
-    inventoryDirs.some((dir) => existsSync(path.join(dir, input.citedFilename)));
+    inventoryDirs.some((dir) =>
+      existsSync(path.join(dir, input.citedFilename)),
+    );
 
   const collectCitations = (): { stone: string; citedFilename: string }[] => {
     const pairs: { stone: string; citedFilename: string }[] = [];

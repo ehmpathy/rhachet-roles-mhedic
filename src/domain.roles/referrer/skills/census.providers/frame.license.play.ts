@@ -1,6 +1,6 @@
-import type { Browser, Page } from 'playwright';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import type { Browser, Page } from 'playwright';
 
 /**
  * .what = the SECOND independent review frame: the Florida DOH / MQA medical-
@@ -38,7 +38,8 @@ import { join } from 'path';
  *             could not read (transient), each to re-check, not a hard fail.
  */
 
-const FORM = 'https://mqa-internet.doh.state.fl.us/MQASearchServices/HealthCareProviders';
+const FORM =
+  'https://mqa-internet.doh.state.fl.us/MQASearchServices/HealthCareProviders';
 
 // the on-disk (gitignored) db that holds the roster identifiers. no provider name,
 // license number, or org NPI is hardcoded here: the frame reads what to verify from
@@ -68,13 +69,21 @@ const loadRoster = (): {
   toVerify: { name: string; license: string; npi: string }[];
   orgNpis: string[];
 } => {
-  const providersDoc = JSON.parse(readFileSync(join(DB_DIR, 'providers.json'), 'utf8'));
+  const providersDoc = JSON.parse(
+    readFileSync(join(DB_DIR, 'providers.json'), 'utf8'),
+  );
   const rows: ProviderRow[] = providersDoc.providers ?? [];
   const toVerify = rows
     .filter((r) => !!r.license && !!r.npi && (r.licenseState ?? '') === 'FL')
-    .map((r) => ({ name: r.name, license: r.license as string, npi: r.npi as string }));
+    .map((r) => ({
+      name: r.name,
+      license: r.license as string,
+      npi: r.npi as string,
+    }));
 
-  const orgsDoc = JSON.parse(readFileSync(join(DB_DIR, 'claimed-orgs.json'), 'utf8'));
+  const orgsDoc = JSON.parse(
+    readFileSync(join(DB_DIR, 'claimed-orgs.json'), 'utf8'),
+  );
   const orgNpis: string[] = orgsDoc.orgNpis ?? [];
 
   return { toVerify, orgNpis };
@@ -95,17 +104,22 @@ const verifyOne = async (
   page: Page,
   license: string,
 ): Promise<{ status: 'ACTIVE' | 'INACTIVE' | 'UNREAD'; field: string }> => {
-  if (!license) return { status: 'UNREAD', field: 'no license number in NPI record' };
+  if (!license)
+    return { status: 'UNREAD', field: 'no license number in NPI record' };
   await page.goto(FORM, { waitUntil: 'domcontentloaded', timeout: 40000 });
   await page.waitForTimeout(700);
   await page.fill('#SearchDto_LicenseNumber', license).catch(() => {});
   const submit = await page.$('input[type="submit"][value="Search"]');
-  if (submit) { await submit.click(); await page.waitForTimeout(2400); }
+  if (submit) {
+    await submit.click();
+    await page.waitForTimeout(2400);
+  }
   const text = await page.evaluate(() => document.body.innerText);
 
   // extract the exact "License Status" field value (the line after the label)
   const m = text.match(/License Status\s*\n\s*([^\n]+)/i);
-  if (!m?.[1]) return { status: 'UNREAD', field: 'no License Status field on page' };
+  if (!m?.[1])
+    return { status: 'UNREAD', field: 'no License Status field on page' };
   const field = m[1].trim().replace(/\/+$/, ''); // "Clear/Active", "Retired", "Null And Void"
   const status = ACTIVE.test(field) ? 'ACTIVE' : 'INACTIVE';
   return { status, field };
@@ -124,9 +138,21 @@ export const action = async (input: { page: Page; browser: Browser }) => {
     const page = await input.page.context().newPage();
     try {
       const r = await verifyOne(page, q.license);
-      results.push({ npi: q.npi, name: q.name, license: q.license, status: r.status, field: r.field });
+      results.push({
+        npi: q.npi,
+        name: q.name,
+        license: q.license,
+        status: r.status,
+        field: r.field,
+      });
     } catch {
-      results.push({ npi: q.npi, name: q.name, license: q.license, status: 'UNREAD', field: 'read error' });
+      results.push({
+        npi: q.npi,
+        name: q.name,
+        license: q.license,
+        status: 'UNREAD',
+        field: 'read error',
+      });
     } finally {
       await page.close();
     }
@@ -134,7 +160,7 @@ export const action = async (input: { page: Page; browser: Browser }) => {
 
   const active = results.filter((r) => r.status === 'ACTIVE');
   const inactive = results.filter((r) => r.status === 'INACTIVE'); // real blockers
-  const unread = results.filter((r) => r.status === 'UNREAD');     // nitpicks (re-check)
+  const unread = results.filter((r) => r.status === 'UNREAD'); // nitpicks (re-check)
 
   // verdict: a claimed provider whose license reads an ADVERSE status = blocker.
   // an unreadable/absent license = nitpick (re-check), not a hard fail.

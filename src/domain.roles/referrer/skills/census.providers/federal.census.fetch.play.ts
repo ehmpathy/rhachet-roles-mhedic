@@ -83,7 +83,12 @@ export const action = async (input: { page: Page; browser: Browser }) => {
         raw: parsed ?? bodyText.slice(0, 4000),
       };
       fs.writeFileSync(file, JSON.stringify(record, null, 2));
-      out.push({ label: q.label, status, result_count: resultCount, written: file });
+      out.push({
+        label: q.label,
+        status,
+        result_count: resultCount,
+        written: file,
+      });
     } catch (e) {
       out.push({ label: q.label, url: q.url, error: String(e).slice(0, 160) });
     }

@@ -1,6 +1,6 @@
-import type { Browser, Page } from 'playwright';
-import { readFileSync, readdirSync } from 'fs';
+import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
+import type { Browser, Page } from 'playwright';
 
 /**
  * .what = the THIRD review frame: an access-coverage audit. it does NOT crawl the
@@ -42,7 +42,10 @@ import { join } from 'path';
  *             inactive license, OR an out-of-area provider we will not refer to.
  */
 
-const DB_DIR = join(process.cwd(), 'src/domain.roles/referrer/skills/census.providers/db.access');
+const DB_DIR = join(
+  process.cwd(),
+  'src/domain.roles/referrer/skills/census.providers/db.access',
+);
 
 // host classification — a citation url proves an appointment-mechanism search
 // ONLY if it points at the provider's own entrypoint (a salespage), not a registry
@@ -51,13 +54,15 @@ const REGISTRY = /npiregistry\.cms\.hhs\.gov|mqa-internet\.doh\.state\.fl\.us/i;
 // a directory / aggregator = proof a search RAN, but NOT the provider's own site.
 // topdermatology is a physician-aggregator ('claim this profile'); legacy/obituary
 // hosts are the dead-end a name-search sometimes lands on.
-const DIRECTORY = /healthgrades\.com|zocdoc\.com|vitals\.com|webmd\.com|castleconnolly|topdermatology\.com|sharecare\.com|ratemds\.com|npidb\.org|doximity\.com|caredash\.com|us\.news|yelp\.com|legacy\.com|obituar/i;
+const DIRECTORY =
+  /healthgrades\.com|zocdoc\.com|vitals\.com|webmd\.com|castleconnolly|topdermatology\.com|sharecare\.com|ratemds\.com|npidb\.org|doximity\.com|caredash\.com|us\.news|yelp\.com|legacy\.com|obituar/i;
 
 const isSalespage = (url: string): boolean =>
   !!url && !REGISTRY.test(url) && !DIRECTORY.test(url);
 
 // a book/portal host = a live self-schedule or portal entrypoint (deeper proof)
-const LIVE_SURFACE = /klara\.com|solutionreach\.com|patron\.solutionreach|ecwcloud|modmedapp|ema\.md|athena|healow|followmyhealth/i;
+const LIVE_SURFACE =
+  /klara\.com|solutionreach\.com|patron\.solutionreach|ecwcloud|modmedapp|ema\.md|athena|healow|followmyhealth/i;
 
 type PracticeRecord = {
   practiceKey: string;
@@ -81,14 +86,18 @@ type ProviderRow = {
 
 export const action = async (_input: { page: Page; browser: Browser }) => {
   // load the exhaustive per-provider frame
-  const providersDoc = JSON.parse(readFileSync(join(DB_DIR, 'providers.json'), 'utf8'));
+  const providersDoc = JSON.parse(
+    readFileSync(join(DB_DIR, 'providers.json'), 'utf8'),
+  );
   const providers: ProviderRow[] = providersDoc.providers;
 
   // load every practice record into a map by practiceKey
   const practiceByKey = new Map<string, PracticeRecord>();
   for (const f of readdirSync(DB_DIR)) {
     if (!f.endsWith('.json') || f === 'providers.json') continue;
-    const rec: PracticeRecord = JSON.parse(readFileSync(join(DB_DIR, f), 'utf8'));
+    const rec: PracticeRecord = JSON.parse(
+      readFileSync(join(DB_DIR, f), 'utf8'),
+    );
     if (rec.practiceKey) practiceByKey.set(rec.practiceKey, rec);
   }
 
@@ -106,8 +115,13 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
 
     // do-not-refer -> intentionally not searched -> exempt.
     // two do-not-refer reasons: an inactive license, or an out-of-area provider.
-    const inactive = /retired|null and void|revoked|deceased|delinquent/i.test(p.licenseStatus ?? '');
-    const outOfArea = p.outOfArea === true || p.practiceKey === 'out-of-area' || /out of area/i.test(p.flag ?? '');
+    const inactive = /retired|null and void|revoked|deceased|delinquent/i.test(
+      p.licenseStatus ?? '',
+    );
+    const outOfArea =
+      p.outOfArea === true ||
+      p.practiceKey === 'out-of-area' ||
+      /out of area/i.test(p.flag ?? '');
 
     // proof a real own-site search RAN but found no own salespage: either a
     // directory/aggregator citation on the practice record, or a row-level
@@ -129,7 +143,9 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
       verdict = 'PROVEN';
       howProven =
         `mechanism [${mechanism.join(', ')}] read from ${entrypointsSearched.length} salespage entrypoint(s)` +
-        (liveSlotProbed ? '; a live book/portal surface was followed' : '; homepage-level read (live slot not followed)');
+        (liveSlotProbed
+          ? '; a live book/portal surface was followed'
+          : '; homepage-level read (live slot not followed)');
     } else if (ownSiteSearchedNotFound) {
       verdict = 'GAP';
       const tried = rowSearchEntrypoints.length
@@ -149,20 +165,27 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
       verdict,
       mechanism,
       entrypointsSearched,
-      salespagesRead: salespageCites.map((c) => ({ url: c.url, field: c.field })),
-      registryOnly: entrypointsSearched.length === 0 && registryCites.length > 0,
+      salespagesRead: salespageCites.map((c) => ({
+        url: c.url,
+        field: c.field,
+      })),
+      registryOnly:
+        entrypointsSearched.length === 0 && registryCites.length > 0,
       liveSlotProbed,
       howProven,
     };
   });
 
   const proven = reviewed.filter((r) => r.verdict === 'PROVEN');
-  const gaps = reviewed.filter((r) => r.verdict === 'GAP');         // nitpicks (searched, not found)
+  const gaps = reviewed.filter((r) => r.verdict === 'GAP'); // nitpicks (searched, not found)
   const unproven = reviewed.filter((r) => r.verdict === 'UNPROVEN'); // blockers (never searched)
-  const exempt = reviewed.filter((r) => r.verdict === 'EXEMPT');     // nitpicks (do-not-refer)
+  const exempt = reviewed.filter((r) => r.verdict === 'EXEMPT'); // nitpicks (do-not-refer)
 
   const blockers = unproven.length;
-  const nitpicks = exempt.length + gaps.length + proven.filter((r) => !r.liveSlotProbed).length;
+  const nitpicks =
+    exempt.length +
+    gaps.length +
+    proven.filter((r) => !r.liveSlotProbed).length;
 
   return {
     verdict: {
@@ -175,9 +198,20 @@ export const action = async (_input: { page: Page; browser: Browser }) => {
     provenLiveSlot: proven.filter((r) => r.liveSlotProbed).length,
     gapCount: gaps.length,
     exemptCount: exempt.length,
-    unprovenBlockers: unproven.map((r) => ({ name: r.name, practiceKey: r.practiceKey, howProven: r.howProven })),
-    gapNitpicks: gaps.map((r) => ({ name: r.name, practiceKey: r.practiceKey, howProven: r.howProven })),
-    exemptNitpicks: exempt.map((r) => ({ name: r.name, howProven: r.howProven })),
+    unprovenBlockers: unproven.map((r) => ({
+      name: r.name,
+      practiceKey: r.practiceKey,
+      howProven: r.howProven,
+    })),
+    gapNitpicks: gaps.map((r) => ({
+      name: r.name,
+      practiceKey: r.practiceKey,
+      howProven: r.howProven,
+    })),
+    exemptNitpicks: exempt.map((r) => ({
+      name: r.name,
+      howProven: r.howProven,
+    })),
     detail: reviewed,
   };
 };
