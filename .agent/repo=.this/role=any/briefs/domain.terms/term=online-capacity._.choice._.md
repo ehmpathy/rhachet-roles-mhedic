@@ -21,8 +21,11 @@ new-patient capacity — it serves prior patients, so it ranks below an open req
 
 ## .refs
 
-- src/domain.roles/referrer/skills/census.providers/review.requirements.play.ts (asOnlineCapacity, onlineCapacityTier, onlineCapacityByPractice)
-- src/domain.roles/referrer/skills/census.providers/probe.onlinecapacity.earliest.play.ts (probes the null-earliest tiers)
+- src/domain.roles/referrer/skills/census.providers/review.requirements.play.ts (`asOnlineCapacity` L145, `onlineCapacityTier` L284, `onlineCapacityByPractice` L378, `onlineCapacityEarliest` L381)
+
+⚠️ **a second ref named `probe.onlinecapacity.earliest.play.ts` was cited here and no such file
+exists** — verified 2026-09-07, a glob of `src/**/probe*` returns zero. the null-earliest logic it
+claimed lives at `review.requirements.play.ts:381` above. ⇒ **phantom path removed.**
 
 ## .reason
 

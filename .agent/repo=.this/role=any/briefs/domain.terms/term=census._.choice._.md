@@ -23,7 +23,20 @@ a census names its frame, its diff, and its still-unproven edges; a recall names
 - src/domain.roles/referrer/skills/refer.care/templates/3.1.clinician.find.stone (the stone that requires it)
 - src/domain.roles/referrer/briefs/inventory/inventory.of=dermatologists-near-panama-city-beach.md (the worked example)
 
+## 🔴 .the genus — a census IS an inventory
+
+> **`inventory` is the genus; `census` is the species that adds a proven frame.**
+
+⚠️ **`inventory` is deliberately NOT a forbidden synonym above.** it names the wider kind, and a
+census filed as `inventory.of=…` is correct rather than a drift — which is why this file's own
+worked-example ref points at one. settled 2026-09-07 by enumeration: the corpus holds 66
+`inventory.of=` artifacts across ten `.of=` kinds, and **`census` fits exactly one of them.**
+
+⇒ what `census` adds, and what an inventory need not have: a declared **population frame**, a
+**diff** against it, and an explicit **`.how coverage was proven`** claim.
+
 ## .reason
 
 see the ref-level cluster beside this choice:
 - `term=census._.choice.reason.md` — etymology, the rejected `recall`/`list`, evidence
+- `term=inventory._.choice._.md` — the genus, and the resolved genus/species dispute
