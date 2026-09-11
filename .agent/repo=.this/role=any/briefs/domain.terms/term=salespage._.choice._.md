@@ -17,9 +17,12 @@ or SALESPAGE, and only a salespage read earns a PROVEN verdict.
 
 ## .refs
 
-- src/domain.roles/referrer/skills/census.providers/review.access.play.ts (isSalespage, the host classifier)
-- src/domain.roles/referrer/skills/census.providers/probe.access.ownsites.play.ts (reads each provider's salespage)
+- src/domain.roles/referrer/skills/census.providers/review.access.play.ts (`isSalespage` L60 — the host classifier; `salespageCites` L110 — reads each provider's salespage)
 - src/domain.roles/referrer/briefs/rule.require.access-coverage-review.[rule].md
+
+⚠️ **a ref named `probe.access.ownsites.play.ts` was cited here and no such file exists** — verified
+2026-09-07, a glob of `src/**/probe*` returns zero. the read it claimed lives at
+`review.access.play.ts:110` above. ⇒ **phantom path removed.**
 
 ## .reason
 

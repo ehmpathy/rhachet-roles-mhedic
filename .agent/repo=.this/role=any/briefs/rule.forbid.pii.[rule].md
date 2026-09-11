@@ -106,6 +106,61 @@ the patient is [PATIENT], a 1 yr 2 mo spayed female domestic long hair, 8.4 lbs.
 rabies vaccine (Zoetis PUREVAX FVRCP/RABIES) administered by [VET] at [CLINIC].
 ```
 
+## 🔴 .the verification duty — a clean grep is not a clean repo
+
+the rule above says what to strip. this says how to **prove** it was stripped, because two
+independent anonymization failures — both measured 2026-09-07 — each left a clean grep behind:
+
+⚠️ **the word here is `anonymize`, never `scrub`.** `scrub` is the declared **verdict** for the 🕶️
+obscure posture (`rule.require.publishability-triage`), and PII sits at 🔒 **protect**. the two acts
+both remove identity, so the genus fits — but a PII strip reported as a *"scrub"* names the wrong
+posture, and the posture is what carries the severity.
+
+| the failure | what the grep saw | what it missed |
+|---|---|---|
+| **the wrong tree** | `.agent/` clean | `.agent/repo=<role>` is a **symlink into `dist/`** — a build artifact. the authored source is `src/domain.roles/*/briefs/`, and it held 30 leaked lines |
+| **the wrong pattern** | the case slug clean | the case **spawned** other names — browser session labels, log dirs — that do not contain the slug at all |
+
+⇒ three duties follow, and each closes one of those holes:
+
+1. **audit the SOURCE tree, never a built view.** follow every symlink and check `.gitignore`
+   before you call a tree audited. a grep over a build artifact proves only that the build is clean
+2. **a leak pattern derived from one artifact's name does not cover the names that artifact
+   spawned.** enumerate the spawned names FIRST — session labels, log directories, branch, worktree
+   path — then grep for each. one pattern per name, never one pattern for all
+3. 🔴 **an audit result carries a scope and a date, or it carries naught.** *"0 matches"* is true only
+   of the tree searched, at the moment searched. **an audit result that outlives one re-lift is worse
+   than no audit** — it reads as proof and is not
+
+### 🔴 duty 4 — a REMOVAL by a safety-net tool is a MOVE, never a delete
+
+`rmsafe`, `mvsafe`, and every tool with a trash or a backup are **recoverable by design**. ⇒ a
+privacy claim that rests on one is false.
+
+**measured 2026-09-09**: a route was removed with `rmsafe` and declared closed — in a brief that
+said so in as many words. a blind red-team found the whole route, its seed, and its intake data
+intact under the trash path.
+
+⚠️ the same holds for `git rm` (history keeps it), a browser profile (cookies + history), and any
+editor backup. **read the tool's own contract before you claim a deletion.**
+
+### the surfaces outside the file tree
+
+a repo interior may be spotless while the identity is still in the open. none of these is reachable
+by a grep over the tree on disk:
+
+| surface | why a tree grep misses it |
+|---|---|
+| **branch name** | not a file. it is in git refs, and it travels to the forge |
+| **worktree / directory path** | not a file either — it is the path the files sit under |
+| **PR title and description** | lives on the forge, never in the tree |
+| **commit messages** | in git history, not in the tree on disk |
+| **session labels, log directory names** | artifacts a run spawned, often outside the repo |
+
+⚠️ **a name is PII when placed next to a condition, even where each half alone is benign.** a branch
+`<person>/<condition>` discloses a diagnosis about a named individual, and it does so in every clone,
+every `git branch` output, and every pull request that carries it.
+
 ## severity: blocker (critical)
 
 a raw identifier in a persisted artifact is a live, irreversible privacy leak. the cost of a
@@ -126,6 +181,13 @@ committed leaks all the same.
 - any PII / PHI in a persisted artifact (transcript, wish, brief, stone, yield, log, commit,
   fixture) = **blocker** (critical)
 - a raw source document that carries PII committed to the repo = **blocker** (critical)
+- an identifier in a **branch name, worktree path, PR title, or commit message** = **blocker**
+  (critical) — the tree is not the whole repo
+- an anonymization declared complete on the strength of a grep over a **symlinked or built** view = **blocker**
+- a removal claimed as a **deletion** where the tool has a trash or a backup = **blocker (critical)**
+- an artifact set published with **no blind red-team** = **blocker (critical)** (`rule.always.redteam-blind-before-publish`)
+- an audit result cited with **no scope and no date** = **blocker** — it cannot be told from a stale one
+- a PII strip reported as a *"scrub"* = **nitpick** — `scrub` is the 🕶️ obscure verdict; PII is 🔒 protect
 - a placeholder that drifts (same subject, different tokens, so the record misleads) = **nitpick**
 
 ## .publishability
