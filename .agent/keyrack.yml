@@ -3,7 +3,10 @@ extends:
   - .agent/repo=bhrain/role=reviewer/keyrack.yml
   - .agent/repo=bhuild/role=dispatcher/keyrack.yml
   - .agent/repo=ehmpathy/role=mechanic/keyrack.yml
-  - .agent/repo=mhedic/role=diagnostician/keyrack.yml
+  # .note = no extend of .agent/repo=mhedic/role=diagnostician/keyrack.yml — that path is a
+  #         GITIGNORED build artifact, absent in ci, so the extend fails there. it also
+  #         declares zero keys, so the extend bought naught. declare this repo's own keys
+  #         directly below.
 env.all: null
 env.prod: null
 env.prep:
